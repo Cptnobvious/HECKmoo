@@ -1,5 +1,6 @@
 package com;
 
+import world.World;
 import network.Relay;
 
 public class Boot {
@@ -11,6 +12,9 @@ public class Boot {
 	
 	
 	public static void main(String[] args) {
+		
+		World world = new World();
+		world.init();
 		
 		Relay.StartNetwork(PORT);
 		

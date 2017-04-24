@@ -90,12 +90,6 @@ class Client {
 					}
 				}
 				
-	//			input = in.readLine();
-	//			while (input != null){
-	//				toRelay.add(input);
-	//				input = in.readLine();
-	//			}
-				
 				//Add tags and send those strings off to the relay
 				for (int i = 0; i < toRelay.size(); i++){
 					TaggedClientString tcs = new TaggedClientString(this.uID, toRelay.get(i));

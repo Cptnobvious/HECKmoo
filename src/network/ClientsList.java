@@ -14,11 +14,17 @@ class ClientsList extends Thread{
 	
 	
 	public static boolean addClient(Socket sock){
-		Client cli = new Client(sock, getUniqueID());
-		cli.init();
-		clients.add(cli);
-		System.out.println("Added a new client");
-		//TODO: Check for success
+		int newID = getUniqueID();
+		Client cli = new Client(sock, newID);
+		
+		//If client fails to init for some reason don't add it to the clients list
+		if (cli.init()){
+			clients.add(cli);
+			//Don't forget to tell the relay that a new guy showed up
+			Relay.AddNewClient(newID);
+			System.out.println("Added a new client");
+			return true;
+		}
 		return false;
 	}
 
@@ -29,6 +35,7 @@ class ClientsList extends Thread{
 			if (clients.get(i).getUniqueID() == uID){
 				clients.get(i).killClient();
 				clients.remove(i);
+				
 				return true;
 			}
 		}

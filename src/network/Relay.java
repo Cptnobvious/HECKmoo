@@ -1,13 +1,15 @@
 package network;
 
+import playermanager.PlayerController;
+
 //The job of the relay class is to communicate all information coming in or going out of the network
 //The relay class should only take connection/disconnection notices and strings going in or out tagged with client IDs
 
 public class Relay {
 	
 	//Tells the server to add a new player
-	public static boolean AddNewClient(){
-		//TODO: inform server someone just came in
+	public static boolean AddNewClient(int uID){
+		PlayerController.AddNewPlayer(uID);
 		return false;
 	}
 	
@@ -17,26 +19,22 @@ public class Relay {
 		return true;
 	}
 	
-	//Tells the server that a player has disconnected
+	//Tells the server that a player has disconnected unexpectedly
 	public static boolean InformClientRemoval(int uID){
-		//TODO: tell the server someone's connection is now dead
+		PlayerController.RemoveLostPlayer(uID);
 		return true;
 	}
 	
 	//Tells the network to send a string to a client
-	public static boolean SendClientString(TaggedClientString tcs){
+	public static boolean SendClientString(int uID, String str){
+		TaggedClientString tcs = new TaggedClientString(uID, str);
 		ClientsList.sendMessageToClient(tcs);
 		return true;
 	}
 	
 	//Tells the server a client sent a string
 	public static boolean RecieveClientString(TaggedClientString tcs){
-		// tell the server shit here
-		System.out.println("Message from " + tcs.getUID() + ": " + tcs.getString());
-		
-		//echo back as test
-		//hot damn did that fuck it up
-		SendClientString(tcs);
+		PlayerController.HandleStringFromClient(tcs.getUID(), tcs.getString())
 		return false;
 	}
 	
