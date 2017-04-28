@@ -3,7 +3,6 @@ package playermanager;
 import java.util.ArrayList;
 
 import network.Relay;
-import network.TaggedClientString;
 
 //This holds a list of active players and takes input from the relay/sends input to the relay.
 //this is part of my encapsulation please don't break it.
@@ -48,6 +47,13 @@ public class PlayerController {
 	public static boolean HandleStringFromClient(int uID, String str){
 		System.out.println("Message from " + uID + ": " + str);
 		//TODO: do something with these
+		return false;
+	}
+
+	public static void think() {
+		for (int i = 0; i < players.size(); i++){
+			players.get(i).think();
+		}
 	}
 
 }

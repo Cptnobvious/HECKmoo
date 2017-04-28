@@ -1,5 +1,6 @@
 package com;
 
+import playermanager.PlayerController;
 import world.World;
 import network.Relay;
 
@@ -19,7 +20,13 @@ public class Boot {
 		Relay.StartNetwork(PORT);
 		
 		while (!isCloseRequested){
+			try {
+				Thread.sleep(50);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 			Relay.think();
+			PlayerController.think();
 		}
 		
 		System.out.println("test");

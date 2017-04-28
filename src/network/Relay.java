@@ -34,7 +34,7 @@ public class Relay {
 	
 	//Tells the server a client sent a string
 	public static boolean RecieveClientString(TaggedClientString tcs){
-		PlayerController.HandleStringFromClient(tcs.getUID(), tcs.getString())
+		PlayerController.HandleStringFromClient(tcs.getUID(), tcs.getString());
 		return false;
 	}
 	
