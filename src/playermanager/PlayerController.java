@@ -46,10 +46,24 @@ public class PlayerController {
 	//Takes strings flying out of the relay and passes them along to the game logic
 	public static boolean HandleStringFromClient(int uID, String str){
 		System.out.println("Message from " + uID + ": " + str);
-		//TODO: do something with these
+		Player ply = getPlayerByUID(uID);
+		if (ply != null){
+			ply.sendMessageToLogic(str);
+			return true;
+		}
 		return false;
 	}
 
+	public static Player getPlayerByUID(int uID){
+		for (int i = 0; i < players.size(); i++){
+			if (players.get(i).getuID() == uID){
+				return players.get(i);
+			}
+		}
+		
+		return null;
+	}
+	
 	public static void think() {
 		for (int i = 0; i < players.size(); i++){
 			players.get(i).think();

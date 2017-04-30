@@ -45,6 +45,4 @@ public class Room {
 		//TODO: remake this it's auto generated
 	}
 	
-
-	
 }

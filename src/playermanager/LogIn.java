@@ -3,7 +3,7 @@ package playermanager;
 public class LogIn {
 
 	public static String getLoginScreen(){
-		return "y'all gay lmao";
+		return "Enter a username fag";
 	}
 	
 }

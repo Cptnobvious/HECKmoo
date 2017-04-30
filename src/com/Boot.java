@@ -14,8 +14,7 @@ public class Boot {
 	
 	public static void main(String[] args) {
 		
-		World world = new World();
-		world.init();
+		World.init();
 		
 		Relay.StartNetwork(PORT);
 		
