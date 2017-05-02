@@ -26,11 +26,12 @@ public class Zone {
 		return rooms;
 	}
 	
-	public boolean addRoom(Room room){
+	public int addRoom(Room room){
 		Room rm = room;
 		int index = 0;
 		boolean unique = true;
 		do {
+			unique = true;
 			for (int i = 0; i < rooms.size(); i++){
 				if (rooms.get(i).getIndex() == index){
 					unique = false;
@@ -41,7 +42,7 @@ public class Zone {
 		} while (!unique);
 		rm.setIndex(index);
 		rooms.add(rm);
-		return true;
+		return index;
 	}
 	
 	public void setRooms(ArrayList<Room> rooms) {

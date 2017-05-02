@@ -6,10 +6,10 @@ import playermanager.Player;
 
 public abstract class Verb {
 	
-	String[] alias = null;
+	protected String[] alias = null;
 
-	Verb(){
-		//TODO: does this do something
+	protected Verb(){
+		setAlias();
 	}
 	
 	//This function should set your alias array

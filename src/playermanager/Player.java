@@ -61,6 +61,8 @@ public class Player {
 		return this.uID;
 	}
 	
-	
+	public Actor getActor(){
+		return this.actor;
+	}
 
 }
