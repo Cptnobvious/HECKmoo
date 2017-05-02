@@ -66,24 +66,24 @@ public class ColorStrings {
 		//Check to make sure there's a tag
 		if (str.contains("[") || str.contains("]")){
 			//Do foreground tags
-			str = str.replace("[fBLACK]", 	ColorStrings.getColorFCode(ColorStrings.BLACK));
-			str = str.replace("[fRED]", 		ColorStrings.getColorFCode(ColorStrings.RED));
-			str = str.replace("[fGREEN]", 	ColorStrings.getColorFCode(ColorStrings.GREEN));
-			str = str.replace("[fYELLOW]", 	ColorStrings.getColorFCode(ColorStrings.YELLOW));
-			str = str.replace("[fBLUE]", 		ColorStrings.getColorFCode(ColorStrings.BLUE));
-			str = str.replace("[fMAGENTA]",	ColorStrings.getColorFCode(ColorStrings.MAGENTA));
-			str = str.replace("[fCYAN]", 		ColorStrings.getColorFCode(ColorStrings.CYAN));
-			str = str.replace("[fWHITE]", 	ColorStrings.getColorFCode(ColorStrings.WHITE));
+			str = str.replace("@[fBLACK]", 		ColorStrings.getColorFCode(ColorStrings.BLACK));
+			str = str.replace("@[fRED]", 		ColorStrings.getColorFCode(ColorStrings.RED));
+			str = str.replace("@[fGREEN]", 		ColorStrings.getColorFCode(ColorStrings.GREEN));
+			str = str.replace("@[fYELLOW]", 	ColorStrings.getColorFCode(ColorStrings.YELLOW));
+			str = str.replace("@[fBLUE]", 		ColorStrings.getColorFCode(ColorStrings.BLUE));
+			str = str.replace("@[fMAGENTA]",	ColorStrings.getColorFCode(ColorStrings.MAGENTA));
+			str = str.replace("@[fCYAN]", 		ColorStrings.getColorFCode(ColorStrings.CYAN));
+			str = str.replace("@[fWHITE]", 		ColorStrings.getColorFCode(ColorStrings.WHITE));
 			
 			//Now for the background tags
-			str = str.replace("[bBLACK]", 	ColorStrings.getColorBCode(ColorStrings.BLACK));
-			str = str.replace("[bRED]", 		ColorStrings.getColorBCode(ColorStrings.RED));
-			str = str.replace("[bGREEN]", 	ColorStrings.getColorBCode(ColorStrings.GREEN));
-			str = str.replace("[bYELLOW]", 	ColorStrings.getColorBCode(ColorStrings.YELLOW));
-			str = str.replace("[bBLUE]", 		ColorStrings.getColorBCode(ColorStrings.BLUE));
-			str = str.replace("[bMAGENTA]", 	ColorStrings.getColorBCode(ColorStrings.MAGENTA));
-			str = str.replace("[bCYAN]", 		ColorStrings.getColorBCode(ColorStrings.CYAN));
-			str = str.replace("[bWHITE]", 	ColorStrings.getColorBCode(ColorStrings.WHITE));
+			str = str.replace("@[bBLACK]", 		ColorStrings.getColorBCode(ColorStrings.BLACK));
+			str = str.replace("@[bRED]", 		ColorStrings.getColorBCode(ColorStrings.RED));
+			str = str.replace("@[bGREEN]", 		ColorStrings.getColorBCode(ColorStrings.GREEN));
+			str = str.replace("@[bYELLOW]", 	ColorStrings.getColorBCode(ColorStrings.YELLOW));
+			str = str.replace("@[bBLUE]", 		ColorStrings.getColorBCode(ColorStrings.BLUE));
+			str = str.replace("@[bMAGENTA]", 	ColorStrings.getColorBCode(ColorStrings.MAGENTA));
+			str = str.replace("@[bCYAN]", 		ColorStrings.getColorBCode(ColorStrings.CYAN));
+			str = str.replace("@[bWHITE]", 		ColorStrings.getColorBCode(ColorStrings.WHITE));
 			
 			//other tags
 			str = str.replace("[DEF]", ColorStrings.getColorResetCode());

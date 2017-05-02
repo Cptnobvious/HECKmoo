@@ -1,5 +1,6 @@
 package playermanager;
 
+import textparser.TextParser;
 import world.Room;
 import world.World;
 
@@ -10,11 +11,10 @@ public class Player {
 	
 	//The account of the player
 	private Account account = null;
+	//The actor the player is controlling
+	private Actor actor = null;
 	//Is the player logging in?
 	private boolean logingIn = false;
-	
-	private String currentZone = "ORGNA";
-	private int currentRoom = 0;
 	
 	//Do update for the player
 	void think(){
@@ -32,6 +32,7 @@ public class Player {
 		return true;
 	}
 	
+	//send a message from the client over to logic
 	public boolean sendMessageToLogic(String str){
 		if (account == null){
 			if (logingIn){
@@ -39,18 +40,21 @@ public class Player {
 				sendMessageToClient("Sup fag");
 				enterWorld();
 			}
+		} else {
+			TextParser.Parse(this, str);
 		}
 		return true;
 	}
 	
 	private void enterWorld(){
-		Room rm = World.getRoom(this.currentZone, this.currentRoom);
+		Room rm = World.getRoom(actor.getCurrentZone(), actor.getCurrentRoom());
 		String str = rm.getRoomName() + "\n" + rm.getRoomDescription();
 		sendMessageToClient(str);
 	}
 	
 	Player (int uID){
 		this.uID = uID;
+		actor = new Actor(this.uID);
 	}
 	
 	public int getuID(){

@@ -1,9 +1,11 @@
 package playermanager;
 
+import utility.ColorStrings;
+
 public class LogIn {
 
 	public static String getLoginScreen(){
-		return "Enter a username fag";
+		return ColorStrings.replaceTags("@[fGREEN]Enter a username.");
 	}
 	
 }
