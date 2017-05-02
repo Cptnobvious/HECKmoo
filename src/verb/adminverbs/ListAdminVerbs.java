@@ -10,7 +10,7 @@ public class ListAdminVerbs extends VerbList{
 	
 	public boolean init(){
 		addVerb(new VerbAtDig());
-		return false;
+		return true;
 	}
 	
 }

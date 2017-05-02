@@ -54,4 +54,8 @@ public class World {
 		return null;
 	}
 	
+	public static String getRoomLook(String zone, int index){
+		Room rm = getRoom(zone, index);
+		return rm.getRoomName() + "\n" + rm.getRoomDescription();
+	}
 }

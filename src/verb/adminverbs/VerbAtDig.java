@@ -8,10 +8,6 @@ import world.World;
 
 public class VerbAtDig extends Verb{
 
-	VerbAtDig() {
-		super();
-	}
-
 	@Override
 	public boolean setAlias() {
 		String[] temp = {"@dig"};

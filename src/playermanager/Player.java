@@ -47,8 +47,7 @@ public class Player {
 	}
 	
 	private void enterWorld(){
-		Room rm = World.getRoom(actor.getCurrentZone(), actor.getCurrentRoom());
-		String str = rm.getRoomName() + "\n" + rm.getRoomDescription();
+		String str = World.getRoomLook(actor.getCurrentZone(), actor.getCurrentRoom());
 		sendMessageToClient(str);
 	}
 	
