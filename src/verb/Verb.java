@@ -6,7 +6,7 @@ import playermanager.Player;
 
 public abstract class Verb {
 	
-	protected String[] alias = null;
+	protected String[] alias = {};
 
 	protected Verb(){
 		setAlias();

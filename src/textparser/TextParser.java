@@ -16,7 +16,8 @@ public class TextParser {
 	
 	public static boolean Parse(Player ply, String str){
 		
-		String verb = StringUtility.getFirstWord(str);
+		
+		String verb = StringUtility.getFirstWord(str).toLowerCase();
 		Verb called = null;
 		
 		//check the admin verbs

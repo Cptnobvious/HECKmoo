@@ -37,6 +37,21 @@ public class Room {
 		this.index = index;
 	}
 
+	public boolean addExit(Exit exit){
+		exits.add(exit);
+		return true;
+	}
+	
+	public boolean removeExit(String str){
+		for (int i = 0; i < exits.size(); i++){
+			if (exits.get(i).matches(str)){
+				exits.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public ArrayList<Exit> getExits() {
 		return exits;
 	}

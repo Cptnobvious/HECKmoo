@@ -15,6 +15,8 @@ public class VerbLook extends Verb{
 
 	@Override
 	public boolean run(Player ply, String str) {
+		//TODO: look at yourself
+		//TODO: look at object
 		String look = World.getRoomLook(ply.getActor().getCurrentZone(), ply.getActor().getCurrentRoom());
 		ply.sendMessageToClient(look);
 		return false;
