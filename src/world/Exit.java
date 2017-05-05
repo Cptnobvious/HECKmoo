@@ -4,12 +4,15 @@ import utility.StringUtility;
 
 public class Exit {
 
+	private String name = "Bad Exit";
 	private String[] alias = {};
 	private String zone = null;
 	private int room = -1;
 	
-	public Exit(String[] aliases, String zone, int room){
-		this.alias = aliases;
+	public Exit(String name, String zone, int room){
+		this.name = name;
+		String[] names = {name};
+		this.alias = names;
 		this.zone = zone;
 		this.room = room;
 	}
@@ -62,5 +65,12 @@ public class Exit {
 	
 	public int getRoom(){
 		return this.room;
+	}
+	
+	public boolean isGoodExit(){
+		if (World.getRoom(this.zone, this.room) != null){
+			return true;
+		}
+		return false;
 	}
 }

@@ -49,4 +49,8 @@ public class Actor {
 	public int getCurrentRoom(){
 		return this.currentRoom;
 	}
+	
+	public String getLocationCode(){
+		return this.getCurrentZone() + ":" + this.getCurrentRoom();
+	}
 }

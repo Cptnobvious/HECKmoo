@@ -16,6 +16,8 @@ public abstract class Verb {
 	public abstract boolean setAlias();
 	//This function is what happens when your verb is called
 	public abstract boolean run(Player ply, String str);
+	//This functions returns the help text of a verb
+	public abstract String getHelpText();
 	
 	//This function checks to see if a given string matches an alias
 	public boolean matches(String str){

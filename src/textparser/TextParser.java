@@ -1,5 +1,7 @@
 package textparser;
 
+import java.util.ArrayList;
+
 import playermanager.Player;
 import utility.StringUtility;
 import verb.Verb;
@@ -11,8 +13,8 @@ import verb.globalverbs.ListGlobalVerbs;
 
 public class TextParser {
 	
-	static VerbList adminverbs 		= new ListAdminVerbs();
-	static VerbList globalverbs 	= new ListGlobalVerbs();
+	static private VerbList adminverbs 		= new ListAdminVerbs();
+	static private VerbList globalverbs 	= new ListGlobalVerbs();
 	
 	public static boolean Parse(Player ply, String str){
 		
@@ -38,4 +40,27 @@ public class TextParser {
 		return false;
 	}
 
+	public static Verb findVerb(Player ply, String str){
+		String verb = StringUtility.getFirstWord(str).toLowerCase();
+		Verb called = null;
+		
+		//check the admin verbs
+		called = adminverbs.getVerb(verb);
+		if (called != null){
+			return called;
+		}
+		
+		//check the global verbs
+		called = globalverbs.getVerb(verb);
+		if (called != null){
+			return called;
+		}
+		
+		return null;
+	}
+	
+	public static ArrayList<String> getAllAdminVerbs(){
+		return adminverbs.getVerbs();
+	}
+	
 }

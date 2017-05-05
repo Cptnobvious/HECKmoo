@@ -22,4 +22,11 @@ public class VerbLook extends Verb{
 		return false;
 	}
 
+	@Override
+	public String getHelpText() {
+		return "look <thing>";
+	}
+	
+	
+
 }

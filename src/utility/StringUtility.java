@@ -97,4 +97,8 @@ public class StringUtility {
 		}
 		return temp;
 	}
+	
+	public static String getLinebreak(){
+		return "--------------------------------------------------------------------------------";
+	}
 }

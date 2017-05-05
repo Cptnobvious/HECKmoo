@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class VerbList {
 
-	ArrayList<Verb> verbList = new ArrayList<Verb>();
+	protected ArrayList<Verb> verbList = new ArrayList<Verb>();
 	
 	public boolean addVerb(Verb verb){
 		//Check the list to see if it's there already
@@ -36,6 +36,14 @@ public class VerbList {
 			}
 		}
 		return false;
+	}
+	
+	public ArrayList<String> getVerbs(){
+		ArrayList<String> verbs = new ArrayList<String>();
+		for (int i = 0; i < verbList.size(); i++){
+			verbs.add(verbList.get(i).getAliases()[0]);
+		}
+		return verbs;
 	}
 	
 }
