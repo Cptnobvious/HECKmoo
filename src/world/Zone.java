@@ -7,7 +7,15 @@ public class Zone {
 	private String zoneName 	= "This needs to be set";
 	private ArrayList<Room> rooms = new ArrayList<Room>();
 	private String zoneID = ReservedZones.UNINTIATEDZONE;
+	private Map map = new Map();
 	
+	public Zone(){
+		map.initMap();
+	}
+	
+	public Map getMap(){
+		return this.map;
+	}
 	
 	public String getZoneName() {
 		return zoneName;

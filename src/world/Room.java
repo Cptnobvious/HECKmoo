@@ -6,6 +6,8 @@ public class Room {
 
 	private String roomName			= "No name yet";
 	private String roomDescription 	= "Tell an admin this needs to be described";
+	private int mapx				= 20;
+	private int mapy				= 20;
 	private int index 				= -1;
 	private ArrayList<Exit> exits 	= new ArrayList<Exit>(); 
 	
@@ -58,6 +60,29 @@ public class Room {
 
 	public void setExits(ArrayList<Exit> exits) {
 		//TODO: remake this it's auto generated
+	}
+	
+	public int getMapX(){
+		return this.mapx;
+	}
+	
+	public int getMapy(){
+		return this.mapy;
+	}
+	
+	public boolean setMapPos(int x, int y){
+		this.mapx = x;
+		this.mapy = y;
+		return true;
+	}
+	
+	public String getExitNames(){
+		String ex = "[Exits: ";
+		for (int i = 0; i < exits.size(); i++){
+			ex = ex + exits.get(i).getName() + " ";
+		}
+		ex = ex + "]";
+		return ex;
 	}
 	
 }
