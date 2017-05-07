@@ -12,6 +12,7 @@ public class ListAdminVerbs extends VerbList{
 		addVerb(new VerbAtDig());
 		addVerb(new VerbAtHelp());
 		addVerb(new VerbAtAddExit());
+		addVerb(new VerbAtDescribe());
 		return true;
 	}
 	
