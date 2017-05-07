@@ -12,6 +12,7 @@ public class ListGlobalVerbs extends VerbList{
 	
 	public boolean init(){
 		addVerb(new VerbLook());
+		addVerb(new VerbGo());
 		return true;
 	}
 	

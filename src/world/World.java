@@ -2,6 +2,7 @@ package world;
 
 import java.util.ArrayList;
 
+import playermanager.Player;
 import utility.ColorStrings;
 import world.prefabs.Origin;
 import debug.MakeFakeZone;
@@ -53,6 +54,14 @@ public class World {
 			return getZoneByID(zone).getRoomByIndex(index);
 		}
 		return null;
+	}
+	
+	public static Zone getZoneByPlayer(Player ply){
+		return getZoneByID(ply.getActor().getCurrentZone());
+	}
+	
+	public static Room getRoomByPlayer(Player ply){
+		return getRoom(ply.getActor().getCurrentZone(), ply.getActor().getCurrentRoom());
 	}
 	
 	

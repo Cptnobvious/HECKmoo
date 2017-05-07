@@ -1,7 +1,11 @@
 package verb.globalverbs;
 
 import playermanager.Player;
+import utility.StringUtility;
 import verb.Verb;
+import world.Exit;
+import world.Room;
+import world.World;
 
 public class VerbGo extends Verb{
 
@@ -14,8 +18,16 @@ public class VerbGo extends Verb{
 
 	@Override
 	public boolean run(Player ply, String str) {
-		// TODO Auto-generated method stub
-		return false;
+		String[] arg = StringUtility.getWordListWithoutQuotes(str);
+		Room rm = World.getRoomByPlayer(ply);
+		Exit ex = rm.getExitByName(arg[1]);
+		if (ex == null){
+			return false;
+		}
+		ply.getActor().setCurrentRoom(ex.getZone(), ex.getRoom());
+		//TODO: a better system than simulating a look command6
+		ply.sendMessageToLogic("look");
+		return true;
 	}
 
 	@Override

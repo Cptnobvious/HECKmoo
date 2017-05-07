@@ -58,6 +58,15 @@ public class Room {
 		return exits;
 	}
 
+	public Exit getExitByName(String str){
+		for (int i = 0; i < exits.size(); i++){
+			if (exits.get(i).matches(str)){
+				return exits.get(i);
+			}
+		}
+		return null;
+	}
+	
 	public void setExits(ArrayList<Exit> exits) {
 		//TODO: remake this it's auto generated
 	}
