@@ -52,4 +52,9 @@ public class Map {
 		return result;
 	}
 
+	public boolean setMapPoint(int x, int y, String str) {
+		map[x][y] = str;
+		return true;
+	}
+
 }

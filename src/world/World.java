@@ -69,7 +69,7 @@ public class World {
 	public static String getRoomLook(String zone, int index){
 		Zone zn = getZoneByID(zone);
 		Room rm = getRoom(zone, index);
-		ArrayList<String> map = zn.getMap().getFiveByFive(rm.getMapX(), rm.getMapy());
+		ArrayList<String> map = zn.getMap().getFiveByFive(rm.getMapX(), rm.getMapY());
 		String spacer = "     ";
 		String look = "";
 		
