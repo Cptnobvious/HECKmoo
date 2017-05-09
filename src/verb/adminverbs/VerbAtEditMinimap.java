@@ -36,7 +36,7 @@ public class VerbAtEditMinimap extends Verb{
 	@Override
 	public String getHelpText() {
 		return "@edit-minimap <room-index> <x-coord> <y-coord> <symbol>\n"
-				+ "Can use $here for where you're standing.";
+				+ "Can use $here for where you're standing instead of an index number.";
 	}
 
 }
