@@ -51,6 +51,10 @@ public class Map {
 		return result;
 	}
 
+	public String getMapPoint(int x, int y){
+		return map[x][y].getFormatedSymbol();
+	}
+	
 	public boolean setMapPoint(int x, int y, String str) {
 		map[x][y].setSymbol(str);
 		return true;
