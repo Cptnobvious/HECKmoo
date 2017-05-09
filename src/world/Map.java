@@ -7,14 +7,14 @@ import utility.ColorStrings;
 
 public class Map {
 	
-	String[][] map = new String[51][51];
+	MapTile[][] map = new MapTile[51][51];
 	String defaultBack = "::";
 	
 	
 	public boolean initMap() {
 		for (int x = 0; x < 51; x++){
 			for (int y = 0; y < 51; y++){
-				map[x][y] = defaultBack;
+				map[x][y] = new MapTile(defaultBack);
 			}
 		}
 		return true;
@@ -24,9 +24,8 @@ public class Map {
 		if (str.length() != 2){
 			return false;
 		}
-		
-		String colored = ColorStrings.getColoredText(bold, fcolor, bcolor, str);
-		map[x][y] = colored;
+
+		map[x][y] = new MapTile(fcolor, bcolor, bold, str);
 		return true;
 	}
 	
@@ -43,7 +42,7 @@ public class Map {
 				if (k < 0 || k > 51 || i < 0 || i > 51){
 					result.add(defaultBack);
 				} else {
-					result.add(map[i][k]);
+					result.add(map[i][k].getFormatedSymbol());
 				}
 			}
 		}
@@ -53,7 +52,7 @@ public class Map {
 	}
 
 	public boolean setMapPoint(int x, int y, String str) {
-		map[x][y] = str;
+		map[x][y].setSymbol(str);
 		return true;
 	}
 
