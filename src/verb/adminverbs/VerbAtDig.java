@@ -30,6 +30,8 @@ public class VerbAtDig extends Verb{
 		int newIndex = World.getZoneByID(ply.getActor().getCurrentZone()).addRoom(rm);
 		System.out.println("Player made a new room named " + rm.getRoomName());
 		ply.getActor().setCurrentRoom(newIndex);
+		//TODO: better internal calls
+		ply.sendMessageToLogic("look");
 		return true;
 	}
 
