@@ -1,5 +1,7 @@
 package verb.adminverbs;
 
+import com.Boot;
+
 import playermanager.Player;
 import verb.Verb;
 
@@ -7,20 +9,20 @@ public class VerbAtShutdown extends Verb{
 
 	@Override
 	public boolean setAlias() {
-		// TODO Auto-generated method stub
-		return false;
+		String[] temp = {"@shutdown"};
+		alias = temp;
+		return true;
 	}
 
 	@Override
 	public boolean run(Player ply, String str) {
-		// TODO Auto-generated method stub
-		return false;
+		Boot.requestShutdown();
+		return true;
 	}
 
 	@Override
 	public String getHelpText() {
-		// TODO Auto-generated method stub
-		return null;
+		return "@shutdown\nThis turns off the server so don't abuse it";
 	}
 
 }

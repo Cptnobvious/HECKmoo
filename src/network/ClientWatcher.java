@@ -47,6 +47,11 @@ class ClientWatcher extends Thread {
 	}
 	
 	public void stopClientWatcher(){
+		try {
+			incomingConnectionListener.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		isCloseRequested = true;
 		System.out.println("Closing client watcher");
 	}

@@ -28,7 +28,13 @@ public class Boot {
 			PlayerController.think();
 		}
 		
+		Relay.CloseNetwork();
+		
 		System.out.println("Server Closed");
 	}
 
+	
+	public static void requestShutdown(){
+		isCloseRequested = true;
+	}
 }
