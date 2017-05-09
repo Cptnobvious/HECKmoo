@@ -75,7 +75,7 @@ public class Room {
 		return this.mapx;
 	}
 	
-	public int getMapy(){
+	public int getMapY(){
 		return this.mapy;
 	}
 	
