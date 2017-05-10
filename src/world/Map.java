@@ -38,13 +38,13 @@ public class Map {
 	
 	public ArrayList<String> getFiveByFive(int x, int y){
 		ArrayList<String> result = new ArrayList<String>();
-		for (int i = (x-2); i < (x+3); i++){
-			for (int k = (y-2); k < (y+3); k++){
+		for (int i = (y-2); i < (y+3); i++){
+			for (int k = (x-2); k < (x+3); k++){
 				
-				if (k < 0 || k > 51 || i < 0 || i > 51){
+				if (k < 0 || k > MAPW || i < 0 || i > MAPH){
 					result.add(defaultBack);
 				} else {
-					result.add(map[i][k].getFormatedSymbol());
+					result.add(map[k][i].getFormatedSymbol());
 				}
 			}
 		}
