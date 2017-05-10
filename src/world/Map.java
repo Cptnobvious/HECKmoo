@@ -14,8 +14,8 @@ public class Map {
 	
 	
 	public boolean initMap() {
-		for (int x = 0; x < 51; x++){
-			for (int y = 0; y < 51; y++){
+		for (int x = 0; x < MAPW; x++){
+			for (int y = 0; y < MAPH; y++){
 				map[x][y] = new MapTile(defaultBack);
 			}
 		}
@@ -60,6 +60,10 @@ public class Map {
 	public boolean setMapPoint(int x, int y, String str) {
 		map[x][y].setSymbol(str);
 		return true;
+	}
+	
+	public MapTile getMapTilePoint(int x, int y){
+		return map[x][y];
 	}
 
 }
