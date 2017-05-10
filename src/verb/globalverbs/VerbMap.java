@@ -2,6 +2,7 @@ package verb.globalverbs;
 
 import playermanager.Player;
 import verb.Verb;
+import world.Map;
 import world.World;
 
 public class VerbMap extends Verb{
@@ -17,8 +18,8 @@ public class VerbMap extends Verb{
 	public boolean run(Player ply, String str) {
 		String map = "";
 		
-		for (int y = 0; y < 50; y++){
-			for (int x = 0; x < 50; x++){
+		for (int y = 0; y < Map.MAPH; y++){
+			for (int x = 0; x < Map.MAPW; x++){
 				map = map + World.getZoneByPlayer(ply).getMap().getMapPoint(x, y);
 			}
 			map = map + "\n";

@@ -9,6 +9,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import world.Map;
 import world.Room;
 import world.World;
 import world.Zone;
@@ -47,6 +48,21 @@ public class WorldSaver {
 			out = new PrintWriter(zonepath);
 			out.println(zn.getZoneID());
 			out.println(zn.getZoneName());
+			
+			//Setup the minimap file and make sure it exists
+			String mmpath = path + zoneID + ".mm";
+			file = new File(mmpath);
+			if (!file.exists()){
+				file.createNewFile();
+			}
+			
+			out = new PrintWriter(mmpath);
+			Map map = zn.getMap();
+			for (int y = 0; y < Map.MAPH; y++){
+				for (int x = 0; x < Map.MAPW; x++){
+					
+				}
+			}
 		}
 		
 		out.close();

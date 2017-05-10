@@ -7,7 +7,9 @@ import utility.ColorStrings;
 
 public class Map {
 	
-	MapTile[][] map = new MapTile[51][51];
+	public static int MAPW = 50;
+	public static int MAPH = 50;
+	MapTile[][] map = new MapTile[MAPW][MAPH];
 	String defaultBack = "::";
 	
 	

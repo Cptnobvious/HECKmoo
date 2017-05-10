@@ -53,6 +53,8 @@ class ClientWatcher extends Thread {
 	public void stopClientWatcher(){
 		try {
 			incomingConnectionListener.close();
+			//TODO Why do i have isrunning and iscloserequested?
+			isRunning = false;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
