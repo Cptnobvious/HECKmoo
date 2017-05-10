@@ -9,7 +9,7 @@ import network.Relay;
 
 public class PlayerController {
 	
-	private static ArrayList<Player> players = new ArrayList<Player>();
+	private static volatile ArrayList<Player> players = new ArrayList<Player>();
 	
 	//Add a new player when notified by relay
 	public static boolean AddNewPlayer(int uID){

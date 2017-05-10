@@ -9,7 +9,7 @@ class ClientWatcher extends Thread {
 
 	private final int PORT;
 	private static ServerSocket incomingConnectionListener = null;
-	private boolean isRunning = false;
+	private volatile boolean isRunning = false;
 	private boolean isCloseRequested = false;
 	
 	//Create the client watcher with given port number
@@ -30,8 +30,12 @@ class ClientWatcher extends Thread {
 				}
 				
 			} catch (IOException e) {
-				System.out.println("There was a problem in the client watcher");
-				e.printStackTrace();
+				if (!isRunning){
+					System.out.println("Client watcher closed");
+				} else {
+					System.out.println("There was a problem in the client watcher");
+					e.printStackTrace();
+				}
 			} finally {
 				try {
 					incomingConnectionListener.close();

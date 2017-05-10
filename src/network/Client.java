@@ -20,9 +20,9 @@ class Client {
 	//Tracks if this client is alive
 	private volatile boolean clientAlive = true;
 	//List of strings to pass to the relay
-	private ArrayList<String> toRelay = new ArrayList<String>();
+	private volatile ArrayList<String> toRelay = new ArrayList<String>();
 	//List of strings to pass to the client
-	private ArrayList<String> toClient = new ArrayList<String>();
+	private volatile ArrayList<String> toClient = new ArrayList<String>();
 	//Unique ID for use by ClientsList
 	private int uID;
 	
