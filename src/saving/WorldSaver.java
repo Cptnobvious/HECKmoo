@@ -9,6 +9,7 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import world.Exit;
 import world.Map;
 import world.MapTile;
 import world.Room;
@@ -25,7 +26,8 @@ public class WorldSaver {
 		}
 		
 		ArrayList<Zone> zones = World.getAllZones();
-		ArrayList<Room> rooms = new ArrayList<Room>();
+		ArrayList<Room> rooms = null;
+		ArrayList<Exit> exits = null;
 		String zoneID = null;
 		PrintWriter out = null;
 		
@@ -83,6 +85,18 @@ public class WorldSaver {
 			
 			out = new PrintWriter(rmpath);
 			rooms = zn.getAllRooms();
+			for (int k = 0; k < rooms.size(); k++){
+				Room rm = rooms.get(k);
+				out.println(rm.getIndex());
+				out.println(rm.getRoomName());
+				out.println(rm.getMapX() + " " + rm.getMapY());
+				out.println(rm.getRoomDescription());
+				exits = rm.getExits();
+				for (int j = 0; j < exits.size(); j++){
+					Exit ex = exits.get(j);
+					out.println("$exit" + " " + ex.getName() + " " + ex.getZone() + " " + ex.getRoom() + "\n");
+				}
+			}
 			out.close();
 			
 		}
