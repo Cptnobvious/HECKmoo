@@ -49,8 +49,8 @@ public class WorldSaver {
 			}
 			
 			out = new PrintWriter(zonepath);
-			out.println(zn.getZoneID());
-			out.println(zn.getZoneName());
+			out.println("$key " + zn.getZoneID());
+			out.println("$name " + zn.getZoneName());
 			out.close();
 			
 			//Setup the minimap file and make sure it exists
@@ -87,10 +87,10 @@ public class WorldSaver {
 			rooms = zn.getAllRooms();
 			for (int k = 0; k < rooms.size(); k++){
 				Room rm = rooms.get(k);
-				out.println(rm.getIndex());
-				out.println(rm.getRoomName());
-				out.println(rm.getMapX() + " " + rm.getMapY());
-				out.println(rm.getRoomDescription());
+				out.println("$index " + rm.getIndex());
+				out.println("$name " + rm.getRoomName());
+				out.println("$minimap " + rm.getMapX() + " " + rm.getMapY());
+				out.println("$description " + rm.getRoomDescription());
 				exits = rm.getExits();
 				for (int j = 0; j < exits.size(); j++){
 					Exit ex = exits.get(j);
