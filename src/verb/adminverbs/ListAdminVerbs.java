@@ -18,6 +18,8 @@ public class ListAdminVerbs extends VerbList{
 		addVerb(new VerbAtExamine());
 		addVerb(new VerbAtShutdown());
 		addVerb(new VerbAtPalette());
+		addVerb(new VerbAtTeleport());
+		addVerb(new VerbAtAddZone());
 		return true;
 	}
 	

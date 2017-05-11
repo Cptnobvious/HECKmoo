@@ -19,6 +19,10 @@ public class VerbAtAddExit extends Verb{
 	@Override
 	public boolean run(Player ply, String str) {
 		String[] arguments = StringUtility.getWordListWithoutQuotes(str);
+		if (arguments.length < 3){
+			ply.sendMessageToClient(ColorStrings.getColoredText(true, ColorStrings.RED, ColorStrings.BLACK, "SYNTAX ERROR"));
+			return false;
+		}
 		String exitname = arguments[1];
 		String zone = arguments[2];
 		int room = Integer.parseInt(arguments[3]);
