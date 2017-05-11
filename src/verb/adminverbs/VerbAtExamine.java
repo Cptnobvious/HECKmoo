@@ -6,6 +6,7 @@ import utility.StringUtility;
 import verb.Verb;
 import world.Room;
 import world.World;
+import world.Zone;
 
 public class VerbAtExamine extends Verb{
 
@@ -21,14 +22,16 @@ public class VerbAtExamine extends Verb{
 		String[] arg = StringUtility.getWordListWithoutQuotes(str);
 		String target = arg[1];
 		if (target.equals("$here")){
-			Room temp = World.getRoomByPlayer(ply);
-			ply.sendMessageToClient(ColorStrings.getColoredText(true, ColorStrings.GREEN, ColorStrings.BLACK, "ROOM INDEX: " + temp.getIndex()));
-			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, "IN ZONE: " + World.getZoneByPlayer(ply)));
-			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, "RoomName: " + temp.getRoomName()));
-			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, "RoomDescription: " + temp.getRoomDescription()));
-			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, "RoomX: " + temp.getMapX()));
-			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, "RoomY: " + temp.getMapY()));
-			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, temp.getExitNames()));
+			Zone zn = World.getZoneByPlayer(ply);
+			Room rm = World.getRoomByPlayer(ply);
+			ply.sendMessageToClient(ColorStrings.getColoredText(true, ColorStrings.GREEN, ColorStrings.BLACK, "ROOM INDEX: " + rm.getIndex()));
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, "IN ZONE: " + zn.getZoneName()));
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, "ZONE ID: " + zn.getZoneID()));
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, "RoomName: " + rm.getRoomName()));
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, "RoomDescription: " + rm.getRoomDescription()));
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, "RoomX: " + rm.getMapX()));
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, "RoomY: " + rm.getMapY()));
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, rm.getExitNames()));
 				return true;
 			}
 			return false;
