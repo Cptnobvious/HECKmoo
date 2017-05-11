@@ -31,12 +31,20 @@ public class VerbAtAddZone extends Verb{
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "You need to enter a zone name!"));
 			return false;
 		}
+		if (zoneid.contains("@")||zoneid.contains(".")||zoneid.contains("#")||zoneid.contains("$")){
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "INVALID ZONEID\n(ZoneID must not contain special characters!)"));
+			return false;
+		}
 		if (zoneid.length() != 5){
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "INVALID ZONEID\n(ZoneID must be 5 letters!)"));
 			return false;
 		}
 		zn.setZoneName(zonename);
 		zn.setZoneID(zoneid);
+		if(World.addZone(zn) == false){
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Zone with this ID already exists!"));
+			return false;
+		}
 		World.addZone(zn);
 		System.out.println("Player made a new zone named " + zn.getZoneName());
 		Room rm = new Room();
