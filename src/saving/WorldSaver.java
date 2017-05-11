@@ -94,8 +94,9 @@ public class WorldSaver {
 				exits = rm.getExits();
 				for (int j = 0; j < exits.size(); j++){
 					Exit ex = exits.get(j);
-					out.println("$exit" + " " + ex.getName() + " " + ex.getZone() + " " + ex.getRoom() + "\n");
+					out.println("$exit" + " " + ex.getName() + " " + ex.getZone() + " " + ex.getRoom());
 				}
+				out.println();
 			}
 			out.close();
 			

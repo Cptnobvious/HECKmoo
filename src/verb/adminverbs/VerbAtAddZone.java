@@ -12,7 +12,7 @@ public class VerbAtAddZone extends Verb{
 
 	@Override
 	public boolean setAlias() {
-		String[] temp = {"@addzone","@az"};
+		String[] temp = {"@add-zone","@az"};
 		alias = temp;
 		return false;
 	}
