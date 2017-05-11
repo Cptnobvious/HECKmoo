@@ -45,7 +45,6 @@ public class VerbAtAddZone extends Verb{
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Zone with this ID already exists!"));
 			return false;
 		}
-		World.addZone(zn);
 		System.out.println("Player made a new zone named " + zn.getZoneName());
 		Room rm = new Room();
 		zn.addRoom(rm);
