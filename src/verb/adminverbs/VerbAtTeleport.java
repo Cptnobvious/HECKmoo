@@ -1,6 +1,7 @@
 package verb.adminverbs;
 
 import playermanager.Player;
+import utility.ColorStrings;
 import utility.StringUtility;
 import verb.Verb;
 import world.Room;
@@ -21,12 +22,13 @@ public class VerbAtTeleport extends Verb{
 		String[] arg = StringUtility.getWordListWithoutQuotes(str);
 		Zone zn = World.getZoneByID(arg[1]);
 		if (zn == null){
-			System.out.println("Bad zone");
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Bad zone!"));
 			return false;
 		}
 		 int Room = Integer.parseInt(arg[2]);
 		Room rm = World.getRoom(zn.getZoneID(), Room);
 		if (rm == null){
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Bad room!"));
 			return false;
 		}
 		ply.getActor().setCurrentRoom(zn.getZoneID(), rm.getIndex());

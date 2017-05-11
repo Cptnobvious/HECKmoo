@@ -19,7 +19,6 @@ public class VerbAtAddZone extends Verb{
 
 	@Override
 	public boolean run(Player ply, String str) {
-		//TODO: error catching
 		Zone zn = new Zone();
 		String[] args = StringUtility.getWordListWithoutQuotes(str);
 		if (args.length > 3){
@@ -38,10 +37,11 @@ public class VerbAtAddZone extends Verb{
 		}
 		zn.setZoneName(zonename);
 		zn.setZoneID(zoneid);
+		World.addZone(zn);
 		System.out.println("Player made a new zone named " + zn.getZoneName());
 		Room rm = new Room();
-		rm.setRoomName("NEW ZONE");
 		zn.addRoom(rm);
+		rm.setRoomName("NEW ZONE");
 		ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, "Added new zone: " + zonename));
 		return true;
 	}
