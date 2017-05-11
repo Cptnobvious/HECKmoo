@@ -129,4 +129,8 @@ public class World {
 		
 		return look;
 	}
+	
+	public static ArrayList<Zone> getAllZones(){
+		return zones;
+	}
 }

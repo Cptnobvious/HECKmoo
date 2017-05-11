@@ -1,6 +1,7 @@
 package com;
 
 import playermanager.PlayerController;
+import saving.SaveManager;
 import world.World;
 import network.Relay;
 
@@ -28,7 +29,14 @@ public class Boot {
 			PlayerController.think();
 		}
 		
+		Relay.CloseNetwork();
+		SaveManager.saveAll();
+		
 		System.out.println("Server Closed");
 	}
 
+	
+	public static void requestShutdown(){
+		isCloseRequested = true;
+	}
 }

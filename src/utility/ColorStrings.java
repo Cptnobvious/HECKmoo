@@ -97,7 +97,7 @@ public class ColorStrings {
 	
 	public static String getPallet(){
 		
-		String line = "";
+		String line = "Standard:\n";
 		
 		for (int i = 0; i < 8; i++){
         	for (int j = 0; j < 8; j++){
@@ -107,9 +107,49 @@ public class ColorStrings {
         	line = line + "\n";
         }
 		
+		line = line + getColorResetCode() + getBoldCode() + "\nBold Font\n";
+		
+		for (int i = 0; i < 8; i++){
+        	for (int j = 0; j < 8; j++){
+        		line = line + ColorStrings.getColorCodes(i, j) + i + j;
+        	}
+        	
+        	line = line + "\n";
+        }
+		
+		line = line + getColorResetCode() + getBoldCode() + "\nBold Font\n";
+		
 		line = line + getColorResetCode();
 		
 		return line;
 	}
-
+	
+	public static int getColorIntByString(String color){
+		if (color.equals("$BLACK")){
+			return BLACK;
+		}
+		if (color.equals("$RED")){
+			return RED;
+		}
+		if (color.equals("$GREEN")){
+			return GREEN;
+		}
+		if (color.equals("$YELLOW")){
+			return YELLOW;
+		}
+		if (color.equals("$BLUE")){
+			return BLUE;
+		}
+		if (color.equals("$MAGENTA")){
+			return MAGENTA;
+		}
+		if (color.equals("$CYAN")){
+			return CYAN;
+		}
+		if (color.equals("$WHITE")){
+			return WHITE;
+		}
+		return WHITE;
+	}
+	
 }

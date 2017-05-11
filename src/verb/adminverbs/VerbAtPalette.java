@@ -1,28 +1,27 @@
 package verb.adminverbs;
 
-import com.Boot;
-
 import playermanager.Player;
+import utility.ColorStrings;
 import verb.Verb;
 
-public class VerbAtShutdown extends Verb{
+public class VerbAtPalette extends Verb{
 
 	@Override
 	public boolean setAlias() {
-		String[] temp = {"@shutdown"};
+		String[] temp = {"@palette"};
 		alias = temp;
 		return true;
 	}
 
 	@Override
 	public boolean run(Player ply, String str) {
-		Boot.requestShutdown();
+		ply.sendMessageToClient(ColorStrings.getPallet());
 		return true;
 	}
 
 	@Override
 	public String getHelpText() {
-		return "@shutdown\nThis turns off the server so don't abuse it";
+		return "Call this to see all possible colors";
 	}
 
 }

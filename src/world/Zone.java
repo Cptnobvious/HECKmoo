@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Zone {
 
 	private String zoneName 	= "This needs to be set";
-	private ArrayList<Room> rooms = new ArrayList<Room>();
 	private String zoneID = ReservedZones.UNINTIATEDZONE;
+	private ArrayList<Room> rooms = new ArrayList<Room>();
 	private Map map = new Map();
 	
 	public Zone(){
@@ -30,7 +30,7 @@ public class Zone {
 		return this.zoneID;
 	}
 	
-	public ArrayList<Room> getRooms() {
+	public ArrayList<Room> getAllRooms() {
 		return rooms;
 	}
 	

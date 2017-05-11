@@ -8,9 +8,9 @@ import java.util.ArrayList;
 class ClientsList extends Thread{
 	
 	//List of all the clients
-	private static ArrayList<Client> clients = new ArrayList<Client>();
+	private static volatile ArrayList<Client> clients = new ArrayList<Client>();
 	//Should I keep thinking
-	private static boolean keepAlive = true;
+	private static volatile boolean keepAlive = true;
 	
 	
 	public static boolean addClient(Socket sock){

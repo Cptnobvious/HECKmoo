@@ -7,14 +7,16 @@ import utility.ColorStrings;
 
 public class Map {
 	
-	String[][] map = new String[51][51];
+	public static int MAPW = 50;
+	public static int MAPH = 50;
+	MapTile[][] map = new MapTile[MAPW][MAPH];
 	String defaultBack = "::";
 	
 	
 	public boolean initMap() {
-		for (int x = 0; x < 51; x++){
-			for (int y = 0; y < 51; y++){
-				map[x][y] = defaultBack;
+		for (int x = 0; x < MAPW; x++){
+			for (int y = 0; y < MAPH; y++){
+				map[x][y] = new MapTile(defaultBack);
 			}
 		}
 		return true;
@@ -24,9 +26,8 @@ public class Map {
 		if (str.length() != 2){
 			return false;
 		}
-		
-		String colored = ColorStrings.getColoredText(bold, fcolor, bcolor, str);
-		map[x][y] = colored;
+
+		map[x][y] = new MapTile(fcolor, bcolor, bold, str);
 		return true;
 	}
 	
@@ -37,13 +38,13 @@ public class Map {
 	
 	public ArrayList<String> getFiveByFive(int x, int y){
 		ArrayList<String> result = new ArrayList<String>();
-		for (int i = (x-2); i < (x+3); i++){
-			for (int k = (y-2); k < (y+3); k++){
+		for (int i = (y-2); i < (y+3); i++){
+			for (int k = (x-2); k < (x+3); k++){
 				
-				if (k < 0 || k > 51 || i < 0 || i > 51){
+				if (k < 0 || k > MAPW || i < 0 || i > MAPH){
 					result.add(defaultBack);
 				} else {
-					result.add(map[i][k]);
+					result.add(map[k][i].getFormatedSymbol());
 				}
 			}
 		}
@@ -52,9 +53,17 @@ public class Map {
 		return result;
 	}
 
+	public String getMapPoint(int x, int y){
+		return map[x][y].getFormatedSymbol();
+	}
+	
 	public boolean setMapPoint(int x, int y, String str) {
-		map[x][y] = str;
+		map[x][y].setSymbol(str);
 		return true;
+	}
+	
+	public MapTile getMapTilePoint(int x, int y){
+		return map[x][y];
 	}
 
 }

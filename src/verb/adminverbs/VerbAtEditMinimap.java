@@ -20,11 +20,15 @@ public class VerbAtEditMinimap extends Verb{
 		String[] arg = StringUtility.getWordListWithoutQuotes(str);
 		String target = arg[1];
 		if (target.equals("$here")){
-			if (arg.length == 5){
+			if (arg.length == 8){
 				int x = Integer.parseInt(arg[2]);
 				int y = Integer.parseInt(arg[3]);
-				String symbol = ColorStrings.replaceTags(arg[4]);
-				World.getZoneByPlayer(ply).getMap().setMapPoint(x, y, symbol);
+				int fColor = ColorStrings.getColorIntByString(arg[4]);
+				int bColor = ColorStrings.getColorIntByString(arg[5]);
+				boolean bold = arg[6].equals("true");
+				String symbol = ColorStrings.replaceTags(arg[7]);
+				
+				World.getZoneByPlayer(ply).getMap().setMapPoint(x, y, fColor, bColor, bold, symbol);
 				World.getRoomByPlayer(ply).setMapPos(x, y);
 				return true;
 			}
@@ -35,7 +39,7 @@ public class VerbAtEditMinimap extends Verb{
 
 	@Override
 	public String getHelpText() {
-		return "@edit-minimap <room-index> <x-coord> <y-coord> <symbol>\n"
+		return "@edit-minimap <room-index> <x-coord> <y-coord> <fColor> <bColor> <bold> <symbol>\n"
 				+ "Can use $here for where you're standing instead of an index number.";
 	}
 
