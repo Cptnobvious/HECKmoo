@@ -33,6 +33,7 @@ public class Player {
 	
 	//send a message from the client over to logic
 	public boolean sendMessageToLogic(String str){
+		//System.out.println("Sending a message to logic");
 		if (account == null){
 			if (logingIn){
 				account = new Account(str, "password");

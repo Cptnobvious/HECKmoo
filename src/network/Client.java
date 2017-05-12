@@ -10,7 +10,7 @@ class Client {
 
 	//TODO: solve this problem
 	//Max size of the buffered reader (in bytes? What is this?)
-	private static final int INPUTBUFFERSIZE = 2048;
+	private static final int INPUTBUFFERSIZE = 65536;
 	//Socket information about the client
 	private Socket cSocket;
 	//Reads input from the socket
@@ -19,8 +19,6 @@ class Client {
 	private PrintWriter out;
 	//Tracks if this client is alive
 	private volatile boolean clientAlive = true;
-	//List of strings to pass to the relay
-	private volatile ArrayList<String> toRelay = new ArrayList<String>();
 	//List of strings to pass to the client
 	private volatile ArrayList<String> toClient = new ArrayList<String>();
 	//Unique ID for use by ClientsList
@@ -81,21 +79,16 @@ class Client {
 				
 				//Grabs a single line if one exists, this might need reworking (and it might block)
 				//TODO: make this nonblocking
-				while (in.ready()){
+				if (in.ready()){
+					System.out.println("Buffered Reader was ready");
 					input = in.readLine();
 					if (input == null){
 						clientAlive = false;
 					} else {
-						toRelay.add(input);
+						sendToRelay(new TaggedClientString(this.uID, input));
 					}
+					
 				}
-				
-				//Add tags and send those strings off to the relay
-				for (int i = 0; i < toRelay.size(); i++){
-					TaggedClientString tcs = new TaggedClientString(this.uID, toRelay.get(i));
-					sendToRelay(tcs);
-				}
-				toRelay.clear();
 				
 				//Send strings to the client
 				if (!out.checkError()){
@@ -124,6 +117,7 @@ class Client {
 	
 	//Send stuff to the relay
 	private void sendToRelay(TaggedClientString tcs){
+		//System.out.println("Sending input to relay from sendToRelay");
 		Relay.RecieveClientString(tcs);
 	}
 	

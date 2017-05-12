@@ -48,6 +48,7 @@ public class PlayerController {
 		System.out.println("Message from " + uID + ": " + str);
 		Player ply = getPlayerByUID(uID);
 		if (ply != null){
+			//System.out.println("Sending message to player to send to logic");
 			ply.sendMessageToLogic(str);
 			return true;
 		}
