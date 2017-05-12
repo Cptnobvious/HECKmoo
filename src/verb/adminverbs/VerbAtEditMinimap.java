@@ -18,6 +18,10 @@ public class VerbAtEditMinimap extends Verb{
 	@Override
 	public boolean run(Player ply, String str) {
 		String[] arg = StringUtility.getWordListWithoutQuotes(str);
+		if (arg.length != 2){
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "SYNTAX ERROR: Bad arguments!"));
+			return false;
+		}
 		String target = arg[1];
 		if (target.equals("$here")){
 			if (arg.length == 8){

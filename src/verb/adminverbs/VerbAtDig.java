@@ -20,7 +20,12 @@ public class VerbAtDig extends Verb{
 	public boolean run(Player ply, String str) {
 		//TODO: error catching
 		Room rm = new Room();
-		String roomname = StringUtility.getWordListWithoutQuotes(str)[1];
+		String[] arg = StringUtility.getWordListWithoutQuotes(str);
+		if (arg.length != 2){
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "SYNTAX ERROR: Bad arguments!"));
+			return false;
+		}
+		String roomname = arg[1];
 		if (roomname == null){
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "You need to enter a room name!"));
 			return false;

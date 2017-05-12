@@ -1,5 +1,6 @@
 package verb.adminverbs;
 import playermanager.Player;
+import utility.ColorStrings;
 import utility.StringUtility;
 import verb.Verb;
 import world.World;
@@ -16,6 +17,10 @@ public class VerbAtName extends Verb{
 	@Override
 	public boolean run(Player ply, String str) {
 		String[] arg = StringUtility.getWordListWithoutQuotes(str);
+		if (arg.length != 2){
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "SYNTAX ERROR: Bad arguments!"));
+			return false;
+		}
 		String target = arg[1];
 		if (target.equals("$here")){
 			String name = "";

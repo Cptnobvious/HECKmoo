@@ -20,6 +20,10 @@ public class VerbAtTeleport extends Verb{
 	@Override
 	public boolean run(Player ply, String str) {
 		String[] arg = StringUtility.getWordListWithoutQuotes(str);
+		if (arg.length != 3){
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "SYNTAX ERROR: Bad arguments!"));
+			return false;
+		}
 		Zone zn = World.getZoneByID(arg[1]);
 		if (zn == null){
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Bad zone!"));
