@@ -24,7 +24,7 @@ public class WorldSaver {
 		File file = new File(WORLDPATH);
 		
 		if (!file.exists()){
-			file.mkdir();
+			file.mkdirs();
 		}
 		
 		ArrayList<Zone> zones = World.getAllZones();
@@ -37,10 +37,10 @@ public class WorldSaver {
 		
 		//Save the key of all the zones
 		file = new File(WORLDZONESPATH);
-		out = new PrintWriter(WORLDZONESPATH);
 		if (!file.exists()){
 			file.createNewFile();
 		}
+		out = new PrintWriter(WORLDZONESPATH);
 		for (int i = 0; i < zones.size(); i++){
 			out.println("$zone " + zones.get(i).getZoneID());
 		}
@@ -212,7 +212,7 @@ public class WorldSaver {
 					rm.setRoomName(rest);
 				} else if (tag.equals("$minimap")){
 					rm.setMapPos(Integer.parseInt(StringUtility.getWordInString(rest, 1)), Integer.parseInt(StringUtility.getWordInString(rest, 2)));
-				} else if (tag.equals("description")){
+				} else if (tag.equals("$description")){
 					rm.setRoomDescription(rest);
 				} else if (tag.equals("$exit")){
 					String[] args = StringUtility.getWordListWithoutQuotes(rest);
