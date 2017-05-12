@@ -56,9 +56,8 @@ public class Zone {
 		int i = 0;
 		ArrayList<String> roomlist = new ArrayList<String>();
 		while(i<rooms.size()){
-			Room rm = getRoomByIndex(i);
-			roomlist.add(i+".");
-			roomlist.add(rm.getRoomName()+"\n");
+			Room rm = rooms.get(i);
+			roomlist.add(rm.getIndex()+"."+rm.getRoomName()+"\n");
 			i++;
 		}
 		return roomlist;

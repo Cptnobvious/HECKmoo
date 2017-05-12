@@ -32,6 +32,7 @@ public class VerbAtAuditZone extends Verb {
 					rooms = rooms + roomlist.get(i) + "\n"; 
 					i++;
 				}
+				ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, rooms));
 				return true;
 			}
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "SYNTAX ERROR: Bad arguments!"));
