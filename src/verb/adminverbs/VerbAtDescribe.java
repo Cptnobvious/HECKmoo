@@ -17,6 +17,9 @@ public class VerbAtDescribe extends Verb{
 	@Override
 	public boolean run(Player ply, String str) {
 		String[] arg = StringUtility.getWordListWithoutQuotes(str);
+		if (arg.length < 3){
+			return false;
+		}
 		String target = arg[1];
 		if (target.equals("$here")){
 			String description = "";
