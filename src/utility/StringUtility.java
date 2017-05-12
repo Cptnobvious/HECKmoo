@@ -28,10 +28,11 @@ public class StringUtility {
 	
 	public static String getStringAfterFirst(String str){
 		String[] arr = str.split(" ");
-		String result = null;
-		for (int i = 1; i < arr.length; i ++){
-			if (i == 1){result = arr[1];} else {result = result + arr[i];}
+		if (arr.length < 2){
+			return null;
 		}
+		String result = null;
+		result = str.substring(arr[0].length() + 1, str.length());
 		return result;
 	}
 	

@@ -16,4 +16,13 @@ public class SaveManager {
 		return true;
 	}
 	
+	public static boolean loadAll(){
+		try {
+			WorldSaver.loadWorld();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return true;
+	}
 }

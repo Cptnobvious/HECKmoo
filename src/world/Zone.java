@@ -17,6 +17,11 @@ public class Zone {
 		return this.map;
 	}
 	
+	public boolean setWholeMap(Map map){
+		this.map = map;
+		return true;
+	}
+	
 	public String getZoneName() {
 		return zoneName;
 	}
@@ -66,5 +71,7 @@ public class Zone {
 		
 		return null;
 	}
+	
+	
 	
 }
