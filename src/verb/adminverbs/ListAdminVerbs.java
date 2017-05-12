@@ -15,11 +15,12 @@ public class ListAdminVerbs extends VerbList{
 		addVerb(new VerbAtDescribe());
 		addVerb(new VerbAtEditMinimap());
 		addVerb(new VerbAtName());
+		addVerb(new VerbAtPalette());
 		addVerb(new VerbAtExamine());
 		addVerb(new VerbAtShutdown());
-		addVerb(new VerbAtPalette());
 		addVerb(new VerbAtTeleport());
 		addVerb(new VerbAtAddZone());
+		addVerb(new VerbAtAuditWorld());
 		return true;
 	}
 	

@@ -130,6 +130,18 @@ public class World {
 		return look;
 	}
 	
+	public static ArrayList<String> listAllZones(){
+		int i = 0;
+		ArrayList<String> zonelist = new ArrayList<String>();
+		while(i<zones.size()){
+			Zone zn = getZoneByIndex(i);
+			zonelist.add(zn.getZoneID());
+			zonelist.add(zn.getZoneName() + "\n");
+			i++;
+		}
+		return zonelist;
+	}
+	
 	public static ArrayList<Zone> getAllZones(){
 		return zones;
 	}

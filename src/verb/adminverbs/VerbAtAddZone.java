@@ -21,8 +21,8 @@ public class VerbAtAddZone extends Verb{
 	public boolean run(Player ply, String str) {
 		Zone zn = new Zone();
 		String[] args = StringUtility.getWordListWithoutQuotes(str);
-		if (args.length > 3){
-			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "SYNTAX ERROR: Too many arguments!"));
+		if (args.length > 3 || args.length < 3){
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "SYNTAX ERROR!"));
 			return false;
 		}
 		String zonename = args[1];

@@ -26,6 +26,10 @@ public class VerbAtAddExit extends Verb{
 		String exitname = arguments[1];
 		String zone = arguments[2];
 		int room = Integer.parseInt(arguments[3]);
+		if (World.getRoomByPlayer(ply).getExitByName(exitname) != null){
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Exit already exists!"));
+			return false;
+		}
 		
 		Exit exit = new Exit(exitname, zone, room);
 		if (exit.isGoodExit()){
