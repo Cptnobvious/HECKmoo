@@ -4,6 +4,7 @@ import utility.ColorStrings;
 
 public class MapTile {
 	
+	public static int PARTS = 4;
 	String symbol = "::";
 	int fColor = ColorStrings.WHITE;
 	int bColor = ColorStrings.BLACK;
