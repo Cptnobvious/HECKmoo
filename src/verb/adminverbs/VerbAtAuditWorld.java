@@ -12,7 +12,7 @@ public class VerbAtAuditWorld extends Verb{
 
 	@Override
 	public boolean setAlias() {
-		String[] temp = {"@auditworld","@aw"};
+		String[] temp = {"@auditworld","@adw"};
 		alias = temp;
 		return false;
 	}
@@ -32,8 +32,7 @@ public class VerbAtAuditWorld extends Verb{
 
 	@Override
 	public String getHelpText() {
-		
-		return null;
+		return "@auditworld (Lists ZoneID, then name.)";
 	}
 
 }

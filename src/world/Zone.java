@@ -34,6 +34,31 @@ public class Zone {
 		return rooms;
 	}
 	
+	public ArrayList<String> listAllRooms(){
+		int i = 0;
+		ArrayList<String> roomlist = new ArrayList<String>();
+		while(i<rooms.size()){
+			Room rm = getRoomByIndex(i);
+			roomlist.add("Room #"+i);
+			roomlist.add(rm.getRoomName());
+			roomlist.add(rm.getRoomDescription()+"\n");
+			i++;
+		}
+		return roomlist;
+	}
+	
+	public ArrayList<String> slistAllRooms(){
+		int i = 0;
+		ArrayList<String> roomlist = new ArrayList<String>();
+		while(i<rooms.size()){
+			Room rm = getRoomByIndex(i);
+			roomlist.add(i+".");
+			roomlist.add(rm.getRoomName()+"\n");
+			i++;
+		}
+		return roomlist;
+	}
+	
 	public int addRoom(Room room){
 		Room rm = room;
 		int index = 0;

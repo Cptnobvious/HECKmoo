@@ -21,6 +21,7 @@ public class ListAdminVerbs extends VerbList{
 		addVerb(new VerbAtTeleport());
 		addVerb(new VerbAtAddZone());
 		addVerb(new VerbAtAuditWorld());
+		addVerb(new VerbAtAuditZone());
 		return true;
 	}
 	
