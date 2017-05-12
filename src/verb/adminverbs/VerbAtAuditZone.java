@@ -23,7 +23,7 @@ public class VerbAtAuditZone extends Verb {
 	public boolean run(Player ply, String str) {
 		String[] args = StringUtility.getWordListWithoutQuotes(str);
 		if(args.length!=2){
-			if(args.length==3 && args[2]=="short"){
+			if(args.length==3 && args[2].equals("short")){
 				Zone zone = World.getZoneByID(args[1]);
 				int i = 0;
 				String rooms = new String();
