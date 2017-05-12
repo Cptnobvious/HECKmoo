@@ -1,6 +1,5 @@
 package world;
 
-import java.awt.Color;
 import java.util.ArrayList;
 
 import utility.ColorStrings;
@@ -64,6 +63,11 @@ public class Map {
 	
 	public MapTile getMapTilePoint(int x, int y){
 		return map[x][y];
+	}
+
+	public boolean setMapPoint(int x, int y, MapTile tile) {
+		this.map[x][y] = tile;
+		return true;
 	}
 
 }

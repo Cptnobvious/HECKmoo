@@ -5,14 +5,15 @@ import java.util.ArrayList;
 import playermanager.Player;
 import utility.ColorStrings;
 import world.prefabs.Origin;
-import debug.MakeFakeZone;
 
 public class World {
 	
 	private static ArrayList<Zone> zones = new ArrayList<Zone>();
 	
 	public static boolean init(){
-		addZone(Origin.getOriginZone());
+		if (getZoneByID(Origin.getOriginZone().getZoneID()) == null){
+			addZone(Origin.getOriginZone());
+		}
 		return false;
 	}
 	

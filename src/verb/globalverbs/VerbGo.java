@@ -1,7 +1,6 @@
 package verb.globalverbs;
 
 import playermanager.Player;
-import utility.ColorStrings;
 import utility.StringUtility;
 import verb.Verb;
 import world.Exit;

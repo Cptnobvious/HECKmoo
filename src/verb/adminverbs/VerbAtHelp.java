@@ -30,6 +30,7 @@ public class VerbAtHelp extends Verb{
 				templines = templines + verbs.get(i) + "     ";
 				if (((i % 5) == 0 && (i > 1)) || ((i + 1) == verbs.size())){
 					ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, templines));
+					templines = "";
 				}
 			}
 			return true;

@@ -1,7 +1,6 @@
 package playermanager;
 
 import textparser.TextParser;
-import world.Room;
 import world.World;
 
 public class Player {
