@@ -48,8 +48,8 @@ public class Player {
 	}
 	
 	private void enterWorld(){
-		String str = World.getRoomLook(actor.getCurrentZone(), actor.getCurrentRoom());
-		sendMessageToClient(str);
+		sendMessageToLogic("look");
+		//sendMessageToClient(str);
 	}
 	
 	private boolean isLoggingIn(){
