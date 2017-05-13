@@ -80,7 +80,7 @@ class Client {
 				//Grabs a single line if one exists, this might need reworking (and it might block)
 				//TODO: make this nonblocking
 				if (in.ready()){
-					System.out.println("Buffered Reader was ready");
+					//System.out.println("Buffered Reader was ready");
 					input = in.readLine();
 					if (input == null){
 						clientAlive = false;

@@ -55,6 +55,12 @@ public class PlayerController {
 		return false;
 	}
 
+	//Gets a copy of the player list
+	public static ArrayList<Player> getPlayersListCopy(){
+		ArrayList<Player> copy = players;
+		return copy;
+	}
+	
 	public static Player getPlayerByUID(int uID){
 		for (int i = 0; i < players.size(); i++){
 			if (players.get(i).getuID() == uID){

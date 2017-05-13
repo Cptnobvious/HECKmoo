@@ -37,6 +37,7 @@ public class Player {
 		if (account == null){
 			if (logingIn){
 				account = new Account(str, "password");
+				actor = new Actor(this.uID, str);
 				sendMessageToClient("Sup fag");
 				enterWorld();
 			}
@@ -51,9 +52,12 @@ public class Player {
 		sendMessageToClient(str);
 	}
 	
+	private boolean isLoggingIn(){
+		return logingIn;
+	}
+	
 	Player (int uID){
 		this.uID = uID;
-		actor = new Actor(this.uID);
 	}
 	
 	public int getuID(){

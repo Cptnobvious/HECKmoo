@@ -8,13 +8,16 @@ public class Actor {
 	//Owner's uID
 	private int parentID = -1;
 	
+	private String name = "WHERESMYNAME";
+	
 	//Which zone is this actor standing in
 	private String currentZone = "ORGNA";
 	//Which room in that zone is this actor standing in
 	private int currentRoom = 0;
 
-	Actor(int id){
+	Actor(int id, String name){
 		this.parentID = id;
+		this.name = name;
 	}
 	
 	public boolean setCurrentZone(String str){
@@ -52,5 +55,14 @@ public class Actor {
 	
 	public String getLocationCode(){
 		return this.getCurrentZone() + ":" + this.getCurrentRoom();
+	}
+	
+	public String getName(){
+		return this.name;
+	}
+	
+	public boolean setName(String name){
+		this.name = name;
+		return true;
 	}
 }
