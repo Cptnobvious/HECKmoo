@@ -63,6 +63,9 @@ public class Room {
 			if (exits.get(i).matches(str)){
 				return exits.get(i);
 			}
+			if (exits.get(i).matchespartial(str)){
+				return exits.get(i);
+			}
 		}
 		return null;
 	}

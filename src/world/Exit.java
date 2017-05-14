@@ -26,6 +26,15 @@ public class Exit {
 		    return false;
 	}
 	
+	public boolean matchespartial(String str){
+		 for (int i = 0; i < this.alias.length; i++) {
+			 //parts of this might also be superfluous.
+		        if (this.alias[i].startsWith(str.toLowerCase())) return true;
+		    }
+
+		    return false;
+	}
+	
 	public boolean addAlias(String str){
 		alias[alias.length + 1] = str;
 		return true;
