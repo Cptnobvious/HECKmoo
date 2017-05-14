@@ -14,6 +14,7 @@ public class ListGlobalVerbs extends VerbList{
 		addVerb(new VerbLook());
 		addVerb(new VerbGo());
 		addVerb(new VerbMap());
+		addVerb(new VerbSay());
 		return true;
 	}
 	

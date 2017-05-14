@@ -49,6 +49,12 @@ public class World {
 		zones.add(zone);
 		return true;
 	}
+	
+	public static boolean removeZoneByID(String id){
+		int index = getZoneIndexByID(id);
+		zones.remove(index);
+		return true;
+	}
 
 	public static Room getRoom(String zone, int index){
 		if (getZoneByID(zone) != null){

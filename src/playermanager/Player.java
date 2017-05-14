@@ -49,7 +49,6 @@ public class Player {
 	
 	private void enterWorld(){
 		sendMessageToLogic("look");
-		//sendMessageToClient(str);
 	}
 	
 	private boolean isLoggingIn(){
