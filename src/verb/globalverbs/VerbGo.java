@@ -18,13 +18,13 @@ public class VerbGo extends Verb{
 
 	@Override
 	public boolean run(Player ply, String str) {
-		String[] arg = StringUtility.getWordListWithoutQuotes(str);
-		Room rm = World.getRoomByPlayer(ply);
-		Exit ex = rm.getExitByName(arg[1]);
+		String[] arg = StringUtility.getWordListWithoutQuotes(str); //Get arguments.
+		Room rm = World.getRoomByPlayer(ply); //Get the player's room.
+		Exit ex = rm.getExitByName(arg[1]); //Find the exit from the second argument.
 		if (ex == null){
-			return false;
+			return false; //Prevent going to an exit that doesn't exist.
 		}
-		ply.getActor().setCurrentRoom(ex.getZone(), ex.getRoom());
+		ply.getActor().setCurrentRoom(ex.getZone(), ex.getRoom()); //Set the player's room.
 		//TODO: a better system than simulating a look command6
 		ply.sendMessageToLogic("look");
 		return true;

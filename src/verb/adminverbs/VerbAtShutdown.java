@@ -16,7 +16,7 @@ public class VerbAtShutdown extends Verb{
 
 	@Override
 	public boolean run(Player ply, String str) {
-		Boot.requestShutdown();
+		Boot.requestShutdown(); //Request a server shutdown.
 		return true;
 	}
 

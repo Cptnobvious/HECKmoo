@@ -20,15 +20,21 @@ public class VerbAtDescribe extends Verb{
 		String[] arg = StringUtility.getWordListWithoutQuotes(str);
 		if (arg.length < 2){
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "SYNTAX ERROR: Bad arguments!"));
+			//Checking for errors in the arguments.
 			return false;
 		}
 		String target = arg[1];
-		if (target.equals("$here")){
+		if (target == null){
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Invalid target!"));
+			//Checking that a target exists.
+			return false;
+		}
+		if (target.equals("$here")){ //Are you describing the room you're in?
 			String description = "";
 			for (int i = 2; i < arg.length; i++){
 				description = description + arg[i] + " ";
 			}
-			World.getRoomByPlayer(ply).setRoomDescription(description);
+			World.getRoomByPlayer(ply).setRoomDescription(description); //Set the description of the room.
 			return true;
 		}
 		return false;

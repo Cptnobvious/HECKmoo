@@ -20,11 +20,11 @@ public class VerbAtHelp extends Verb{
 	@Override
 	public boolean run(Player ply, String str) {
 		String qverb = StringUtility.getWordInString(str, 2);
-		if (qverb == null){
+		if (qverb == null){ //Show generic help text if no target.
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, StringUtility.getLinebreak()));
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, getHelpText()));
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, StringUtility.getLinebreak()));
-			ArrayList<String> verbs = TextParser.getAllAdminVerbs();
+			ArrayList<String> verbs = TextParser.getAllAdminVerbs(); //Show all the admin verbs.
 			String templines = "";
 			for (int i = 0; i < verbs.size(); i++){
 				templines = templines + verbs.get(i) + "     ";
@@ -36,7 +36,7 @@ public class VerbAtHelp extends Verb{
 			return true;
 		}
 		
-		Verb verb = TextParser.findVerb(ply, qverb);
+		Verb verb = TextParser.findVerb(ply, qverb); //Find the verb to show help text for.
 		if (verb != null){
 			String help = ColorStrings.getColoredText(ColorStrings.CYAN, verb.getHelpText());
 			ply.sendMessageToClient(help);

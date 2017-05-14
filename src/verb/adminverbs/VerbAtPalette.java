@@ -15,7 +15,7 @@ public class VerbAtPalette extends Verb{
 
 	@Override
 	public boolean run(Player ply, String str) {
-		ply.sendMessageToClient(ColorStrings.getPallet());
+		ply.sendMessageToClient(ColorStrings.getPallet()); //Displays all colors of the pallete.
 		return true;
 	}
 

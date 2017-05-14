@@ -25,6 +25,7 @@ public class VerbAtAuditWorld extends Verb{
 		while(i<zonelist.size()){
 			zones = zones + zonelist.get(i) + "\n";
 			i++;
+			//Loop over every item in the list of zones and return it as a string.
 		}
 		ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, zones));
 		return false;

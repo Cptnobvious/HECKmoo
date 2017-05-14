@@ -21,17 +21,19 @@ public class VerbAtAddExit extends Verb{
 		String[] arguments = StringUtility.getWordListWithoutQuotes(str);
 		if (arguments.length < 3){
 			ply.sendMessageToClient(ColorStrings.getColoredText(true, ColorStrings.RED, ColorStrings.BLACK, "SYNTAX ERROR"));
+			//Prevent too few arguments.
 			return false;
 		}
-		String exitname = arguments[1];
-		String zone = arguments[2];
-		int room = Integer.parseInt(arguments[3]);
+		String exitname = arguments[1]; //Get the name of the exit.
+		String zone = arguments[2]; //Get the zone.
+		int room = Integer.parseInt(arguments[3]); //Get the room the exit is leading to.
 		if (World.getRoomByPlayer(ply).getExitByName(exitname) != null){
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Exit already exists!"));
+			//Prevent duplicate exits.
 			return false;
 		}
 		
-		Exit exit = new Exit(exitname, zone, room);
+		Exit exit = new Exit(exitname, zone, room); //Make the new exit.
 		if (exit.isGoodExit()){
 			World.getRoom(ply.getActor().getCurrentZone(), ply.getActor().getCurrentRoom()).addExit(exit);
 			String success = "Added an exit from " + ply.getActor().getLocationCode() + " to " + zone + ":" + room;

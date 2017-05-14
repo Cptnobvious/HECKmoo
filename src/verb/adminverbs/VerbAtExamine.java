@@ -24,10 +24,14 @@ public class VerbAtExamine extends Verb{
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "SYNTAX ERROR: Bad arguments!"));
 			return false;
 		}
-		String target = arg[1];
-		if (target.equals("$here")){
-			Zone zn = World.getZoneByPlayer(ply);
-			Room rm = World.getRoomByPlayer(ply);
+		String target = arg[1]; //What are you trying to examine?
+		if (target == null){
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Invalid target!"));
+			return false;
+		}
+		if (target.equals("$here")){ //$here describes the room the player is in.
+			Zone zn = World.getZoneByPlayer(ply); //Get the player's zone.
+			Room rm = World.getRoomByPlayer(ply); //Get the player's room.
 			ply.sendMessageToClient(ColorStrings.getColoredText(true, ColorStrings.GREEN, ColorStrings.BLACK, "ROOM INDEX: " + rm.getIndex()));
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, "IN ZONE: " + zn.getZoneName()));
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, "ZONE ID: " + zn.getZoneID()));

@@ -22,12 +22,16 @@ public class VerbAtName extends Verb{
 			return false;
 		}
 		String target = arg[1];
-		if (target.equals("$here")){
+		if (target == null){
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Invalid target!"));
+			return false;
+		}
+		if (target.equals("$here")){ //Targeting the room the player is in.
 			String name = "";
 			for (int i = 2; i < arg.length; i++){
 				name = name + arg[i] + " ";
 			}
-			World.getRoomByPlayer(ply).setRoomName(name);
+			World.getRoomByPlayer(ply).setRoomName(name); //Name the room.
 			return true;
 		}
 		return false;
