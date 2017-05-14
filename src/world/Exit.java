@@ -18,7 +18,12 @@ public class Exit {
 	}
 	
 	public boolean matches(String str){
-		return StringUtility.compareStringInArray(str, this.alias);
+		 for (int i = 0; i < this.alias.length; i++) {
+			 //this might need changing? it works, but equalsIgnoreCase might be unnecessary or cause issues.
+		        if (this.alias[i].equalsIgnoreCase(str.toLowerCase())) return true;
+		    }
+
+		    return false;
 	}
 	
 	public boolean addAlias(String str){

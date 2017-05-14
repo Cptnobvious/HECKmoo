@@ -56,8 +56,7 @@ public class VerbAtAuditZone extends Verb {
 
 	@Override
 	public String getHelpText() {
-		// TODO Auto-generated method stub
-		return null;
+		return "@auditzone <zoneid>";
 	}
 
 }
