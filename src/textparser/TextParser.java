@@ -2,6 +2,7 @@ package textparser;
 
 import java.util.ArrayList;
 
+import chat.ListDefaultChannels;
 import playermanager.Player;
 import utility.StringUtility;
 import verb.Verb;
@@ -15,6 +16,7 @@ public class TextParser {
 	
 	static private VerbList adminverbs 		= new ListAdminVerbs();
 	static private VerbList globalverbs 	= new ListGlobalVerbs();
+	static private VerbList defaultChannels = new ListDefaultChannels();
 	
 	public static boolean Parse(Player ply, String str){
 		
@@ -36,6 +38,13 @@ public class TextParser {
 			return true;
 		}
 		
+		//check the chat channels
+		called = defaultChannels.getVerb(verb);
+		if (called != null){
+			called.run(ply, str);
+			return true;
+		}
+		
 		ply.sendMessageToClient("I don't understand that.");
 		return false;
 	}
@@ -52,6 +61,12 @@ public class TextParser {
 		
 		//check the global verbs
 		called = globalverbs.getVerb(verb);
+		if (called != null){
+			return called;
+		}
+		
+		//Was this a chat message
+		called = defaultChannels.getVerb(verb);
 		if (called != null){
 			return called;
 		}

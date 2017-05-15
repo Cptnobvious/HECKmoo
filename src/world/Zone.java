@@ -96,6 +96,14 @@ public class Zone {
 		return null;
 	}
 	
-	
+	public boolean removeRoom(int index){
+		for (int i = 0; i < rooms.size(); i++){
+			if (rooms.get(i).getIndex() == index){
+				rooms.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
 	
 }

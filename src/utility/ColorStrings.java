@@ -61,6 +61,10 @@ public class ColorStrings {
 		return getColoredText(false, fColor, BLACK, str);
 	}
 	
+	public static String getBoldText(String str){
+		return getBoldCode() + str + getColorResetCode();
+	}
+	
 	public static String replaceTags(String str){
 		
 		//Check to make sure there's a tag

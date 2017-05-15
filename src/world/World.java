@@ -49,6 +49,12 @@ public class World {
 		zones.add(zone);
 		return true;
 	}
+	
+	public static boolean removeZoneByID(String id){
+		int index = getZoneIndexByID(id);
+		zones.remove(index);
+		return true;
+	}
 
 	public static Room getRoom(String zone, int index){
 		if (getZoneByID(zone) != null){
@@ -65,71 +71,6 @@ public class World {
 		return getRoom(ply.getActor().getCurrentZone(), ply.getActor().getCurrentRoom());
 	}
 	
-	
-	//TODO: shuffle some of this into classes. Pretty sure it doesn't all belong here
-	public static String getRoomLook(String zone, int index){
-		Zone zn = getZoneByID(zone);
-		Room rm = getRoom(zone, index);
-		ArrayList<String> map = zn.getMap().getFiveByFive(rm.getMapX(), rm.getMapY());
-		String spacer = "     ";
-		String look = "";
-		
-		//Break the description into 60 character lines
-		ArrayList<String> descLines = new ArrayList<String>();
-		String[] description =  rm.getRoomDescription().split(" ");
-		String temp = "";
-		for (int i = 0; i < description.length; i++){
-			temp = temp + description[i] + " ";
-			if (temp.length() > 60 && i < 5){
-				descLines.add(temp);
-				temp = "";
-			} else if (temp.length() > 75 && i >= 5){
-				descLines.add(temp);
-				temp = "";
-			}
-		} 
-		if (!temp.equals("")) {
-			descLines.add(temp);
-		}
-		
-		//Put the map into an easy to use array
-		ArrayList<String> maparr = new ArrayList<String>();
-		for (int i = 0; i < 5; i++){
-			temp = "";
-			for (int k = 0; k < 5; k++){
-				temp = temp + map.get(k + i*5);
-			}
-			maparr.add(temp);
-		}
-		
-		//Put the name of the area into a nice format
-		String areaName = spacer + ColorStrings.getColoredText(true, ColorStrings.YELLOW, ColorStrings.BLACK, rm.getRoomName()) +
-				ColorStrings.getColoredText(false, ColorStrings.YELLOW, ColorStrings.BLACK, " (" + zn.getZoneName() + ")");
-		
-		//Throw it together
-		look = maparr.get(0) +  areaName + "\n";
-		int dline = 0;
-		for (int i = 1; i < 5; i++){
-			look = look + maparr.get(i);
-			if (dline < descLines.size()){
-				look = look + spacer + descLines.get(dline);
-				dline++;
-			}
-			look = look + "\n";
-		}
-		
-		if (dline < descLines.size()){
-			for (int i = dline; i < descLines.size(); i++){
-				look = look + descLines.get(i) + "\n";
-			}
-		}
-		
-		//Throw in the exits
-		String exits = rm.getExitNames();
-		look = look + "\n\n" + ColorStrings.getColoredText(false, ColorStrings.CYAN, ColorStrings.BLACK, exits);
-		
-		return look;
-	}
 	
 	public static ArrayList<String> listAllZones(){
 		int i = 0;
