@@ -17,7 +17,7 @@ public class VerbAtName extends Verb{
 	@Override
 	public boolean run(Player ply, String str) {
 		String[] arg = StringUtility.getWordListWithoutQuotes(str);
-		if (arg.length != 2){
+		if (arg.length != 3){
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "SYNTAX ERROR: Bad arguments!"));
 			return false;
 		}
