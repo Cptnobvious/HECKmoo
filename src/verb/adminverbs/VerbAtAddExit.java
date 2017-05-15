@@ -19,7 +19,7 @@ public class VerbAtAddExit extends Verb{
 	@Override
 	public boolean run(Player ply, String str) {
 		String[] arguments = StringUtility.getWordListWithoutQuotes(str);
-		if (arguments.length < 3){
+		if (arguments.length != 4){
 			ply.sendMessageToClient(ColorStrings.getColoredText(true, ColorStrings.RED, ColorStrings.BLACK, "SYNTAX ERROR"));
 			//Prevent too few arguments.
 			return false;
@@ -27,7 +27,7 @@ public class VerbAtAddExit extends Verb{
 		String exitname = arguments[1]; //Get the name of the exit.
 		String zone = arguments[2]; //Get the zone.
 		int room = Integer.parseInt(arguments[3]); //Get the room the exit is leading to.
-		if (World.getRoomByPlayer(ply).getExitByName(exitname) != null){
+		if (World.getRoomByPlayer(ply).getExitByExactName(exitname) != null){
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Exit already exists!"));
 			//Prevent duplicate exits.
 			return false;

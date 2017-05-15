@@ -23,7 +23,12 @@ public class VerbAtRecycle extends Verb{
 		} else {
 			String type = args[1];
 			String target = args[2];
-			int targetInt = Integer.parseInt(args[2]);
+			 int targetInt = -1;
+			 try {
+			 targetInt  = Integer.parseInt(args[2]);
+			 } catch (NumberFormatException e){
+			 //Do nothing lol
+			 }
 			if (type.equals("$zone")){
 				World.removeZoneByID(target);
 			} else if (type.equals("$room")){
