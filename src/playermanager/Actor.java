@@ -1,15 +1,18 @@
 package playermanager;
 
+import java.util.ArrayList;
+
+import items.Inventory;
+import items.Item;
 import world.World;
 
 //This is the thing that the player controls
 
-public class Actor {
+public class Actor implements Inventory{
 	//Owner's uID
 	private int parentID = -1;
-	
+	//Name of the player
 	private String name = "WHERESMYNAME";
-	
 	//Which zone is this actor standing in
 	private String currentZone = "ORGNA";
 	//Which room in that zone is this actor standing in
@@ -65,4 +68,48 @@ public class Actor {
 		this.name = name;
 		return true;
 	}
+
+	//---------------------------------------------------------------------------------------------
+	//This section is for item stuff
+	//---------------------------------------------------------------------------------------------
+	
+	private ArrayList<Item> inventory = new ArrayList<Item>();
+	private double carryingCapacity = 100;
+
+	public boolean addItem(Item item) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean removeItem(Item item) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean removeItem(String name) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean removeItem(int index) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public ArrayList<Item> getInventory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Item getItem() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public double getInventoryWeight() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	
 }
