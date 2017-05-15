@@ -34,17 +34,26 @@ public class VerbAtDigDir extends Verb{
 		int newIndex = World.getZoneByID(ply.getActor().getCurrentZone()).addRoom(rm); //Add a room to the player's current zone.
 		Room plyroom = World.getRoomByPlayer(ply);
 		int xoffset = 0; int yoffset = 0;
+		boolean error = true;
 		if(arg[2].equals("west")){
 			xoffset = -1;
+			error = false;
 		}
 		if(arg[2].equals("east")){
 			xoffset = 1;
+			error = false;
 		}
 		if(arg[2].equals("north")){
 			yoffset = -1;
+			error = false;
 		}
 		if(arg[2].equals("south")){
 			xoffset = 1;
+			error = false;
+		}
+		if(error == true){
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "ERROR: Bad direction!"));
+			return false;
 		}
 		if(plyroom.getMapX()+xoffset<0 || plyroom.getMapX()+xoffset>Map.MAPW){
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "ERROR: Room would be out of bounds!"));
