@@ -39,6 +39,7 @@ public class TextParser {
 		}
 		
 		//Check things you're holding
+		//Shatter the command into the verb-directobject-preposition-indirectobject setup
 		
 		//check the chat channels
 		called = defaultChannels.getVerb(verb);
