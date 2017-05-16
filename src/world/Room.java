@@ -1,5 +1,6 @@
 package world;
 
+import items.Inventory;
 import items.InventoryInterface;
 import items.Item;
 
@@ -105,34 +106,42 @@ public class Room implements InventoryInterface{
 	//-------------------------------Inventory Stuff Down Here ---------------------------------------
 	//------------------------------------------------------------------------------------------------
 	
+	Inventory inventory = new Inventory();
+	public static final int maxItemsOnGround = 50;
+	
 	public boolean addItem(Item item) {
-		// TODO Auto-generated method stub
+		if (inventory.getInvetorySize() + 1 <= 50){
+			inventory.addItem(item);
+		}
 		return false;
 	}
 
-	public boolean removeItem(Item item) {
-		// TODO Auto-generated method stub
-		return false;
+	public Item removeItem(Item item) {
+		return inventory.removeItem(item);
 	}
 
-	public boolean removeItem(String name) {
-		// TODO Auto-generated method stub
-		return false;
+	public Item removeItem(String name) {
+		return inventory.removeItem(name);
 	}
 
 	public ArrayList<Item> getInventory() {
-		// TODO Auto-generated method stub
-		return null;
+		return inventory.getInventoryCopy();
 	}
 
 	public Item getItem(String name) {
-		// TODO Auto-generated method stub
-		return null;
+		return inventory.getItem(name);
 	}
 
 	public double getInventoryWeight() {
-		// TODO Auto-generated method stub
-		return 0;
+		return inventory.getWeight();
+	}
+
+	public boolean canTake(Item item) {
+		return (inventory.getInvetorySize() < 50);
+	}
+
+	public boolean canDrop(Item item) {
+		return true;
 	}
 	
 }

@@ -14,7 +14,7 @@ public class LookInventory {
 		items = ply.getActor().getInventory();
 		
 		for (int i = 0; i < items.size(); i++){
-			inventory = inventory + items.get(i).getName() + " (" + items.get(i).getWeight() + ")\n";
+			inventory = inventory + items.get(i).getName() + " (" + items.get(i).getWeight() + "kg)\n";
 		}
 		
 		return inventory;

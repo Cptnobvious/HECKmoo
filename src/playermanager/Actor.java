@@ -85,11 +85,11 @@ public class Actor implements InventoryInterface{
 		return false;
 	}
 
-	public boolean removeItem(Item item) {
+	public Item removeItem(Item item) {
 		return inventory.removeItem(item);
 	}
 
-	public boolean removeItem(String name) {
+	public Item removeItem(String name) {
 		return inventory.removeItem(name);
 	}
 
@@ -105,5 +105,12 @@ public class Actor implements InventoryInterface{
 		return inventory.getWeight();
 	}
 	
+	public boolean canTake(Item item){
+		return false;
+	}
+	
+	public boolean canDrop(Item item){
+		return false;
+	}
 	
 }

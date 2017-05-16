@@ -38,6 +38,8 @@ public class TextParser {
 			return true;
 		}
 		
+		//Check things you're holding
+		
 		//check the chat channels
 		called = defaultChannels.getVerb(verb);
 		if (called != null){

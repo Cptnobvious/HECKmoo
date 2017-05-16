@@ -9,6 +9,7 @@ public class Rock extends Item{
 		name = "Rock";
 		plural = "Rocks";
 		description = "It is a rock.";
+		addVerb(new Drop());
 	}
 	
 }
