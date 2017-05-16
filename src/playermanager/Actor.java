@@ -3,12 +3,13 @@ package playermanager;
 import java.util.ArrayList;
 
 import items.Inventory;
+import items.InventoryInterface;
 import items.Item;
 import world.World;
 
 //This is the thing that the player controls
 
-public class Actor implements Inventory{
+public class Actor implements InventoryInterface{
 	//Owner's uID
 	private int parentID = -1;
 	//Name of the player
@@ -73,42 +74,35 @@ public class Actor implements Inventory{
 	//This section is for item stuff
 	//---------------------------------------------------------------------------------------------
 	
-	private ArrayList<Item> inventory = new ArrayList<Item>();
+	Inventory inventory = new Inventory();
 	private double carryingCapacity = 100;
 
 	public boolean addItem(Item item) {
-		// TODO Auto-generated method stub
+		if (inventory.getWeight() + item.getWeight() < carryingCapacity){
+			inventory.addItem(item);
+			return true;
+		}
 		return false;
 	}
 
 	public boolean removeItem(Item item) {
-		// TODO Auto-generated method stub
-		return false;
+		return inventory.removeItem(item);
 	}
 
 	public boolean removeItem(String name) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean removeItem(int index) {
-		// TODO Auto-generated method stub
-		return false;
+		return inventory.removeItem(name);
 	}
 
 	public ArrayList<Item> getInventory() {
-		// TODO Auto-generated method stub
-		return null;
+		return inventory.getInventoryCopy();
 	}
 
-	public Item getItem() {
-		// TODO Auto-generated method stub
-		return null;
+	public Item getItem(String name) {
+		return inventory.getItem(name);
 	}
 
 	public double getInventoryWeight() {
-		// TODO Auto-generated method stub
-		return 0;
+		return inventory.getWeight();
 	}
 	
 	

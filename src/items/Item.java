@@ -2,10 +2,10 @@ package items;
 
 public class Item {
 	
-	String name = "Item";
-	String plural = "Items";
-	String description = "Description";
-	double weight = 1.0;
+	protected String name = "Item";
+	protected String plural = "Items";
+	protected String description = "Description";
+	protected double weight = 1.0;
 	
 	
 	public String getName() {
