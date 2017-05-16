@@ -10,7 +10,7 @@ public class LogIn {
 	private static ArrayList<String> quotes = new ArrayList<String>();
 
 	public static String getLoginScreen(){
-		String loginMenu = "";
+		String loginMenu = "\n";
 		loginMenu = loginMenu + getQuote() + "\n";
 		loginMenu = loginMenu + ColorStrings.replaceTags("$[fGREEN]Enter a username.");
 		return loginMenu;
