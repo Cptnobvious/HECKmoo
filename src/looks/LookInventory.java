@@ -20,4 +20,19 @@ public class LookInventory {
 		return inventory;
 	}
 
+	public static String lookThroughInventory(ArrayList<Item> items, String target){
+		String description = "I couldn't find that";
+		for (int i = 0; i < items.size(); i++){
+			if (items.get(i).getName().equalsIgnoreCase(target)){
+				description = items.get(i).getDescription();
+			}
+		}
+		for (int i = 0; i < items.size(); i++){
+			if (items.get(i).getName().toLowerCase().contains(target.toLowerCase())){
+				description = items.get(i).getDescription();
+			}
+		}
+		
+		return description;
+	}
 }

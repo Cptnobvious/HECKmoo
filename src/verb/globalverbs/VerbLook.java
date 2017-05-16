@@ -30,6 +30,10 @@ public class VerbLook extends Verb{
 					String look = LookInventory.lookAtInventory(ply);
 					ply.sendMessageToClient(look);
 					return true;
+				} else {
+					String look = LookInventory.lookThroughInventory(ply.getActor().getInventory(), args[1]);
+					ply.sendMessageToClient(look);
+					return true;
 				}
 			}
 		}
