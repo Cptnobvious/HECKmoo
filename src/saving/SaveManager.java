@@ -8,6 +8,7 @@ public class SaveManager {
 	public static boolean saveAll(){
 		try {
 			WorldSaver.SaveWorld();
+			System.out.println("Successfully saved world");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
