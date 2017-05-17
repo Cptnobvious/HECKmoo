@@ -47,6 +47,10 @@ public class Item {
 		verbs.addVerb(verb);
 		return true;
 	}
+	
+	public Verb getVerb(String verb){
+		return verbs.getVerb(verb);
+	}
 
 	public boolean removeVerb(){
 		//TODO: remove verbs from items

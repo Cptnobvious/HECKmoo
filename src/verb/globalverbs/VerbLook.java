@@ -31,7 +31,7 @@ public class VerbLook extends Verb{
 					ply.sendMessageToClient(look);
 					return true;
 				} else {
-					String look = LookInventory.lookThroughInventory(ply.getActor().getInventory(), args[1]);
+					String look = LookInventory.lookThroughInventory(ply.getActor().getInventoryList(), args[1]);
 					ply.sendMessageToClient(look);
 					return true;
 				}

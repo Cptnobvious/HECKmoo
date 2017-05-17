@@ -9,7 +9,8 @@ public interface InventoryInterface {
 	public boolean addItem(Item item);
 	public Item removeItem(Item item);
 	public Item removeItem(String name);
-	public ArrayList<Item> getInventory();
+	public ArrayList<Item> getInventoryList();
+	public Inventory getInventory();
 	public Item getItem(String name);
 	public double getInventoryWeight();
 	
