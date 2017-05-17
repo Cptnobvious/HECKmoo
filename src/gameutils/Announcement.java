@@ -13,9 +13,11 @@ public class Announcement {
 		ArrayList<Player> players = PlayerController.getPlayersListCopy();
 		
 		for (int i = 0; i < players.size(); i++){
-			if (players.get(i).getActor().getCurrentRoom() == room){
-				if (players.get(i).getActor().getCurrentZone().equals(zone)){
-					players.get(i).sendMessageToClient(announcement);
+			if (players.get(i).getActor() != null){
+				if (players.get(i).getActor().getCurrentRoom() == room){
+					if (players.get(i).getActor().getCurrentZone().equals(zone)){
+						players.get(i).sendMessageToClient(announcement);
+					}
 				}
 			}
 		}
