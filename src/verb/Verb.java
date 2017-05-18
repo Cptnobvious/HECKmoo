@@ -1,6 +1,8 @@
 package verb;
 
+import items.Item;
 import playermanager.Player;
+import utility.StringUtility;
 
 //The verb object, does some cool shit
 
@@ -31,6 +33,15 @@ public abstract class Verb {
 	
 	public String[] getAliases(){
 		return this.alias;
+	}
+	
+	//Pulls access to an item so you can do stuff to it
+	public Item invokeItem(Player ply, String str){
+		String[] args = StringUtility.getWordListWithoutQuotes(str);
+		if (args.length > 1){
+			return ply.getActor().getItem(args[1]);
+		}
+		return null;
 	}
 	
 }
