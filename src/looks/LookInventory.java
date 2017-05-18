@@ -11,7 +11,7 @@ public class LookInventory {
 	public static String lookAtInventory(Player ply){
 		String inventory = "Here's your inventory:\n";
 		ArrayList<Item> items = new ArrayList<Item>();
-		items = ply.getActor().getInventory();
+		items = ply.getActor().getInventoryList();
 		
 		for (int i = 0; i < items.size(); i++){
 			inventory = inventory + items.get(i).getName() + " (" + items.get(i).getWeight() + "kg)\n";

@@ -124,8 +124,12 @@ public class Room implements InventoryInterface{
 		return inventory.removeItem(name);
 	}
 
-	public ArrayList<Item> getInventory() {
+	public ArrayList<Item> getInventoryList() {
 		return inventory.getInventoryCopy();
+	}
+	
+	public Inventory getInventory(){
+		return inventory;
 	}
 
 	public Item getItem(String name) {

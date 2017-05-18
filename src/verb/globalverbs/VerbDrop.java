@@ -1,4 +1,4 @@
-package items.items;
+package verb.globalverbs;
 
 import gameutils.Announcement;
 import items.Item;
@@ -7,7 +7,7 @@ import utility.StringUtility;
 import verb.Verb;
 import world.World;
 
-public class Drop extends Verb{
+public class VerbDrop extends Verb{
 
 	@Override
 	public boolean setAlias() {
@@ -23,10 +23,11 @@ public class Drop extends Verb{
 		if (args.length > 1) {
 			Item temp = ply.getActor().getItem(args[1]);
 			if (temp != null){
-				World.getRoomByPlayer(ply).addItem(ply.getActor().removeItem(args[1]));
+				World.getRoomByPlayer(ply).addItem(ply.getActor().removeItem(temp.getName()));
 				ply.sendMessageToClient("You drop a " + temp.getName() + " on the ground.");
-				String ann = (ply.getActor().getName() + " drops a " + temp.getName() + " on the ground");
-				Announcement.announceToRoomRaw(ply.getActor().getCurrentZone(), ply.getActor().getCurrentRoom(), ann);
+				String ann = (ply.getActor().getName() + " drops a " + temp.getName() + " on the ground.");
+				String[] ignored = {ply.getActor().getName()};
+				Announcement.announceToRoom(ply.getActor().getCurrentZone(), ply.getActor().getCurrentRoom(), ann, ignored);
 				return true;
 			}
 		}

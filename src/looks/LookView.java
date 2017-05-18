@@ -1,5 +1,7 @@
 package looks;
 
+import items.Item;
+
 import java.util.ArrayList;
 
 import playermanager.Player;
@@ -77,6 +79,21 @@ public class LookView {
 				}
 			}
 		}
+		
+		//Get a list of everything laying on the floor
+		String onFloor = "";
+		ArrayList<String> onFloorList = new ArrayList<String>();
+		ArrayList<Item> inv = World.getRoomByPlayer(ply).getInventoryList();
+		for (int i = 0; i < inv.size(); i++){
+			onFloorList.add(inv.get(i).getName());
+		}
+		if (!onFloorList.isEmpty()) {
+			onFloor = "Floor: ";
+			for (int i = 0; i < onFloorList.size(); i++){
+				onFloor = onFloor + onFloorList.get(i) + " ";
+			}
+		}
+				
 		//Add those things together
 		if (standinghere.size() == 0){
 			standing = "";
@@ -113,6 +130,7 @@ public class LookView {
 		}
 		
 		//Add in the standing here
+		sees = sees + "\n" + onFloor;
 		sees = sees + "\n" + standing;
 		//Exits now
 		String exits = rm.getExitNames();
