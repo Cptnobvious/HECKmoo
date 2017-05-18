@@ -1,8 +1,6 @@
 package textparser;
 
 import items.Inventory;
-import items.Item;
-
 import java.util.ArrayList;
 
 import chat.ListDefaultChannels;
