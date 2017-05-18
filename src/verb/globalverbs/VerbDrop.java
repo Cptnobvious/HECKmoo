@@ -1,4 +1,4 @@
-package items.items;
+package verb.globalverbs;
 
 import gameutils.Announcement;
 import items.Item;
@@ -7,7 +7,7 @@ import utility.StringUtility;
 import verb.Verb;
 import world.World;
 
-public class Drop extends Verb{
+public class VerbDrop extends Verb{
 
 	@Override
 	public boolean setAlias() {

@@ -1,5 +1,6 @@
 package items.items;
 
+import verb.globalverbs.VerbDrop;
 import items.Item;
 
 public class Rock extends Item{
@@ -9,7 +10,6 @@ public class Rock extends Item{
 		name = "Rock";
 		plural = "Rocks";
 		description = "It is a rock.";
-		addVerb(new Drop());
 	}
 	
 }
