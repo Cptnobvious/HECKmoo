@@ -26,7 +26,8 @@ public class VerbDrop extends Verb{
 				World.getRoomByPlayer(ply).addItem(ply.getActor().removeItem(temp.getName()));
 				ply.sendMessageToClient("You drop a " + temp.getName() + " on the ground.");
 				String ann = (ply.getActor().getName() + " drops a " + temp.getName() + " on the ground");
-				Announcement.announceToRoomRaw(ply.getActor().getCurrentZone(), ply.getActor().getCurrentRoom(), ann);
+				String[] ignored = {ply.getActor().getName()};
+				Announcement.announceToRoom(ply.getActor().getCurrentZone(), ply.getActor().getCurrentRoom(), ann, ignored);
 				return true;
 			}
 		}
