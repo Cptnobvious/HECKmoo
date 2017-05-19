@@ -51,6 +51,7 @@ public class Player {
 				sendMessageToClient(str);
 				if (!textTrapping){
 					inTrap.run(this);
+					sendMessageToClient("Exiting multiline input.");
 				}
 			} else {
 				TextParser.Parse(this, str);
@@ -60,6 +61,7 @@ public class Player {
 	}
 	
 	public boolean startInputTrap(InputTrap trap){
+		sendMessageToClient("You're now entering multiline input. Enter two empty lines to finish.");
 		this.textTrapping = true;
 		this.inTrap = trap;
 		return true;
