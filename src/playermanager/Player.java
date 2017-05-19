@@ -1,5 +1,6 @@
 package playermanager;
 
+import textparser.InputTrap;
 import textparser.TextParser;
 import world.World;
 
@@ -14,6 +15,10 @@ public class Player {
 	private Actor actor = null;
 	//Is the player logging in?
 	private boolean logingIn = false;
+	
+	//Is your input getting trapped and what to do if it is
+	private boolean textTrapping = false;
+	private InputTrap inTrap = null;
 	
 	//Do update for the player
 	void think(){
@@ -41,8 +46,22 @@ public class Player {
 				enterWorld();
 			}
 		} else {
-			TextParser.Parse(this, str);
+			if (textTrapping){
+				textTrapping = inTrap.addLine(str);
+				sendMessageToClient(str);
+				if (!textTrapping){
+					inTrap.run(this);
+				}
+			} else {
+				TextParser.Parse(this, str);
+			}
 		}
+		return true;
+	}
+	
+	public boolean startInputTrap(InputTrap trap){
+		this.textTrapping = true;
+		this.inTrap = trap;
 		return true;
 	}
 	
