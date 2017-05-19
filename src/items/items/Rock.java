@@ -10,9 +10,9 @@ public class Rock extends Item{
 	
 	public Rock(){
 		super();
-		name = "Rock";
-		plural = "Rocks";
-		description = "It is a rock.";
+		setAttribute(ITEMNAME, "Rock");
+		setAttribute(ITEMPLURAL, "Rocks");
+		setAttribute(ITEMDESC, "It is a rock");
 		addVerb(new Pet());
 	}
 	

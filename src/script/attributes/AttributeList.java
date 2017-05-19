@@ -8,7 +8,7 @@ public class AttributeList {
 	private ArrayList<Attribute> attributes = new ArrayList<Attribute>();
 	
 	public boolean setAttribute(String name, int i){
-		if (getByName(name) != null){
+		if (checkByName(name)){
 			getByName(name).iSetValue(i);
 			return true;
 		} else {
@@ -19,7 +19,7 @@ public class AttributeList {
 	}
 	
 	public boolean setAttribute(String name, double d){
-		if (getByName(name) != null){
+		if (checkByName(name)){
 			getByName(name).dSetValue(d);
 			return true;
 		} else {
@@ -30,7 +30,7 @@ public class AttributeList {
 	}
 	
 	public boolean setAttribute(String name, String str){
-		if (getByName(name) != null){
+		if (checkByName(name)){
 			getByName(name).sSetValue(str);
 			return true;
 		} else {
@@ -41,7 +41,7 @@ public class AttributeList {
 	}
 	
 	public boolean setAttribute(String name, boolean b){
-		if (getByName(name) != null){
+		if (checkByName(name)){
 			getByName(name).bSetValue(b);
 			return true;
 		} else {
@@ -60,12 +60,21 @@ public class AttributeList {
 		return false;
 	}
 	
+	public boolean checkByName(String name){
+		for (int i = 0; i < attributes.size(); i++){
+			if (attributes.get(i).match(name)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public Attribute getByName(String name){
 		for (int i = 0; i < attributes.size(); i++){
 			if (attributes.get(i).match(name)){
 				return attributes.get(i);
 			}
 		}
-		return null;
+		return DEFAULTATTRIBUTE;
 	}
 }
