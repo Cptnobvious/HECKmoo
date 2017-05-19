@@ -1,5 +1,7 @@
 package items;
 
+import java.util.ArrayList;
+
 import script.attributes.Attribute;
 import script.attributes.AttributeInterface;
 import script.attributes.AttributeList;
@@ -96,6 +98,10 @@ public class Item implements AttributeInterface{
 
 	public Attribute getAttribute(String name) {
 		return attributes.getByName(name);
+	}
+	
+	public ArrayList<Attribute> getAttributeList(){
+		return attributes.getAttributeList();
 	}
 	
 	

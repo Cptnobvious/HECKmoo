@@ -115,4 +115,8 @@ public class Attribute {
 		return true;
 	}
 	
+	public String getName(){
+		return attName;
+	}
+	
 }

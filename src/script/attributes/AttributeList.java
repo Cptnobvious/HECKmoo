@@ -77,4 +77,8 @@ public class AttributeList {
 		}
 		return DEFAULTATTRIBUTE;
 	}
+	
+	public ArrayList<Attribute> getAttributeList(){
+		return attributes;
+	}
 }
