@@ -40,6 +40,12 @@ public class VerbAtAuditItem extends Verb{
 				String out = name + ": " + value;
 				ply.sendMessageToClient(out);
 			}
+			ArrayList<String> verbs = item.sGetVerbList();
+			for (int i = 0; i < verbs.size(); i++){
+				String verb = verbs.get(i);
+				verb = ColorStrings.getColoredText(ColorStrings.MAGENTA, verb);
+				ply.sendMessageToClient(verb);
+			}
 		}
 		
 		

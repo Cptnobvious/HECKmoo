@@ -24,6 +24,10 @@ public class Item implements AttributeInterface{
 		setAttribute(ITEMWEIGHT, 1.0);
 	}
 	
+	public ArrayList<String> sGetVerbList(){
+		return verbs.getVerbs();
+	}
+	
 	public String getName() {
 		return getAttribute(ITEMNAME).sGetValue();
 	}
