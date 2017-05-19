@@ -49,8 +49,10 @@ public class TextParser {
 			//First search player inventory, then search the room
 			Inventory invCopy = ply.getActor().getInventory();
 			if (invCopy.getItem(vdpi.getDirectObject()) != null){
-				ply.getActor().getInventory().getItem(vdpi.getDirectObject()).getVerb(vdpi.getVerb()).run(ply, str);
-				return true;
+				if (ply.getActor().getInventory().getItem(vdpi.getDirectObject()).getVerb(vdpi.getVerb()) != null){
+					ply.getActor().getInventory().getItem(vdpi.getDirectObject()).getVerb(vdpi.getVerb()).run(ply, str);
+					return true;
+				}
 			}
 		}
 		
