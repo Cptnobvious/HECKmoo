@@ -38,7 +38,6 @@ public class Player {
 			if (logingIn){
 				account = new Account(str, "password");
 				actor = new Actor(this.uID, str);
-				sendMessageToClient("Sup fag");
 				enterWorld();
 			}
 		} else {
