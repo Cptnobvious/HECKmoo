@@ -44,6 +44,8 @@ public class LoginQuoteSaver {
 			input = in.readLine();
 		}
 		
+		in.close();
+		
 		LogIn.setupLoginQuotes(quotes);
 		
 		return true;

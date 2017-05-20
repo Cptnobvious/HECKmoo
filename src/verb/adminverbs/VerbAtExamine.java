@@ -40,9 +40,9 @@ public class VerbAtExamine extends Verb{
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, "RoomX: " + rm.getMapX()));
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, "RoomY: " + rm.getMapY()));
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, rm.getExitNames()));
-				return true;
-			}
-			return false;
+			return true;
+		}
+		return false;
 	}
 
 	@Override

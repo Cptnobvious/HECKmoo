@@ -1,8 +1,12 @@
 package world;
 
+import items.Inventory;
+import items.InventoryInterface;
+import items.Item;
+
 import java.util.ArrayList;
 
-public class Room {
+public class Room implements InventoryInterface{
 
 	private String roomName			= "No name yet";
 	private String roomDescription 	= "Tell an admin this needs to be described";
@@ -106,6 +110,53 @@ public class Room {
 		}
 		ex = ex + "]";
 		return ex;
+	}
+
+	
+	//------------------------------------------------------------------------------------------------
+	//-------------------------------Inventory Stuff Down Here ---------------------------------------
+	//------------------------------------------------------------------------------------------------
+	
+	Inventory inventory = new Inventory();
+	public static final int maxItemsOnGround = 50;
+	
+	public boolean addItem(Item item) {
+		if (inventory.getInvetorySize() + 1 <= 50){
+			inventory.addItem(item);
+		}
+		return false;
+	}
+
+	public Item removeItem(Item item) {
+		return inventory.removeItem(item);
+	}
+
+	public Item removeItem(String name) {
+		return inventory.removeItem(name);
+	}
+
+	public ArrayList<Item> getInventoryList() {
+		return inventory.getInventoryCopy();
+	}
+	
+	public Inventory getInventory(){
+		return inventory;
+	}
+
+	public Item getItem(String name) {
+		return inventory.getItem(name);
+	}
+
+	public double getInventoryWeight() {
+		return inventory.getWeight();
+	}
+
+	public boolean canTake(Item item) {
+		return (inventory.getInvetorySize() < 50);
+	}
+
+	public boolean canDrop(Item item) {
+		return true;
 	}
 	
 }

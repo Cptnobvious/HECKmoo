@@ -20,7 +20,7 @@ public class ChatNet extends ChatChannel{
 
 	@Override
 	public boolean setAlias() {
-		String[] temp = {"chatnet", "cnet"};
+		String[] temp = {"chatnet", "cnet", "chat"};
 		alias = temp;
 		return true;
 	}
