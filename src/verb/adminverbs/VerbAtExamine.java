@@ -29,7 +29,6 @@ public class VerbAtExamine extends Verb{
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Invalid target!"));
 			return false;
 		}
-		
 		if (target.equals("$here")){ //$here describes the room the player is in.
 			Zone zn = World.getZoneByPlayer(ply); //Get the player's zone.
 			Room rm = World.getRoomByPlayer(ply); //Get the player's room.
@@ -43,33 +42,7 @@ public class VerbAtExamine extends Verb{
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, rm.getExitNames()));
 				return true;
 			}
-		
-
-		else{
-			 int roomindex = -1;
-			 try {
-			 roomindex  = Integer.parseInt(target);
-			 } catch (NumberFormatException e){
-				 ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Invalid target!"));
-			 return false;
-			 }
-
-			Zone zn = World.getZoneByPlayer(ply); //Get the player's zone.
-			 if(zn.getRoomByIndex(roomindex)==null){
-				 ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Bad index!"));
-				 return false;
-			 }
-			Room rm = zn.getRoomByIndex(roomindex); //Get the player's room.
-			ply.sendMessageToClient(ColorStrings.getColoredText(true, ColorStrings.GREEN, ColorStrings.BLACK, "ROOM INDEX: " + rm.getIndex()));
-			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, "IN ZONE: " + zn.getZoneName()));
-			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, "ZONE ID: " + zn.getZoneID()));
-			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, "RoomName: " + rm.getRoomName()));
-			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.GREEN, "RoomDescription: " + rm.getRoomDescription()));
-			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, "RoomX: " + rm.getMapX()));
-			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, "RoomY: " + rm.getMapY()));
-			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, rm.getExitNames()));
-				return true;
-			}
+			return false;
 	}
 
 	@Override
