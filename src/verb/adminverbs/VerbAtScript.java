@@ -7,11 +7,11 @@ import textparser.InputTrap;
 import utility.StringUtility;
 import verb.Verb;
 
-public class VerbAtVerb extends Verb{
+public class VerbAtScript extends Verb{
 
 	@Override
 	public boolean setAlias() {
-		String[] temp = {"@verb"};
+		String[] temp = {"@script"};
 		alias = temp;
 		return true;
 	}
@@ -28,13 +28,13 @@ public class VerbAtVerb extends Verb{
 		String target = null;
 		String scriptName = null;
 		
-		int colons = StringUtility.countCharInString(args[1], ':');
+		int colons = StringUtility.countCharInString(args[1], '-');
 		if (colons == 0){
 			return false;
 		} else if (colons == 1){
 			
 			String toBreak = args[1];
-			String[] broken = toBreak.split(":");
+			String[] broken = toBreak.split("-");
 			if (broken.length != 2){
 				return false;
 			}
