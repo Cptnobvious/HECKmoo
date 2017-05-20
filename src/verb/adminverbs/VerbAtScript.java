@@ -28,13 +28,13 @@ public class VerbAtScript extends Verb{
 		String target = null;
 		String scriptName = null;
 		
-		int colons = StringUtility.countCharInString(args[1], '-');
+		int colons = StringUtility.countCharInString(args[1], ':');
 		if (colons == 0){
 			return false;
 		} else if (colons == 1){
 			
 			String toBreak = args[1];
-			String[] broken = toBreak.split("-");
+			String[] broken = toBreak.split(":");
 			if (broken.length != 2){
 				return false;
 			}
@@ -80,7 +80,7 @@ public class VerbAtScript extends Verb{
 	
 	@Override
 	public String getHelpText() {
-		return "@script <target>-<scriptname>";
+		return "@script <target>:<scriptname>";
 	}
 
 }

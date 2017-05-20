@@ -52,4 +52,7 @@ public class ScriptList {
 		return names;
 	}
 	
+	public boolean isScriptCompiled(String name){
+		return getScript(name).isCompiled();
+	}
 }

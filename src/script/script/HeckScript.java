@@ -6,6 +6,7 @@ public class HeckScript {
 	
 	private String name = null;
 	private ArrayList<String> lines = new ArrayList<String>();
+	private boolean compiled = false;
 	
 	public HeckScript(String name){
 		this.name = name;
@@ -27,6 +28,15 @@ public class HeckScript {
 	
 	public ArrayList<String> getScript(){
 		return this.lines;
+	}
+	
+	public boolean compile(){
+		compiled = true;
+		return true;
+	}
+	
+	public boolean isCompiled(){
+		return compiled;
 	}
 
 }

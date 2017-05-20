@@ -20,6 +20,7 @@ public interface ScriptInterface {
 	public abstract boolean 	removeScript(String name);
 	public abstract HeckScript 	getScript(String name);
 	public abstract boolean 	scriptExists(String name);
+	public abstract boolean		isScriptCompiled(String name);
 	public abstract ArrayList<String> getScriptNames();
 
 }

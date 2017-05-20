@@ -127,10 +127,12 @@ public class Item implements ScriptInterface{
 		return scripts.scriptExists(name);
 	}
 
+	public boolean isScriptCompiled(String name) {
+		return scripts.isScriptCompiled(name);
+	}
+	
 	public ArrayList<String> getScriptNames() {
 		return scripts.getScriptNames();
 	}
-
-	
 	
 }

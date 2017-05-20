@@ -45,6 +45,18 @@ public class VerbAtAuditItem extends Verb{
 				verb = ColorStrings.getColoredText(ColorStrings.MAGENTA, verb);
 				ply.sendMessageToClient(verb);
 			}
+			ArrayList<String> scripts = item.getScriptNames();
+			for (int i = 0; i < scripts.size(); i++){
+				String script = scripts.get(i);
+				boolean compiled = item.getScript(scripts.get(i)).isCompiled();
+				script = ColorStrings.getBoldText(ColorStrings.getColoredText(ColorStrings.YELLOW, script));
+				if (compiled){
+					script = script + ColorStrings.getColoredText(ColorStrings.GREEN, " (Compiled)");
+				} else {
+					script = script + ColorStrings.getColoredText(ColorStrings.RED, " (Uncompiled)");
+				}
+				ply.sendMessageToClient(script);
+			}
 		}
 		
 		
