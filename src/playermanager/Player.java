@@ -2,7 +2,6 @@ package playermanager;
 
 import textparser.InputTrap;
 import textparser.TextParser;
-import world.World;
 
 public class Player {
 	
@@ -69,10 +68,6 @@ public class Player {
 	
 	private void enterWorld(){
 		sendMessageToLogic("look");
-	}
-	
-	private boolean isLoggingIn(){
-		return logingIn;
 	}
 	
 	Player (int uID){

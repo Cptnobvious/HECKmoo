@@ -2,8 +2,6 @@ package items;
 
 import java.util.ArrayList;
 
-import verb.Verb;
-
 public interface InventoryInterface {
 	
 	public boolean addItem(Item item);

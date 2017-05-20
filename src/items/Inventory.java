@@ -2,8 +2,6 @@ package items;
 
 import java.util.ArrayList;
 
-import verb.Verb;
-
 public class Inventory {
 
 	ArrayList<Item> inventory = new ArrayList<Item>();

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import items.Item;
 import playermanager.Player;
 import script.attributes.Attribute;
-import script.attributes.AttributeList;
 import utility.ColorStrings;
 import utility.StringUtility;
 import verb.Verb;
