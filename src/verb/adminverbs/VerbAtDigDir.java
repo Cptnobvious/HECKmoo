@@ -4,7 +4,6 @@ import playermanager.Player;
 import utility.ColorStrings;
 import utility.StringUtility;
 import verb.Verb;
-import world.Exit;
 import world.Map;
 import world.Room;
 import world.World;
@@ -36,30 +35,20 @@ public class VerbAtDigDir extends Verb{
 		Room plyroom = World.getRoomByPlayer(ply);
 		int xoffset = 0; int yoffset = 0;
 		boolean error = true;
-		String exitonename = null;
-		String exittwoname = null;
 		if(arg[2].equals("west")){
 			xoffset = -1;
-			exitonename = "west";
-			exittwoname = "east";
 			error = false;
 		}
 		if(arg[2].equals("east")){
 			xoffset = 1;
-			exitonename = "east";
-			exittwoname = "west";
 			error = false;
 		}
 		if(arg[2].equals("north")){
 			yoffset = -1;
-			exitonename = "north";
-			exittwoname = "south";
 			error = false;
 		}
 		if(arg[2].equals("south")){
 			xoffset = 1;
-			exitonename = "south";
-			exittwoname = "north";
 			error = false;
 		}
 		if(error == true){
@@ -77,17 +66,6 @@ public class VerbAtDigDir extends Verb{
 		rm.setMapPos(plyroom.getMapX()+xoffset, plyroom.getMapY()+yoffset);
 		World.getZoneByPlayer(ply).getMap().setMapPoint(plyroom.getMapX()+xoffset, plyroom.getMapY()+yoffset, ColorStrings.BLACK, ColorStrings.WHITE, false, "..");
 		System.out.println("Player made a new room named " + rm.getRoomName());
-		
-		Exit exit = new Exit(exitonename, ply.getActor().getCurrentZone(), newIndex); //Make the new exit.
-		if (exit.isGoodExit()){
-			World.getRoom(ply.getActor().getCurrentZone(), ply.getActor().getCurrentRoom()).addExit(exit);
-		}
-		
-		Exit exitback = new Exit(exittwoname, ply.getActor().getCurrentZone(), plyroom.getIndex()); //Make the new exit.
-		if (exitback.isGoodExit()){
-			World.getRoom(ply.getActor().getCurrentZone(), newIndex).addExit(exitback);
-		}
-		
 		ply.getActor().setCurrentRoom(newIndex); //Put the player in the new room.
 		//TODO: better internal calls
 		ply.sendMessageToLogic("look");
@@ -96,7 +74,7 @@ public class VerbAtDigDir extends Verb{
 
 	@Override
 	public String getHelpText() {
-		return "@digdir <roomname> <north/east/south/west>";
+		return "@dig <roomname>";
 	}
 
 }
