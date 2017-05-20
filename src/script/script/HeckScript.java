@@ -39,12 +39,11 @@ public class HeckScript {
 		return compiled;
 	}
 	
-	public boolean execute(){
+	public boolean execute(ScriptArguments args){
 		if (!isCompiled()){
 			return false;
 		}
 		
 		return true;
 	}
-	
 }

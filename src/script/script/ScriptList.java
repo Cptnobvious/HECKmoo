@@ -55,4 +55,8 @@ public class ScriptList {
 	public boolean isScriptCompiled(String name){
 		return getScript(name).isCompiled();
 	}
+	
+	public boolean executeScriptByName(String name, ScriptArguments args){
+		return getScript(name).execute(args);
+	}
 }
