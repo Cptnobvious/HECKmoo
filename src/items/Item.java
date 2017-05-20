@@ -2,13 +2,15 @@ package items;
 
 import java.util.ArrayList;
 
+import script.ScriptInterface;
 import script.attributes.Attribute;
-import script.attributes.AttributeInterface;
 import script.attributes.AttributeList;
+import script.script.HeckScript;
+import script.script.ScriptList;
 import verb.Verb;
 import verb.VerbList;
 
-public class Item implements AttributeInterface{
+public class Item implements ScriptInterface{
 	
 	public static final String ITEMNAME = 		"_NAME";
 	public static final String ITEMPLURAL = 	"_PLURAL";
@@ -75,10 +77,11 @@ public class Item implements AttributeInterface{
 	}
 	
 	//--------------------------------------------------------------------------------------------------------------
-	//--------------------------------------------Attribute Stuff --------------------------------------------------
+	//--------------------------------------------Scripted Stuff----------------------------------------------------
 	//--------------------------------------------------------------------------------------------------------------
 	
-	private AttributeList attributes = new AttributeList();
+	private AttributeList 	attributes 	= new AttributeList();
+	private ScriptList		scripts 	= new ScriptList();
 
 	public boolean setAttribute(String name, int i) {
 		attributes.setAttribute(name, i);
@@ -107,6 +110,27 @@ public class Item implements AttributeInterface{
 	public ArrayList<Attribute> getAttributeList(){
 		return attributes.getAttributeList();
 	}
+
+	public boolean addScript(HeckScript script) {
+		return scripts.addScript(script);
+	}
+
+	public boolean removeScript(String name) {
+		return scripts.removeScript(name);
+	}
+
+	public HeckScript getScript(String name) {
+		return scripts.getScript(name);
+	}
+
+	public boolean scriptExists(String name) {
+		return scripts.scriptExists(name);
+	}
+
+	public ArrayList<String> getScriptNames() {
+		return scripts.getScriptNames();
+	}
+
 	
 	
 }

@@ -6,8 +6,13 @@ import playermanager.Player;
 
 public abstract class InputTrap {
 
-	private ArrayList<String> lines = new ArrayList<String>();
+	protected ArrayList<String> lines = new ArrayList<String>();
 	private boolean firstEmpty = false;
+	protected Object[] arguments = null;
+	
+	public InputTrap(Object[] arguments){
+		this.arguments = arguments;
+	}
 	
 	public boolean addLine(String str){
 		if (str.isEmpty() && !firstEmpty){
