@@ -7,6 +7,7 @@ import playermanager.Player;
 import script.attributes.Attribute;
 import utility.ColorStrings;
 import utility.StringUtility;
+import verb.DynamicVerb;
 import verb.Verb;
 
 public class VerbAtAuditItem extends Verb{
@@ -43,6 +44,7 @@ public class VerbAtAuditItem extends Verb{
 			for (int i = 0; i < verbs.size(); i++){
 				String verb = verbs.get(i);
 				verb = ColorStrings.getColoredText(ColorStrings.MAGENTA, verb);
+				verb = verb + " (" + ((DynamicVerb)item.getVerb(verbs.get(i))).getScriptName() + ")";
 				ply.sendMessageToClient(verb);
 			}
 			ArrayList<String> scripts = item.getScriptNames();

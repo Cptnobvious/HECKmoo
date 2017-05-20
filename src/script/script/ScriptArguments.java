@@ -19,6 +19,18 @@ public class ScriptArguments {
 	//The preposition
 	String preposition = null;
 	
+	/**
+	 * Sets up an object with a bunch of things the script might want, or need, to access
+	 * 
+	 * @param player			The player calling the function if any
+	 * @param caller			The thing calling this script, can be the player again
+	 * @param thisArgument		The object the verb is on
+	 * @param args				The string of the original argument if there is one
+	 * @param directObject		The direct object if there is one
+	 * @param indirectObject	The indirect object if there is one
+	 * @param preposition		The preposition if there is one
+	 */
+	
 	public ScriptArguments(ScriptInterface player, ScriptInterface caller, ScriptInterface thisArgument, String args, String directObject, String indirectObject, String preposition){
 		this.player 		= player;
 		this.caller 		= caller;
