@@ -43,5 +43,4 @@ public abstract class Verb {
 		}
 		return null;
 	}
-	
 }

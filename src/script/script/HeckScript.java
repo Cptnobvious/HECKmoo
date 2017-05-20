@@ -38,5 +38,13 @@ public class HeckScript {
 	public boolean isCompiled(){
 		return compiled;
 	}
-
+	
+	public boolean execute(){
+		if (!isCompiled()){
+			return false;
+		}
+		
+		return true;
+	}
+	
 }
