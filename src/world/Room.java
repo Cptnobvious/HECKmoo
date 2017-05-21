@@ -67,11 +67,11 @@ public class Room implements InventoryInterface{
 			if (exits.get(i).matches(str)){
 				return exits.get(i);
 			}
+		}
 		for (int o = 0; o < exits.size(); o++){
 			if (exits.get(o).matchespartial(str)){
 				return exits.get(o);
 			}
-		}
 		}
 		return null;
 	}

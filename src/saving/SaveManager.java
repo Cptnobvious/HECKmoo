@@ -9,6 +9,7 @@ public class SaveManager {
 		try {
 			WorldSaver.SaveWorld();
 			LoginQuoteSaver.makeQuotesFile();
+			System.out.println("Successfully saved world");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
