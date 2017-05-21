@@ -26,12 +26,15 @@ public class HeckScriptInterpreter {
 		//Find what object, if any, it's talking about
 		
 		//Is it talking about the object the script is on?
-		if (line.startsWith(sa.getThisArgument().getAttribute("_NAME").sGetValue())){
-			
+		if (line.startsWith("this")){
 			//Check to see if it's talking about an attribute
-			if (line.contains("\\.")){
+			if (line.contains(".")){
 				//If it does, get the attribute name then
 				String[] attributeSplit = line.split("\\.");
+				//Split by spaces then, since it should be attrib = newval
+				String[] splitAtEquals = attributeSplit[1].split(" ");
+				
+				sa.getThisArgument().setAttribute(splitAtEquals[0], splitAtEquals[2]);
 			}
 		}
 		

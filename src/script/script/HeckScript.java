@@ -33,8 +33,8 @@ public class HeckScript {
 	
 	public boolean compile(){
 		compiledScript = new HeckScriptCompiled(this);
-		compiled = compiledScript.compile();
-		if (compiled = false){
+		this.compiled = compiledScript.compile();
+		if (compiled == false){
 			//Get rid of that to clear some memory since it failed anyways
 			compiledScript = null;
 		}
@@ -49,6 +49,8 @@ public class HeckScript {
 		if (!isCompiled()){
 			return false;
 		}
+		
+		HeckScriptInterpreter.execute(compiledScript, args);
 		
 		return true;
 	}

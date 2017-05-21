@@ -30,7 +30,7 @@ public class DynamicVerb extends Verb{
 		heckScript = parent.getScript(scriptName);
 		if (heckScript != null && heckScript.isCompiled()){
 			VerbDoPrepIo vdpi = new VerbDoPrepIo(str);
-			ScriptArguments args = new ScriptArguments((ScriptInterface)ply, (ScriptInterface)ply, (ScriptInterface)parent, str, vdpi.getDirectObject(), vdpi.getIndirectObject(), vdpi.getPreposition());
+			ScriptArguments args = new ScriptArguments((ScriptInterface)ply.getActor(), (ScriptInterface)ply.getActor(), (ScriptInterface)parent, str, vdpi.getDirectObject(), vdpi.getIndirectObject(), vdpi.getPreposition());
 			heckScript.execute(args);
 			return true;
 		}

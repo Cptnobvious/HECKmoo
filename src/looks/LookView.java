@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import playermanager.Player;
 import playermanager.PlayerController;
 import utility.ColorStrings;
+import utility.StringUtility;
 import world.Room;
 import world.World;
 import world.Zone;
@@ -134,9 +135,17 @@ public class LookView {
 		sees = sees + "\n" + standing;
 		//Exits now
 		String exits = rm.getExitNames();
+		exits = orderExits(exits);
+		
 		sees = sees + "\n" + ColorStrings.getColoredText(false, ColorStrings.CYAN, ColorStrings.BLACK, exits);
 		
 		return sees;
+	}
+	
+	private String orderExits(String exits){
+		String ordered = "";
+		
+		return ordered;
 	}
 	
 	private String getRoomDescriptionWithAdds(){
