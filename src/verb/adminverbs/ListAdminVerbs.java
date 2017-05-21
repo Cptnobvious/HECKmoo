@@ -23,6 +23,12 @@ public class ListAdminVerbs extends VerbList{
 		addVerb(new VerbAtAuditWorld());
 		addVerb(new VerbAtAuditZone());
 		addVerb(new VerbAtRecycle());
+		addVerb(new VerbAtItemTest());
+		addVerb(new VerbAtCreate());
+		addVerb(new VerbAtAuditItem());
+		addVerb(new VerbAtEdit());
+		addVerb(new VerbAtScript());
+		addVerb(new VerbAtVerb());
 		addVerb(new VerbAtDigDir());
 		addVerb(new VerbAtSave());
 		return true;

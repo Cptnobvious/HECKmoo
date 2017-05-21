@@ -8,6 +8,7 @@ public class SaveManager {
 	public static boolean saveAll(){
 		try {
 			WorldSaver.SaveWorld();
+			LoginQuoteSaver.makeQuotesFile();
 			System.out.println("Successfully saved world");
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -20,6 +21,7 @@ public class SaveManager {
 	public static boolean loadAll(){
 		try {
 			WorldSaver.loadWorld();
+			LoginQuoteSaver.loadQuotes();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
