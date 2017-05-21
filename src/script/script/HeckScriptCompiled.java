@@ -4,18 +4,33 @@ import java.util.ArrayList;
 
 public class HeckScriptCompiled {
 
-	ArrayList<LogicTree> tree = new ArrayList<LogicTree>();
-	ArrayList<ExecutionBlock> blocks = new ArrayList<ExecutionBlock>();
+	private ArrayList<LogicTree> tree = new ArrayList<LogicTree>();
+	private ArrayList<ExecutionBlock> blocks = new ArrayList<ExecutionBlock>();
+	private HeckScript toCompile = null;
 	
 	//Start by getting exec block 1, go to the tree statement it asks next, follow tree from there
 	
 	public HeckScriptCompiled(HeckScript script){
-		ArrayList<String> sc = script.getScript();
+		this.toCompile = script;
+	}
+	
+	public ArrayList<String> getBlock(int i){
+		return blocks.get(i).getBlock();
+	}
+	
+	public boolean compile(){
+		ArrayList<String> sc = toCompile.getScript();
 		
 		ExecutionBlock iBlock = new ExecutionBlock();
 		for (int i = 0; i < sc.size(); i++){
 			//For now just stuff it all into a single exec block
+			iBlock.addLine(sc.get(i));
 		}
+		blocks.add(iBlock);
+		
+		//Remove the tocompile again to clear memory
+		toCompile = null;
+		return true;
 	}
 	
 	private class LogicTree{

@@ -7,6 +7,7 @@ public class HeckScript {
 	private String name = null;
 	private ArrayList<String> lines = new ArrayList<String>();
 	private boolean compiled = false;
+	private HeckScriptCompiled compiledScript = null;
 	
 	public HeckScript(String name){
 		this.name = name;
@@ -31,8 +32,13 @@ public class HeckScript {
 	}
 	
 	public boolean compile(){
-		compiled = true;
-		return true;
+		compiledScript = new HeckScriptCompiled(this);
+		compiled = compiledScript.compile();
+		if (compiled = false){
+			//Get rid of that to clear some memory since it failed anyways
+			compiledScript = null;
+		}
+		return compiled;
 	}
 	
 	public boolean isCompiled(){
