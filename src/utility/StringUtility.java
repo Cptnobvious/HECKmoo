@@ -17,6 +17,15 @@ public class StringUtility {
 		}
 	}
 	
+	public static boolean arrayContains(String[] str, String cont){
+		for (int i = 0; i < str.length; i++){
+			if (str[i].equals(cont)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public static int countCharInString(String str, char c){
 		int total = 0;
 		for (int i = 0; i < str.length(); i++){
