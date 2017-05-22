@@ -2,9 +2,12 @@ package script.script;
 
 import java.util.ArrayList;
 
+import script.attributes.Attribute;
+import utility.StringUtility;
+
 public class HeckScriptInterpreter {
 	
-	//Shoulds try to execute the script and catch errors
+	//Should try to execute the script and catch errors
 	public static boolean execute(HeckScriptCompiled hsc, ScriptArguments sa){
 		
 		int iBlock = 0;
@@ -23,21 +26,41 @@ public class HeckScriptInterpreter {
 
 	
 	private static boolean interpretLine(String line, ScriptArguments sa){
-		//Find what object, if any, it's talking about
+		String[] lineParts = StringUtility.getWordList(line);
+		//What is this line doing
+		String intention = lineParts[0];
 		
-		//Is it talking about the object the script is on?
-		if (line.startsWith("this")){
-			//Check to see if it's talking about an attribute
-			if (line.contains(".")){
-				//If it does, get the attribute name then
-				String[] attributeSplit = line.split("\\.");
-				//Split by spaces then, since it should be attrib = newval
-				String[] splitAtEquals = attributeSplit[1].split(" ");
-				
-				sa.getThisArgument().setAttribute(splitAtEquals[0], splitAtEquals[2]);
+		//Moving one value to another?
+		if (intention.equals("mov")){
+			
+			//Do you have enough variables?
+			if (lineParts.length > 2){
+				getThing(lineParts[1], sa).sSetValue(lineParts[2]);
+				return true;
+			} else {
+				return false;
 			}
+			
 		}
 		
 		return true;
+	}
+	
+	//Returns either the proper thing or a piece of junk to be a target dummy
+	private static Attribute getThing(String s, ScriptArguments sa){
+		
+		//Check for the this argument
+		if (s.startsWith("this")){
+			
+			//Is it talking about an attribute?
+			if (s.contains(".")){
+				//If it does, get the attribute name then
+				String[] attributeSplit = s.split("\\.");
+				return sa.getThisArgument().getAttribute(attributeSplit[1]);
+			}
+			
+		}
+		
+		return new Attribute("dummy");
 	}
 }
