@@ -19,31 +19,34 @@ public class Actor implements InventoryInterface, ScriptInterface{
 	private int parentID = -1;
 	//Name of the player
 	private String name = "WHERESMYNAME";
-	//Which zone is this actor standing in
-	private String currentZone = "ORGNA";
-	//Which room in that zone is this actor standing in
-	private int currentRoom = 0;
+	
+	//The zone the player is in
+	private static final String ZONE = "_ZONE";
+	//The room in the zone the player is in
+	private static final String ROOM = "_ROOM";
 
 	Actor(int id, String name){
 		this.parentID = id;
 		this.name = name;
+		setAttribute(ZONE, "ORGNA");
+		setAttribute(ROOM, 0);
 	}
 	
 	public boolean setCurrentZone(String str){
 		if (World.getZoneByID(str) != null){
-			this.currentZone = str;
+			setAttribute(ZONE, str);
 			return true;
 		}
 		return false;
 	}
 	
 	public String getCurrentZone(){
-		return this.currentZone;
+		return getAttribute(ZONE).sGetValue();
 	}
 	
 	public boolean setCurrentRoom(int index){
-		if (World.getRoom(currentZone, index) != null){
-			this.currentRoom = index;
+		if (World.getRoom(getCurrentZone(), index) != null){
+			setAttribute(ROOM, index);
 			return true;
 		}
 		return false;
@@ -51,15 +54,15 @@ public class Actor implements InventoryInterface, ScriptInterface{
 	
 	public boolean setCurrentRoom(String str, int index){
 		if (World.getRoom(str, index) != null){
-			this.currentZone = str;
-			this.currentRoom = index;
+			setAttribute(ZONE, str);
+			setAttribute(ROOM, index);
 			return true;
 		}
 		return false;
 	}
 	
 	public int getCurrentRoom(){
-		return this.currentRoom;
+		return getAttribute(ROOM).iGetValue();
 	}
 	
 	public String getLocationCode(){

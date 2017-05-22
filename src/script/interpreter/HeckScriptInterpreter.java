@@ -1,8 +1,10 @@
-package script.script;
+package script.interpreter;
 
 import java.util.ArrayList;
 
 import script.attributes.Attribute;
+import script.script.HeckScriptCompiled;
+import script.script.ScriptArguments;
 import utility.StringUtility;
 
 public class HeckScriptInterpreter {

@@ -2,6 +2,8 @@ package script.script;
 
 import java.util.ArrayList;
 
+import script.interpreter.HeckScriptInterpreter;
+
 public class HeckScript {
 	
 	private String name = null;

@@ -2,6 +2,7 @@ package com;
 
 import playermanager.PlayerController;
 import saving.SaveManager;
+import script.interpreter.HeckFunctionList;
 import world.World;
 import network.Relay;
 
@@ -17,6 +18,7 @@ public class Boot {
 		
 		SaveManager.loadAll();
 		World.init();
+		HeckFunctionList.init();
 		
 		Relay.StartNetwork(PORT);
 		
