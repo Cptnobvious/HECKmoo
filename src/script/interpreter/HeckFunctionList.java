@@ -2,12 +2,15 @@ package script.interpreter;
 
 import java.util.ArrayList;
 
+import script.interpreter.functions.FuncAnnouncePlayerRoom;
+
 public class HeckFunctionList {
 	
 	private static ArrayList<HeckFunction> functions = new ArrayList<HeckFunction>();
 	
 	
 	public static boolean init(){
+		addFunction(new FuncAnnouncePlayerRoom());
 		return true;
 	}
 	

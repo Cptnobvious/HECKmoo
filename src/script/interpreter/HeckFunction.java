@@ -10,6 +10,10 @@ public abstract class HeckFunction {
 	public abstract boolean setFunctionName();
 	public abstract Attribute run(String[] args, ScriptArguments sa);
 	
+	public HeckFunction(){
+		setFunctionName();
+	}
+	
 	public boolean checkName(String str){
 		return str.equals(exactName);
 	}

@@ -9,6 +9,8 @@ import utility.StringUtility;
 
 public class HeckScriptInterpreter {
 	
+	private static Attribute returnRegister = null;
+	
 	//Should try to execute the script and catch errors
 	public static boolean execute(HeckScriptCompiled hsc, ScriptArguments sa){
 		
@@ -39,6 +41,32 @@ public class HeckScriptInterpreter {
 			if (lineParts.length > 2){
 				getThing(lineParts[1], sa).sSetValue(lineParts[2]);
 				return true;
+			} else {
+				return false;
+			}
+			
+		} else if (intention.equals("func")){
+			//Make sure you have enough arguments
+			
+			if (lineParts.length >= 2){
+				//Pull the function from the list
+				HeckFunction func= HeckFunctionList.getFunction(lineParts[1]);
+				
+				if (func != null){
+					//Set up the arguments list if there is one
+					String[] argumentList = new String[lineParts.length - 2];
+					for(int i = 0; i < argumentList.length; i++){
+						argumentList[i] = lineParts[i + 2];
+					}
+					
+					//Run the function and set the return register
+					
+					func.run(argumentList, sa);
+					
+					return true;
+				}
+				
+				return false;
 			} else {
 				return false;
 			}
