@@ -43,4 +43,8 @@ public abstract class Verb {
 		}
 		return null;
 	}
+	
+	//protected boolean sendFeedback(Player ply, int color, String string){
+		
+	//}
 }

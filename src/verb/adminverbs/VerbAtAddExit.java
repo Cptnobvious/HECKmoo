@@ -41,7 +41,7 @@ public class VerbAtAddExit extends Verb{
 			return true;
 		}
 		
-		ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Something went wrong"));
+		ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "Exit creation failed. (Invalid room and/or zone.)"));
 		return false;
 	}
 
