@@ -61,7 +61,7 @@ public class VerbAtAddZone extends Verb{
 	@Override
 	public String getHelpText() {
 		
-		return "@addzone <zonename> <zoneid>";
+		return "@addzone <zonename> <zoneid> \n ZoneID must be 5 letters and not contain special characters.";
 	}
 
 }

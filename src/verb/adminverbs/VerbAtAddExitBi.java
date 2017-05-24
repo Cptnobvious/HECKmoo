@@ -59,7 +59,7 @@ public class VerbAtAddExitBi extends Verb{
 
 	@Override
 	public String getHelpText() {
-		return "@add-exitbi <name> <name> <zone> <room>";
+		return "@add-exitbi <nameto> <namefrom> <zone> <room> \n Adds an exit to and from a room.";
 	}
 
 	

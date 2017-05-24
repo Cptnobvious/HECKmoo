@@ -2,6 +2,7 @@ package verb.adminverbs;
 
 import items.Item;
 import playermanager.Player;
+import utility.ColorStrings;
 import utility.StringUtility;
 import verb.Verb;
 
@@ -26,6 +27,7 @@ public class VerbAtCreate extends Verb{
 				return true;
 			}
 		}
+		ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "SYNTAX ERROR: Bad arguments!"));
 		return false;
 	}
 
