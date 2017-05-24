@@ -14,20 +14,38 @@ public class HeckScriptInterpreter {
 	//Should try to execute the script and catch errors
 	public static boolean execute(HeckScriptCompiled hsc, ScriptArguments sa){
 		
-		int iBlock = 0;
+		ArrayList<String> toRun = hsc.getCompiledScript();
+		if (toRun == null){
+			return false;
+		}
 		
-		do {
-			ArrayList<String> currentTask = hsc.getBlock(iBlock);
-			
-			for (int i = 0; i < currentTask.size(); i++){
-				interpretLine(currentTask.get(i), sa);
+		int nextLine = 0;
+		String line = null;
+		
+		while (nextLine < toRun.size()){
+			line = toRun.get(nextLine);
+			//Check the conditional or interpret a block
+			if (HeckScriptCompiled.lineHasConditional(line) && !line.startsWith("BLOCKINDEX")){
+				
+			} else {
+				interpretBlock(hsc, sa, line);
+				nextLine++;
 			}
-			
-		} while (false);
+		}
 		
 		return true;
 	}
 
+	
+	
+	private static boolean interpretBlock(HeckScriptCompiled hsc, ScriptArguments sa, String str){
+		String[] args = StringUtility.getWordList(str);
+		ArrayList<String> block = hsc.getBlock(Integer.parseInt(args[1]));
+		for (int i = 0; i < block.size(); i++){
+			interpretLine(block.get(i), sa);
+		}
+		return true;
+	}
 	
 	private static boolean interpretLine(String line, ScriptArguments sa){
 		String[] lineParts = StringUtility.getWordList(line);
