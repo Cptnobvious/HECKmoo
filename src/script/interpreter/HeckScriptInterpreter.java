@@ -40,7 +40,7 @@ public class HeckScriptInterpreter {
 	
 	private static boolean interpretBlock(HeckScriptCompiled hsc, ScriptArguments sa, String str){
 		String[] args = StringUtility.getWordList(str);
-		ArrayList<String> block = hsc.getBlock(Integer.parseInt(args[1]));
+		ArrayList<String> block = hsc.getBlock(Integer.parseInt(args[1]);
 		for (int i = 0; i < block.size(); i++){
 			interpretLine(block.get(i), sa);
 		}

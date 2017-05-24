@@ -7,13 +7,13 @@ import utility.StringUtility;
 public class HeckScriptCompiled {
 
 	private ArrayList<ExecutionBlock> blocks = new ArrayList<ExecutionBlock>();
-	private HeckScript toCompile = null;
+	private ArrayList<String> toCompile = null;
 	private ArrayList<String> compiled = null;
 	
 	public static final String[] conditionals = {"if", "elseif", "else", "endif", "BLOCKINDEX"};
 	//Start by getting exec block 1, go to the tree statement it asks next, follow tree from there
 	
-	public HeckScriptCompiled(HeckScript script){
+	public HeckScriptCompiled(ArrayList<String> script){
 		this.toCompile = script;
 	}
 	
@@ -26,7 +26,7 @@ public class HeckScriptCompiled {
 	}
 	
 	public boolean compile(){
-		ArrayList<String> sc = toCompile.getScript();
+		ArrayList<String> sc = toCompile;
 	
 		//Check for errors
 		if (checkProblems()){
@@ -71,19 +71,28 @@ public class HeckScriptCompiled {
 	
 	
 			//If we found something, strip it out
+			boolean blockAdded = false;
+			boolean stuffToAdd = false;
+			ExecutionBlock blockToAdd = new ExecutionBlock();
+			
 			if (blockLeft){
-				ExecutionBlock blockToAdd = new ExecutionBlock();
 				for (int i = line; i < sc.size(); i++){
 					if (!lineHasConditional(sc.get(i))){
 						blockToAdd.addLine(sc.get(i));
+						stuffToAdd = true;
 					} else {
 						blocks.add(blockToAdd);
+						blockAdded = true;
 						break;
 					}
 				}
+				
+				if (!blockAdded && stuffToAdd){
+					blocks.add(blockToAdd);
+				}
 	
 				//Remove those lines from the arraylist and replace them with a BLOCKINDEX #
-				String blockI = "BLOCKINDEX " + String.valueOf(blocks.size());
+				String blockI = "BLOCKINDEX " + String.valueOf(blocks.size() - 1);
 				sc.set(line, blockI);
 				boolean linesToStrip = true;
 				while (linesToStrip){
