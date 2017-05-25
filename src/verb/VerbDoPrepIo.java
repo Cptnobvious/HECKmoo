@@ -7,8 +7,8 @@ public class VerbDoPrepIo {
 	private static final String[] PREPOSITIONS = 
 		{"for", "from", "at", "with", "to", "as"};
 	
-	private String verb = null;
-	private String directObject = null;
+	private String verb = "none";
+	private String directObject = "none";
 	private String preposition = null;
 	private String indirectObject = null;
 	private boolean malformed = false;
@@ -65,11 +65,19 @@ public class VerbDoPrepIo {
 	}
 
 	public String getPreposition() {
-		return preposition;
+		if (preposition == null){
+			return "false";
+		} else {
+			return preposition;
+		}
 	}
 
 	public String getIndirectObject() {
-		return indirectObject;
+		if (indirectObject == null){
+			return "false";
+		} else {
+			return indirectObject;
+		}
 	}
 
 	public boolean isMalformed() {

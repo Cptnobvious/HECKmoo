@@ -12,7 +12,7 @@ public class LogIn {
 	public static String getLoginScreen(){
 		String loginMenu = "\n";
 		loginMenu = loginMenu + getQuote() + "\n";
-		loginMenu = loginMenu + ColorStrings.replaceTags("$[fGREEN]Enter a username.");
+		loginMenu = loginMenu + ColorStrings.replaceTags("$[fGREEN]Enter create <username>.");
 		return loginMenu;
 	}
 	

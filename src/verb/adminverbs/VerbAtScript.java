@@ -19,7 +19,7 @@ public class VerbAtScript extends Verb{
 	@Override
 	public boolean run(Player ply, String str) {
 		String[] args = StringUtility.getWordListWithoutQuotes(str);
-		if (args.length != 2){
+		if (args.length > 3){
 			return false;
 		}
 		
@@ -42,13 +42,19 @@ public class VerbAtScript extends Verb{
 			scriptName = broken[1];
 		}
 		
-		//Find the thing and set the value
-		if (ply.getActor().getItem(target) != null){
-			Object[] arguments = {scriptName, ply.getActor().getItem(target)};
-			ply.startInputTrap(new VerbScriptTrap(arguments));
-			return true;
+		if (args.length == 2){
+			//Find the thing and set the value
+			if (ply.getActor().getItem(target) != null){
+				Object[] arguments = {scriptName, ply.getActor().getItem(target)};
+				ply.startInputTrap(new VerbScriptTrap(arguments));
+				return true;
+			}
+		} else if (args.length == 3){
+			if (args[2].equals("compile")){
+				ply.getActor().getItem(target).getScript(scriptName).compile();
+				return true;
+			}
 		}
-		
 		return false;
 	}
 

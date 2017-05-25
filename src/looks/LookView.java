@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import playermanager.Player;
 import playermanager.PlayerController;
 import utility.ColorStrings;
+import utility.StringUtility;
 import world.Room;
 import world.World;
 import world.Zone;
@@ -134,9 +135,81 @@ public class LookView {
 		sees = sees + "\n" + standing;
 		//Exits now
 		String exits = rm.getExitNames();
+		exits = orderExits(exits);
+		
 		sees = sees + "\n" + ColorStrings.getColoredText(false, ColorStrings.CYAN, ColorStrings.BLACK, exits);
 		
 		return sees;
+	}
+	
+	private String orderExits(String exits){
+		String ordered = "";
+		String[] arr = StringUtility.getWordList(exits);
+		String temp = "";
+		
+		//First find what's in this array
+		temp = temp + arr[0];
+		
+		if (StringUtility.arrayContains(arr, "north")){
+			temp = temp + " north";
+		}
+		if (StringUtility.arrayContains(arr, "south")){
+			temp = temp + " south";
+		}
+		if (StringUtility.arrayContains(arr, "east")){
+			temp = temp + " east";
+		}
+		if (StringUtility.arrayContains(arr, "west")){
+			temp = temp + " west";
+		}
+		if (StringUtility.arrayContains(arr, "northwest")){
+			temp = temp + " northwest";
+		}
+		if (StringUtility.arrayContains(arr, "northeast")){
+			temp = temp + " northeast";
+		}
+		if (StringUtility.arrayContains(arr, "southwest")){
+			temp = temp + " southwest";
+		}
+		if (StringUtility.arrayContains(arr, "southeast")){
+			temp = temp + " southeast";
+		}
+		if (StringUtility.arrayContains(arr, "up")){
+			temp = temp + " up";
+		}
+		if (StringUtility.arrayContains(arr, "down")){
+			temp = temp + " down";
+		}
+		if (StringUtility.arrayContains(arr, "in")){
+			temp = temp + " in";
+		}
+		if (StringUtility.arrayContains(arr, "out")){
+			temp = temp + " out";
+		}
+		
+		String[] special = {"north", "south", "east", "west", "northwest", "northeast", "southwest", "southeast", "up", "down", "in", "out"};
+		
+		//strip those exits already used to null
+		arr[0] = null;
+		for (int i = 1; i < arr.length; i++){
+			for (int j = 0; j < special.length; j++){
+				if (arr[i].equals(special[j])){
+					arr[i] = null;
+					break;
+				}
+			}
+		}
+		
+		//add all the non-null exits
+		for (int i = 0; i < arr.length; i++){
+			if (arr[i] != null){
+				temp = temp + " " + arr[i];
+			}
+		}
+		
+		ordered = temp;
+		
+		return ordered;
 	}
 	
 	private String getRoomDescriptionWithAdds(){

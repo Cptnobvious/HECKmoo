@@ -2,11 +2,14 @@ package script.script;
 
 import java.util.ArrayList;
 
+import script.interpreter.HeckScriptInterpreter;
+
 public class HeckScript {
 	
 	private String name = null;
 	private ArrayList<String> lines = new ArrayList<String>();
 	private boolean compiled = false;
+	private HeckScriptCompiled compiledScript = null;
 	
 	public HeckScript(String name){
 		this.name = name;
@@ -31,8 +34,13 @@ public class HeckScript {
 	}
 	
 	public boolean compile(){
-		compiled = true;
-		return true;
+		this.compiledScript = new HeckScriptCompiled(this.lines);
+		this.compiled = this.compiledScript.compile();
+		if (compiled == false){
+			//Get rid of that to clear some memory since it failed anyways
+			compiledScript = null;
+		}
+		return compiled;
 	}
 	
 	public boolean isCompiled(){
@@ -43,6 +51,8 @@ public class HeckScript {
 		if (!isCompiled()){
 			return false;
 		}
+		
+		HeckScriptInterpreter.execute(compiledScript, args);
 		
 		return true;
 	}

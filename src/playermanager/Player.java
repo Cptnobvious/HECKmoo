@@ -2,6 +2,7 @@ package playermanager;
 
 import textparser.InputTrap;
 import textparser.TextParser;
+import utility.StringUtility;
 
 public class Player {
 	
@@ -40,9 +41,14 @@ public class Player {
 		//System.out.println("Sending a message to logic");
 		if (account == null){
 			if (logingIn){
-				account = new Account(str, "password");
-				actor = new Actor(this.uID, str);
-				enterWorld();
+				if (str.startsWith("create")){
+					String[] nameblock = StringUtility.getWordList(str);
+					account = new Account(nameblock[1], "password");
+					actor = new Actor(this.uID, nameblock[1]);
+					enterWorld();
+				} else {
+					sendMessageToClient("I didn't understand that");
+				}
 			}
 		} else {
 			if (textTrapping){
