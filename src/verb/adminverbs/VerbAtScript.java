@@ -4,6 +4,7 @@ import playermanager.Player;
 import script.ScriptInterface;
 import script.script.HeckScript;
 import textparser.InputTrap;
+import utility.ColorStrings;
 import utility.StringUtility;
 import verb.Verb;
 
@@ -20,6 +21,7 @@ public class VerbAtScript extends Verb{
 	public boolean run(Player ply, String str) {
 		String[] args = StringUtility.getWordListWithoutQuotes(str);
 		if (args.length > 3){
+			sendFeedback(ply, ColorStrings.RED, "Too many arguments");
 			return false;
 		}
 		
@@ -30,12 +32,14 @@ public class VerbAtScript extends Verb{
 		
 		int colons = StringUtility.countCharInString(args[1], ':');
 		if (colons == 0){
+			sendFeedback(ply, ColorStrings.RED, "You didn't target a script (did you forget the colon?)");
 			return false;
 		} else if (colons == 1){
 			
 			String toBreak = args[1];
 			String[] broken = toBreak.split(":");
 			if (broken.length != 2){
+				sendFeedback(ply, ColorStrings.RED, "Something weird happened. Too many colons?");
 				return false;
 			}
 			target = broken[0];
@@ -46,13 +50,20 @@ public class VerbAtScript extends Verb{
 			//Find the thing and set the value
 			if (ply.getActor().getItem(target) != null){
 				Object[] arguments = {scriptName, ply.getActor().getItem(target)};
+				sendFeedback(ply, ColorStrings.GREEN, "Creating a new script");
 				ply.startInputTrap(new VerbScriptTrap(arguments));
 				return true;
 			}
 		} else if (args.length == 3){
 			if (args[2].equals("compile")){
-				ply.getActor().getItem(target).getScript(scriptName).compile();
-				return true;
+				boolean compiled = ply.getActor().getItem(target).getScript(scriptName).compile();
+				if (compiled){
+					sendFeedback(ply, ColorStrings.GREEN, "Script compiled");
+					return true;
+				} else {
+					sendFeedback(ply, ColorStrings.RED, "Something went wrong with the compilation");
+					return false;
+				}
 			}
 		}
 		return false;

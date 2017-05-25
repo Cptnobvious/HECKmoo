@@ -2,6 +2,7 @@ package verb;
 
 import items.Item;
 import playermanager.Player;
+import utility.ColorStrings;
 import utility.StringUtility;
 
 //The verb object, does some cool shit
@@ -44,7 +45,12 @@ public abstract class Verb {
 		return null;
 	}
 	
-	//protected boolean sendFeedback(Player ply, int color, String string){
-		
-	//}
+	protected boolean sendFeedback(Player ply, int color, String str){
+		return sendFeedback(ply, color, false, str);
+	}
+	
+	protected boolean sendFeedback(Player ply, int color, boolean bold, String string){
+		ply.sendMessageToClient(ColorStrings.getColoredText(bold, color, ColorStrings.BLACK, string));
+		return true;
+	}
 }

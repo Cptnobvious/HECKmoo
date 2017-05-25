@@ -23,6 +23,7 @@ public class VerbAtAuditItem extends Verb{
 	public boolean run(Player ply, String str) {
 		String[] args = StringUtility.getWordListWithoutQuotes(str);
 		if (args.length < 2){
+			sendFeedback(ply, ColorStrings.RED, "Not enough arguments");
 			return false;
 		}
 		
@@ -60,7 +61,7 @@ public class VerbAtAuditItem extends Verb{
 				ply.sendMessageToClient(script);
 			}
 		}
-		
+		sendFeedback(ply, ColorStrings.RED, "I couldn't find that item");
 		
 		return false;
 	}
