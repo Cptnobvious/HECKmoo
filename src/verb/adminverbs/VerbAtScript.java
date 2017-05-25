@@ -1,5 +1,7 @@
 package verb.adminverbs;
 
+import java.util.ArrayList;
+
 import playermanager.Player;
 import script.ScriptInterface;
 import script.script.HeckScript;
@@ -62,8 +64,17 @@ public class VerbAtScript extends Verb{
 					return true;
 				} else {
 					sendFeedback(ply, ColorStrings.RED, "Something went wrong with the compilation");
+					sendFeedback(ply, ColorStrings.RED, ply.getActor().getItem(target).getScript(scriptName).getCompileError());
 					return false;
 				}
+			}
+			
+			if (args[2].equals("view")){
+				ArrayList<String> hs = ply.getActor().getItem(target).getScript(scriptName).getScript();
+				for (int i = 0; i < hs.size(); i++){
+					ply.sendMessageToClient(i + ColorStrings.getColoredText(ColorStrings.YELLOW, hs.get(i)));
+				}
+				return true;
 			}
 		}
 		return false;
@@ -97,7 +108,7 @@ public class VerbAtScript extends Verb{
 	
 	@Override
 	public String getHelpText() {
-		return "@script <target>:<scriptname>";
+		return "@script <target>:<scriptname> <instruction>\nInstruction is optional\n compile - Compiles the script\nview - Look at the script";
 	}
 
 }
