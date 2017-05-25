@@ -40,7 +40,7 @@ public class HeckScriptInterpreter {
 	
 	private static boolean interpretBlock(HeckScriptCompiled hsc, ScriptArguments sa, String str){
 		String[] args = StringUtility.getWordList(str);
-		ArrayList<String> block = hsc.getBlock(Integer.parseInt(args[1]);
+		ArrayList<String> block = hsc.getBlock(Integer.parseInt(args[1]));
 		for (int i = 0; i < block.size(); i++){
 			interpretLine(block.get(i), sa);
 		}
@@ -57,7 +57,8 @@ public class HeckScriptInterpreter {
 			
 			//Do you have enough variables?
 			if (lineParts.length > 2){
-				getThing(lineParts[1], sa).sSetValue(lineParts[2]);
+				String second = getThing(lineParts[2], sa).sGetValue();
+				getThing(lineParts[1], sa).sSetValue(second);
 				return true;
 			} else {
 				return false;
@@ -109,6 +110,13 @@ public class HeckScriptInterpreter {
 			
 		}
 		
-		return new Attribute("dummy");
+		//check for the indirect object
+		if (s.startsWith("IObj")){
+			if (sa.getIndirectObject() != null){
+				return new Attribute(null, sa.getIndirectObject());
+			}
+		}
+		
+		return new Attribute(null, s);
 	}
 }

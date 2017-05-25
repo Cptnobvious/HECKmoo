@@ -75,7 +75,9 @@ public class AttributeList {
 				return attributes.get(i);
 			}
 		}
-		return DEFAULTATTRIBUTE;
+		//If you didn't find it just make it
+		attributes.add(new Attribute(name, false));
+		return getByName(name);
 	}
 	
 	public ArrayList<Attribute> getAttributeList(){
