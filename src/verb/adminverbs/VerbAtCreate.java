@@ -24,6 +24,7 @@ public class VerbAtCreate extends Verb{
 				Item item = new Item();
 				item.setName(args[2]);
 				ply.getActor().addItem(item);
+				sendFeedback(ply, ColorStrings.GREEN, "Created a new " + item.getName());
 				return true;
 			}
 		}
