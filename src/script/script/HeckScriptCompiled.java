@@ -24,6 +24,10 @@ public class HeckScriptCompiled {
 		return blocks.get(i).getBlock();
 	}
 	
+	public String getErrorMessage(){
+		return this.compilerErrorMessage;
+	}
+	
 	public ArrayList<String> getCompiledScript(){
 		return compiled;
 	}
@@ -65,6 +69,7 @@ public class HeckScriptCompiled {
 			if (sc.get(i).startsWith("func")){
 				String[] funcName = StringUtility.getWordList(sc.get(i));
 				if (HeckFunctionList.getFunction(funcName[1]) == null){
+					this.compilerErrorMessage = "Error: No function of name " + funcName[1];
 					return false;
 				}
 			}
