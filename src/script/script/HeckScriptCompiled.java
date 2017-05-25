@@ -2,6 +2,7 @@ package script.script;
 
 import java.util.ArrayList;
 
+import script.interpreter.HeckFunctionList;
 import utility.StringUtility;
 
 public class HeckScriptCompiled {
@@ -9,8 +10,10 @@ public class HeckScriptCompiled {
 	private ArrayList<ExecutionBlock> blocks = new ArrayList<ExecutionBlock>();
 	private ArrayList<String> toCompile = null;
 	private ArrayList<String> compiled = null;
+	private String compilerErrorMessage = "None";
 	
 	public static final String[] conditionals = {"if", "elseif", "else", "endif", "BLOCKINDEX"};
+	public static final String[] tags = {"func", "mov"};
 	//Start by getting exec block 1, go to the tree statement it asks next, follow tree from there
 	
 	public HeckScriptCompiled(ArrayList<String> script){
@@ -29,7 +32,8 @@ public class HeckScriptCompiled {
 		ArrayList<String> sc = toCompile;
 	
 		//Check for errors
-		if (checkProblems()){
+		if (checkProblems(sc)){
+			toCompile = null;
 			return false;
 		}
 		
@@ -47,9 +51,35 @@ public class HeckScriptCompiled {
 		return true;
 	}
 	
-	private boolean checkProblems(){
-		//TODO: check for problems here
-		return false;
+	private boolean checkProblems(ArrayList<String> sc){
+		if (onlyKnownTags(sc)){
+			if (onlyKnownFunctions(sc)){
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	private boolean onlyKnownFunctions(ArrayList<String> sc){
+		for (int i = 0; i < sc.size(); i++){
+			if (sc.get(i).startsWith("func")){
+				String[] funcName = StringUtility.getWordList(sc.get(i));
+				if (HeckFunctionList.getFunction(funcName[1]) == null){
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+	
+	private boolean onlyKnownTags(ArrayList<String> sc){
+		for (int i = 0; i < sc.size(); i++){
+			if (!knownTag(sc.get(i))){
+				compilerErrorMessage = "Unknown tag at line " + i;
+				return false;
+			}
+		}
+		return true;
 	}
 	
 	private boolean stripBlocks(ArrayList<String> sc){
@@ -172,6 +202,29 @@ public class HeckScriptCompiled {
 		
 		
 		return true;
+	}
+	
+	public static boolean knownTag(String line){
+		
+		if (lineHasTag(line)){
+			return true;
+		}
+		
+		if (lineHasConditional(line)){
+			return true;
+		} 
+		
+		return false;
+		
+	}
+	
+	public static boolean lineHasTag(String line){
+		for (int i = 0; i < tags.length; i++){
+			if (line.startsWith(tags[i])){
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public static boolean lineHasConditional(String line){
