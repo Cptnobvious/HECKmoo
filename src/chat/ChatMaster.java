@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import playermanager.Player;
 import playermanager.PlayerController;
+import verb.Verb;
 
 //Decides where to send things and when
 
@@ -34,4 +35,9 @@ public class ChatMaster {
 		return true;
 	}
 	
+	
+	public static boolean sendErrorChat(String str){
+		ChatMessage chat = new ChatMessage("ERROR", "SYSTEM", str);
+		return sendChat(chat);
+	}
 }

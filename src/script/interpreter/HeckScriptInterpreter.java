@@ -3,7 +3,7 @@ package script.interpreter;
 import java.util.ArrayList;
 
 import script.attributes.Attribute;
-import script.script.HeckScriptCompiled;
+import script.script.HeckInstructions;
 import script.script.ScriptArguments;
 import utility.StringUtility;
 
@@ -12,7 +12,7 @@ public class HeckScriptInterpreter {
 	private static Attribute returnRegister = null;
 	
 	//Should try to execute the script and catch errors
-	public static boolean execute(HeckScriptCompiled hsc, ScriptArguments sa){
+	public static boolean execute(HeckInstructions hsc, ScriptArguments sa){
 		
 		ArrayList<String> toRun = hsc.getCompiledScript();
 		if (toRun == null){
@@ -25,7 +25,7 @@ public class HeckScriptInterpreter {
 		while (nextLine < toRun.size()){
 			line = toRun.get(nextLine);
 			//Check the conditional or interpret a block
-			if (HeckScriptCompiled.lineHasConditional(line) && !line.startsWith("BLOCKINDEX")){
+			if (HeckInstructions.lineHasConditional(line) && !line.startsWith("BLOCKINDEX")){
 				
 			} else {
 				interpretBlock(hsc, sa, line);
@@ -38,7 +38,7 @@ public class HeckScriptInterpreter {
 
 	
 	
-	private static boolean interpretBlock(HeckScriptCompiled hsc, ScriptArguments sa, String str){
+	private static boolean interpretBlock(HeckInstructions hsc, ScriptArguments sa, String str){
 		String[] args = StringUtility.getWordList(str);
 		ArrayList<String> block = hsc.getBlock(Integer.parseInt(args[1]));
 		for (int i = 0; i < block.size(); i++){

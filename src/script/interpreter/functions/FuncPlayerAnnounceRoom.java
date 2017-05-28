@@ -7,8 +7,10 @@ import script.interpreter.HeckFunction;
 import script.script.ScriptArguments;
 import world.World;
 
-public class FuncAnnouncePlayerRoom extends HeckFunction{
+public class FuncPlayerAnnounceRoom extends HeckFunction{
 
+	//Announces exact text to the room a player is in
+	
 	@Override
 	public boolean setFunctionName() {
 		exactName = "AnnouncePlayerRoom";

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import script.interpreter.HeckFunctionList;
 import utility.StringUtility;
 
-public class HeckScriptCompiled {
+public class HeckInstructions {
 
 	private ArrayList<ExecutionBlock> blocks = new ArrayList<ExecutionBlock>();
 	private ArrayList<String> toCompile = null;
@@ -16,7 +16,7 @@ public class HeckScriptCompiled {
 	public static final String[] tags = {"func", "mov"};
 	//Start by getting exec block 1, go to the tree statement it asks next, follow tree from there
 	
-	public HeckScriptCompiled(ArrayList<String> script){
+	public HeckInstructions(ArrayList<String> script){
 		this.toCompile = script;
 	}
 	
