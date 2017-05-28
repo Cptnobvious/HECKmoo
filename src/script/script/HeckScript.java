@@ -10,6 +10,7 @@ public class HeckScript {
 	private ArrayList<String> lines = new ArrayList<String>();
 	private boolean compiled = false;
 	private HeckInstructions compiledScript = null;
+	private String compilerErrorMessage = "None";
 	
 	public HeckScript(String name){
 		this.name = name;
@@ -33,10 +34,16 @@ public class HeckScript {
 		return this.lines;
 	}
 	
+	public String getCompileError(){
+		return this.compilerErrorMessage;
+	}
+	
 	public boolean compile(){
 		this.compiledScript = new HeckInstructions(this.lines);
+		this.compilerErrorMessage = "None";
 		this.compiled = this.compiledScript.compile();
 		if (compiled == false){
+			this.compilerErrorMessage = compiledScript.getErrorMessage();
 			//Get rid of that to clear some memory since it failed anyways
 			compiledScript = null;
 		}
