@@ -9,7 +9,7 @@ public class HeckScript {
 	private String name = null;
 	private ArrayList<String> lines = new ArrayList<String>();
 	private boolean compiled = false;
-	private HeckScriptCompiled compiledScript = null;
+	private HeckInstructions compiledScript = null;
 	private String compilerErrorMessage = "None";
 	
 	public HeckScript(String name){
@@ -39,8 +39,8 @@ public class HeckScript {
 	}
 	
 	public boolean compile(){
+		this.compiledScript = new HeckInstructions(this.lines);
 		this.compilerErrorMessage = "None";
-		this.compiledScript = new HeckScriptCompiled(this.lines);
 		this.compiled = this.compiledScript.compile();
 		if (compiled == false){
 			this.compilerErrorMessage = compiledScript.getErrorMessage();

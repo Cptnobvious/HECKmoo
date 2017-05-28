@@ -2,7 +2,7 @@ package script.interpreter;
 
 import java.util.ArrayList;
 
-import script.interpreter.functions.FuncAnnouncePlayerRoom;
+import script.interpreter.functions.FuncPlayerAnnounceRoom;
 
 public class HeckFunctionList {
 	
@@ -10,7 +10,7 @@ public class HeckFunctionList {
 	
 	
 	public static boolean init(){
-		addFunction(new FuncAnnouncePlayerRoom());
+		addFunction(new FuncPlayerAnnounceRoom());
 		return true;
 	}
 	
