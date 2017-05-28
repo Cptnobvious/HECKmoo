@@ -70,7 +70,7 @@ public class VerbAtScript extends Verb{
 			}
 			
 			if (args[2].equals("view")){
-				ArrayList<String> hs = ply.getActor().getItem(target).getScript(scriptName).getScript();
+				ArrayList<String> hs = ply.getActor().getItem(target).getScript(scriptName).getScriptForView();
 				for (int i = 0; i < hs.size(); i++){
 					ply.sendMessageToClient(i + ColorStrings.getColoredText(ColorStrings.YELLOW, hs.get(i)));
 				}

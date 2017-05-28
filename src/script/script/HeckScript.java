@@ -34,6 +34,10 @@ public class HeckScript {
 		return this.lines;
 	}
 	
+	public ArrayList<String> getScriptForView(){
+		return this.lines;
+	}
+	
 	public String getCompileError(){
 		return this.compilerErrorMessage;
 	}

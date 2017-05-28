@@ -14,13 +14,13 @@ public class FuncPlayerRoomTell extends HeckFunction{
 
 	@Override
 	public boolean setFunctionName() {
-		exactName = "PlayerTell";
+		exactName = "PlayerRoomTell";
 		return true;
 	}
 
 	@Override
 	public Attribute run(String[] args, ScriptArguments sa) {
-		if (args.length < 2){
+		if (args.length == 0){
 			return null;
 		}
 		
@@ -28,14 +28,14 @@ public class FuncPlayerRoomTell extends HeckFunction{
 			ChatMaster.sendErrorChat("Someone tried to call FuncPlayerRoomTell without a player");
 		}
 		
-		String[] swapped = new String[args.length - 2];
+		String[] swapped = new String[args.length];
 		
 		for (int i = 0; i < swapped.length; i++){
-			swapped[i] = ScriptArgumentReader.getThingFromArgumentsSafe(args[i + 2], sa);
+			swapped[i] = ScriptArgumentReader.getThingFromArgumentsSafe(args[i], sa);
 		}
 		
 		String toWork = "";
-		for (int i = 2; i < swapped.length; i++){
+		for (int i = 0; i < swapped.length; i++){
 			toWork = toWork + swapped[i] + " ";
 		}
 		
