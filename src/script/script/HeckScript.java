@@ -34,16 +34,22 @@ public class HeckScript {
 		return this.lines;
 	}
 	
+	public ArrayList<String> getScriptForView(){
+		return this.lines;
+	}
+	
 	public String getCompileError(){
 		return this.compilerErrorMessage;
 	}
 	
 	public boolean compile(){
-		this.compiledScript = new HeckInstructions(this.lines);
-		this.compilerErrorMessage = "None";
-		this.compiled = this.compiledScript.compile();
+		@SuppressWarnings("unchecked")
+		ArrayList<String> linesCopy = (ArrayList<String>)lines.clone();
+		compiledScript = new HeckInstructions(linesCopy);
+		compilerErrorMessage = "None";
+		compiled = compiledScript.compile();
 		if (compiled == false){
-			this.compilerErrorMessage = compiledScript.getErrorMessage();
+			compilerErrorMessage = compiledScript.getErrorMessage();
 			//Get rid of that to clear some memory since it failed anyways
 			compiledScript = null;
 		}

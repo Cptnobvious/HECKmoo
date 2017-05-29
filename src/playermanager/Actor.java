@@ -17,19 +17,19 @@ import world.World;
 public class Actor implements InventoryInterface, ScriptInterface{
 	//Owner's uID
 	private int parentID = -1;
-	//Name of the player
-	private String name = "WHERESMYNAME";
 	
 	//The zone the player is in
 	private static final String ZONE = "_ZONE";
 	//The room in the zone the player is in
 	private static final String ROOM = "_ROOM";
+	//The player's name
+	private static final String NAME = "_NAME";
 
 	Actor(int id, String name){
 		this.parentID = id;
-		this.name = name;
 		setAttribute(ZONE, "ORGNA");
 		setAttribute(ROOM, 0);
+		setAttribute(NAME, name);
 	}
 	
 	public boolean setCurrentZone(String str){
@@ -70,11 +70,11 @@ public class Actor implements InventoryInterface, ScriptInterface{
 	}
 	
 	public String getName(){
-		return this.name;
+		return getAttribute(NAME).sGetValue();
 	}
 	
 	public boolean setName(String name){
-		this.name = name;
+		setAttribute(NAME, name);
 		return true;
 	}
 	

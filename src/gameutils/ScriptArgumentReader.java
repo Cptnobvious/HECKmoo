@@ -1,11 +1,12 @@
 package gameutils;
 
 import script.ScriptInterface;
+import script.attributes.Attribute;
 import script.script.ScriptArguments;
 
 public class ScriptArgumentReader {
 
-	public static String getThingFromArgumentsSafe(String str, ScriptArguments sa){
+	public static String getStringFromArgumentsSafe(String str, ScriptArguments sa){
 		//Figure out which argument it is
 		if (str.startsWith("player")){
 			return stripPart(str, sa.getPlayer());
@@ -36,6 +37,11 @@ public class ScriptArgumentReader {
 		}
 	}
 	
+	public static Attribute getAttributeFromArguments(String str, ScriptArguments sa){
+		
+		
+		return null;
+	}
 	
 	private static String stripPart(String full, ScriptInterface target){
 		if (target == null){

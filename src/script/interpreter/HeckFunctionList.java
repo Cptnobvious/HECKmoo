@@ -3,6 +3,8 @@ package script.interpreter;
 import java.util.ArrayList;
 
 import script.interpreter.functions.FuncPlayerAnnounceRoom;
+import script.interpreter.functions.FuncPlayerRoomTell;
+import script.interpreter.functions.FuncPlayerTell;
 
 public class HeckFunctionList {
 	
@@ -11,6 +13,8 @@ public class HeckFunctionList {
 	
 	public static boolean init(){
 		addFunction(new FuncPlayerAnnounceRoom());
+		addFunction(new FuncPlayerRoomTell());
+		addFunction(new FuncPlayerTell());
 		return true;
 	}
 	

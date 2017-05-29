@@ -119,4 +119,50 @@ public class Attribute {
 		return attName;
 	}
 	
+	public boolean equals(Attribute att){
+		if (att.bGetValue() == this.bGetValue()){
+			if (att.sGetValue().equals(this.sGetValue())){
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
+	public boolean notEquals(Attribute att){
+		return !(equals(att));
+	}
+	
+	public boolean lessThan(Attribute att){
+		if (this.dGetValue() < att.dGetValue()){
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean greaterThan(Attribute att){
+		if (this.dGetValue() > att.dGetValue()){
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean lessThanEqual(Attribute att){
+		if (this.equals(att) || this.lessThan(att)){
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public boolean greaterThanEqual(Attribute att){
+		if (this.equals(att) || this.greaterThan(att)){
+			return true;
+		}
+		
+		return false;
+	}
+	
 }

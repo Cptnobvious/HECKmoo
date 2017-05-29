@@ -1,20 +1,18 @@
 package script.interpreter.functions;
 
-import playermanager.Actor;
-import chat.ChatMaster;
 import gameutils.Announcement;
 import gameutils.ScriptArgumentReader;
+import playermanager.Actor;
+import chat.ChatMaster;
 import script.attributes.Attribute;
 import script.interpreter.HeckFunction;
 import script.script.ScriptArguments;
 
-//Tells the room something with proper replacements
-
-public class FuncPlayerRoomTell extends HeckFunction{
+public class FuncPlayerTell extends HeckFunction{
 
 	@Override
 	public boolean setFunctionName() {
-		exactName = "PlayerRoomTell";
+		exactName = "PlayerTell";
 		return true;
 	}
 
@@ -25,7 +23,7 @@ public class FuncPlayerRoomTell extends HeckFunction{
 		}
 		
 		if (sa.getPlayer() == null){
-			ChatMaster.sendErrorChat("Someone tried to call FuncPlayerRoomTell without a player");
+			ChatMaster.sendErrorChat("Someone tried to call FuncPlayerTell without a player");
 		}
 		
 		String[] swapped = new String[args.length];
@@ -39,12 +37,8 @@ public class FuncPlayerRoomTell extends HeckFunction{
 			toWork = toWork + swapped[i] + " ";
 		}
 		
-		
-		Actor temp = (Actor)sa.getPlayer();
-		
-		String[] ignoreMe = {temp.getName()};
-		
-		Announcement.announceToRoom(temp.getCurrentZone(), temp.getCurrentRoom(), toWork, ignoreMe);
+		Actor act = (Actor)sa.getPlayer();
+		act.sendMessageToPlayer(toWork);
 		
 		return null;
 	}

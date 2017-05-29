@@ -174,14 +174,14 @@ public class HeckInstructions {
 					break;
 				}
 				
-				//is this line a conditional?
-				if (lineHasConditional(sc.get(i))){
+				//is this line a conditional that isn't block index?
+				if (lineHasConditional(sc.get(i)) && !sc.get(i).startsWith("BLOCKINDEX")){
 					
 					//is there a next line even?
 					if (i + 1 < sc.size()){
 						
-						//Is that line another conditional?
-						if (lineHasConditional(sc.get(i + 1))){
+						//Is that line another conditional that isn't blockindex?
+						if (lineHasConditional(sc.get(i + 1)) && !sc.get(i+1).startsWith("BLOCKINDEX")){
 							//Split them with a dummy block
 							blocks.add(new ExecutionBlock());
 							//Add a line there 
