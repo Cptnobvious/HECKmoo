@@ -31,7 +31,7 @@ public class FuncPlayerRoomTell extends HeckFunction{
 		String[] swapped = new String[args.length];
 		
 		for (int i = 0; i < swapped.length; i++){
-			swapped[i] = ScriptArgumentReader.getThingFromArgumentsSafe(args[i], sa);
+			swapped[i] = ScriptArgumentReader.getStringFromArgumentsSafe(args[i], sa);
 		}
 		
 		String toWork = "";
