@@ -19,15 +19,15 @@ public class VerbAtCreate extends Verb{
 	public boolean run(Player ply, String str) {
 		String[] args = StringUtility.getWordListWithoutQuotes(str);
 		
-		if (args.length > 2){
-			if (args[1].equals("$item")){
-				Item item = new Item();
-				item.setName(args[2]);
-				ply.getActor().addItem(item);
-				sendFeedback(ply, ColorStrings.GREEN, "Created a new " + item.getName());
-				return true;
-			}
-		}
+//		if (args.length > 2){
+//			if (args[1].equals("$item")){
+//				Item item = new Item();
+//				item.setName(args[2]);
+//				ply.getActor().addItem(item);
+//				sendFeedback(ply, ColorStrings.GREEN, "Created a new " + item.getName());
+//				return true;
+//			}
+//		}
 		ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.RED, "SYNTAX ERROR: Bad arguments!"));
 		return false;
 	}
