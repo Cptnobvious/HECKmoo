@@ -26,6 +26,33 @@ public class Item implements ScriptInterface{
 		setAttribute(ITEMWEIGHT, 1.0);
 	}
 	
+	public Item(Item item){
+		//TODO pretty sure most of this is still by reference
+		//Copy over the attributes
+		ArrayList<Attribute> attsFull = item.getAttributeList();
+		ArrayList<String> atts = new ArrayList<String>();
+		for (int i = 0; i < attsFull.size(); i++){
+			atts.add(attsFull.get(i).getName());
+		}
+		for (int i = 0; i < atts.size(); i++){
+			this.setAttribute(atts.get(i), item.getAttribute(atts.get(i)).sGetValue());
+		}
+		
+		//Copy over scripts
+		ArrayList<String> scrps = item.getScriptNames();
+		for (int i = 0; i < scrps.size(); i++){
+			//TODO is this by reference or by value?
+			this.addScript(item.getScript(scrps.get(i)));
+		}
+		
+		//Copy over the verbs
+		ArrayList<String> vrbs = item.sGetVerbList();
+		for (int i = 0; i < vrbs.size(); i++){
+			//TODO is this by reference or by value?
+			this.addVerb(item.getVerb(vrbs.get(i)));
+		}
+	}
+	
 	public ArrayList<String> sGetVerbList(){
 		return verbs.getVerbs();
 	}
