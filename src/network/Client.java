@@ -115,6 +115,12 @@ class Client {
 		}
 	}
 	
+
+	//Get the socket for checking IP or what not
+	protected Socket getSocket(){
+		return cSocket;
+	}
+	
 	//Send stuff to the relay
 	private void sendToRelay(TaggedClientString tcs){
 		//System.out.println("Sending input to relay from sendToRelay");
