@@ -1,5 +1,7 @@
 package playermanager;
 
+import java.util.ArrayList;
+
 import saving.SaveManager;
 import textparser.InputTrap;
 import textparser.TextParser;
@@ -48,9 +50,26 @@ public class Player {
 					actor = new Actor(this.uID, nameblock[1]);
 					sendMessageToClient("Your account name will be: " + nameblock[1]);
 					sendMessageToClient("Your password is " + account.getAccountPassword() + " please write it down.");
+					sendMessageToClient("Please reconnect and log in with this information.");
 					//actually it boots you now B)
-					
+					PlayerController.RemovePlayerByID(this.uID);
 					//enterWorld();
+				} else if (str.startsWith(("connect"))){
+					String[] args = StringUtility.getWordList(str);
+					if (SaveManager.checkPlayerExists(args[1])){
+						ArrayList<String> load = SaveManager.loadPlayer(args[1], args[2]);
+						if (load == null) {
+							sendMessageToClient("Incorrect password");
+							return false;
+						} else {
+							sendMessageToClient("Connecting");
+							//TODO initialize player
+							loadPlayer(load);
+							enterWorld();
+						}
+					} else {
+						sendMessageToClient("That account does not appear to exist.");
+					}
 				} else {
 					sendMessageToClient("I didn't understand that");
 				}
@@ -81,6 +100,29 @@ public class Player {
 		sendMessageToLogic("look");
 		//TODO this is probably not the best place for this
 		SaveManager.savePlayer(PlayerController.getPlayerByUID(this.uID));
+	}
+	
+	private boolean loadPlayer(ArrayList<String> variables){
+		String tag = null;
+		String rest = null;
+		
+		account = new Account(null, null);
+		actor = new Actor(this.uID, "null");
+		
+		for (int i = 0; i < variables.size(); i++){
+			tag = StringUtility.getFirstWord(variables.get(i));
+			rest = StringUtility.getStringAfterFirst(variables.get(i));
+			
+			if (tag.equals("$accname")){
+				account.setAccountName(rest);
+			} else if (tag.equals("$accpass")){
+				account.setAccountPassword(rest);
+			} else if (tag.equals("$actorname")){
+				actor.setName(rest);
+			}
+		}
+		
+		return true;
 	}
 	
 	Player (int uID){

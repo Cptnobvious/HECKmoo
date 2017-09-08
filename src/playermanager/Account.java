@@ -18,4 +18,13 @@ public class Account {
 		return this.accountPassword;
 	}
 
+	public boolean setAccountName(String name){
+		this.accountName = name;
+		return true;
+	}
+	
+	public boolean setAccountPassword(String pass){
+		this.accountPassword = pass;
+		return true;
+	}
 }

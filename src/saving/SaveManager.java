@@ -2,6 +2,7 @@ package saving;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import playermanager.Account;
 import playermanager.Player;
@@ -43,4 +44,19 @@ public class SaveManager {
 		
 		return false;
 	}
+	
+	public static ArrayList<String> loadPlayer(String name, String password){
+		try {
+			return PlayerSaver.loadPlayer(name, password);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static boolean checkPlayerExists(String name){
+		return PlayerSaver.doesAccountExist(name);
+	}
+	
+	
 }

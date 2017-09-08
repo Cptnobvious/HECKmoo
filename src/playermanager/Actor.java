@@ -19,11 +19,11 @@ public class Actor implements InventoryInterface, ScriptInterface{
 	private int parentID = -1;
 	
 	//The zone the player is in
-	private static final String ZONE = "_ZONE";
+	public static final String ZONE = "_ZONE";
 	//The room in the zone the player is in
-	private static final String ROOM = "_ROOM";
+	public static final String ROOM = "_ROOM";
 	//The player's name
-	private static final String NAME = "_NAME";
+	public static final String NAME = "_NAME";
 
 	Actor(int id, String name){
 		this.parentID = id;

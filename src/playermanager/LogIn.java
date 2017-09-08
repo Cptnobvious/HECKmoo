@@ -12,7 +12,8 @@ public class LogIn {
 	public static String getLoginScreen(){
 		String loginMenu = "\n";
 		loginMenu = loginMenu + getQuote() + "\n";
-		loginMenu = loginMenu + ColorStrings.replaceTags("$[fGREEN]Enter create <username>.");
+		loginMenu = loginMenu + ColorStrings.replaceTags("$[fGREEN]CREATE <username>") + "\n";
+		loginMenu = loginMenu + ColorStrings.replaceTags("$[fGREEN]CONNECT <username> <password>") + "\n";
 		return loginMenu;
 	}
 	
