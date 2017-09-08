@@ -87,5 +87,9 @@ public class Player {
 	public Actor getActor(){
 		return this.actor;
 	}
+	
+	public Account getAccount(){
+		return this.account;
+	}
 
 }

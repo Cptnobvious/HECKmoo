@@ -3,6 +3,8 @@ package saving;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import playermanager.Account;
+
 public class SaveManager {
 
 	public static boolean saveAll(){
@@ -27,5 +29,17 @@ public class SaveManager {
 			e.printStackTrace();
 		}
 		return true;
+	}
+	
+	public static boolean saveAccount(Account acc){
+		try {
+			return AccountSaver.saveAccount(acc);
+		} catch (FileNotFoundException e){
+			e.printStackTrace();
+		} catch (IOException e){
+			e.printStackTrace();
+		}
+		
+		return false;
 	}
 }
