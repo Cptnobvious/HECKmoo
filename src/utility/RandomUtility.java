@@ -5,7 +5,7 @@ import java.util.Random;
 public class RandomUtility {
 	
 	public static int getRandomNumber(int min, int max){
-		return getRandomNumber(min, max) +1;
+		return getRandomNumberExclusive(min, max) + 1;
 	}
 	
 	public static int getRandomNumberExclusive(int min, int max){

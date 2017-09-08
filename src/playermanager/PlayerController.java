@@ -24,7 +24,7 @@ public class PlayerController {
 		//TODO: cleanup player's commands
 		for (int i = 0; i < players.size(); i++){
 			if (players.get(i).getuID() == uID){
-				SaveManager.saveAccount(players.get(i).getAccount());
+				SaveManager.savePlayer(players.get(i));
 				players.remove(i);
 				Relay.RemoveClient(uID);
 				return true;

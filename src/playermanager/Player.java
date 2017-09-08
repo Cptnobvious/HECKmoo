@@ -1,5 +1,6 @@
 package playermanager;
 
+import saving.SaveManager;
 import textparser.InputTrap;
 import textparser.TextParser;
 import utility.StringUtility;
@@ -43,9 +44,13 @@ public class Player {
 			if (logingIn){
 				if (str.startsWith("create")){
 					String[] nameblock = StringUtility.getWordList(str);
-					account = new Account(nameblock[1], "password");
+					account = new Account(nameblock[1], LogIn.generatePassword());
 					actor = new Actor(this.uID, nameblock[1]);
-					enterWorld();
+					sendMessageToClient("Your account name will be: " + nameblock[1]);
+					sendMessageToClient("Your password is " + account.getAccountPassword() + " please write it down.");
+					//actually it boots you now B)
+					
+					//enterWorld();
 				} else {
 					sendMessageToClient("I didn't understand that");
 				}
@@ -74,6 +79,8 @@ public class Player {
 	
 	private void enterWorld(){
 		sendMessageToLogic("look");
+		//TODO this is probably not the best place for this
+		SaveManager.savePlayer(PlayerController.getPlayerByUID(this.uID));
 	}
 	
 	Player (int uID){

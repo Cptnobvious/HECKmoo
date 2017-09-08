@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import playermanager.Account;
+import playermanager.Player;
 
 public class SaveManager {
 
@@ -31,9 +32,9 @@ public class SaveManager {
 		return true;
 	}
 	
-	public static boolean saveAccount(Account acc){
+	public static boolean savePlayer(Player ply){
 		try {
-			return AccountSaver.saveAccount(acc);
+			return PlayerSaver.savePlayer(ply);
 		} catch (FileNotFoundException e){
 			e.printStackTrace();
 		} catch (IOException e){

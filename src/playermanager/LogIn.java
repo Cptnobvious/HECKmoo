@@ -28,4 +28,13 @@ public class LogIn {
 		return quotes.get(RandomUtility.getRandomNumberExclusive(0, quotes.size()));
 	}
 	
+	public static String generatePassword(){
+		String letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String password = "";
+		for (int i = 0; i < 5; i++){
+			password = password + letters.charAt(RandomUtility.getRandomNumber(0, letters.length()));
+		}
+		return password;
+	}
+	
 }

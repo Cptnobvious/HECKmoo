@@ -15,7 +15,7 @@ public class Account {
 	}
 	
 	public String getAccountPassword(){
-		return this.getAccountPassword();
+		return this.accountPassword;
 	}
 
 }
