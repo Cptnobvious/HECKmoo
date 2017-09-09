@@ -18,6 +18,7 @@ public class ListGlobalVerbs extends VerbList{
 		addVerb(new VerbDrop());
 		addVerb(new VerbGet());
 		addVerb(new VerbEmote());
+		addVerb(new VerbWho());
 		return true;
 	}
 	
