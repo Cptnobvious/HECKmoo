@@ -73,6 +73,16 @@ public class PlayerController {
 		return null;
 	}
 	
+	public static Player getPlayerByActorName(String name){
+		for (int i = 0; i < players.size(); i++){
+			if (players.get(i).getActor().getName().equals(name)){
+				return players.get(i);
+			}
+		}
+		
+		return null;
+	}
+	
 	public static void think() {
 		for (int i = 0; i < players.size(); i++){
 			players.get(i).think();

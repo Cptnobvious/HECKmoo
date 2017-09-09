@@ -33,6 +33,7 @@ public class ListAdminVerbs extends VerbList{
 		addVerb(new VerbAtDigDir());
 		addVerb(new VerbAtSave());
 		addVerb(new VerbAtQuit());
+		addVerb(new VerbAtGiveFlag());
 		return true;
 	}
 	

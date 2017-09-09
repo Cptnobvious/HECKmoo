@@ -50,6 +50,7 @@ public class PlayerSaver {
 		//Save account stuff
 		out.println("$accname " + ply.getAccount().getAccountName());
 		out.println("$accpass " + ply.getAccount().getAccountPassword());
+		out.println("$accflags " + ply.getAccount().getFlags());
 		
 		//Save the actor stuff
 		out.println("$actorname " + ply.getActor().getName());

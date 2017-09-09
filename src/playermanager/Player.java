@@ -119,6 +119,11 @@ public class Player {
 				account.setAccountPassword(rest);
 			} else if (tag.equals("$actorname")){
 				actor.setName(rest);
+			} else if (tag.equals("$accflags")){
+				String[] flags = StringUtility.getWordList(rest);
+				for (int j = 0; j < flags.length; j++){
+					account.giveFlag(flags[j]);
+				}
 			}
 		}
 		
