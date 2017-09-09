@@ -34,6 +34,7 @@ public class ListAdminVerbs extends VerbList{
 		addVerb(new VerbAtSave());
 		addVerb(new VerbAtQuit());
 		addVerb(new VerbAtGiveFlag());
+		addVerb(new VerbAtAShout());
 		return true;
 	}
 	

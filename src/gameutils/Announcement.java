@@ -42,4 +42,13 @@ public class Announcement {
 		return true;
 	}
 	
+	public static boolean announceGlobalRaw(String str){
+		ArrayList<Player> players = PlayerController.getPlayersListCopy();
+		for (int i = 0; i < players.size(); i++){
+			players.get(i).sendMessageToClient(str);
+		}
+		
+		return true;
+	}
+	
 }
