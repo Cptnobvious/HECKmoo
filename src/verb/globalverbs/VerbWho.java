@@ -21,13 +21,15 @@ public class VerbWho extends Verb{
 		ArrayList<Player> players = PlayerController.getPlayersListCopy();
 		
 		//Setup 
-		ply.sendMessageToClient("Name" + getSpaces(16) + "Location");
+		ply.sendMessageToClient("Name" + getSpaces(16) + "Character" + getSpaces(11) + "Location");
 		ply.sendMessageToClient("--------------------------------------------------------------------------------");
 		for (int i = 0; i < players.size(); i++){
-			String name = players.get(i).getActor().getName();
+			String name = players.get(i).getAccount().getAccountName();
 			name = name + (getSpaces(20 - name.length()));
+			String character = players.get(i).getActor().getName(); 
+			character = character  + (getSpaces(20 - character.length()));
 			String loc = World.getRoomByPlayer(players.get(i)).getRoomName() + " (" + World.getZoneByPlayer(players.get(i)).getZoneName() + ")";
-			ply.sendMessageToClient(name + loc);
+			ply.sendMessageToClient(name + character + loc);
 		}
 		
 		return true;
