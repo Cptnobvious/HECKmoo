@@ -1,6 +1,7 @@
 package textparser;
 
 import items.Inventory;
+
 import java.util.ArrayList;
 
 import chat.ListDefaultChannels;
@@ -11,6 +12,7 @@ import verb.VerbDoPrepIo;
 import verb.VerbList;
 import verb.adminverbs.ListAdminVerbs;
 import verb.globalverbs.ListGlobalVerbs;
+import world.World;
 
 //Takes input, compares to verbs, sends them to the verbs
 
@@ -63,6 +65,16 @@ public class TextParser {
 			return true;
 		}
 		
+		//Check and see if that was a go command since all else failed
+		if (World.getRoomByPlayer(ply).getExitByName(str) != null){
+			verb = "go";
+		}
+		called = globalverbs.getVerb(verb);
+		if (called != null){
+			called.run(ply, "go " + str);
+			return true;
+		}
+		
 		ply.sendMessageToClient("I don't understand that.");
 		return false;
 	}
@@ -85,6 +97,11 @@ public class TextParser {
 		
 		//Was this a chat message
 		called = defaultChannels.getVerb(verb);
+		if (called != null){
+			return called;
+		}
+		
+		called = globalverbs.getVerb(verb);
 		if (called != null){
 			return called;
 		}
