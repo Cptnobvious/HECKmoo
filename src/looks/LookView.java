@@ -71,6 +71,9 @@ public class LookView {
 		ArrayList<Player> players = PlayerController.getPlayersListCopy();
 		for (int i = 0; i < players.size(); i++){
 			Player tPlayer = players.get(i);
+			if (tPlayer.getAccount() == null){
+				continue;
+			}
 			if (tPlayer.getActor() != null){
 				if (ply.getActor().getCurrentRoom() == tPlayer.getActor().getCurrentRoom() && ply.getActor().getCurrentZone().equals(tPlayer.getActor().getCurrentZone())){
 					if (ply.getuID() != tPlayer.getuID()){
