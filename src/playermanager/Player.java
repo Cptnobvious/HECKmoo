@@ -18,6 +18,7 @@ public class Player {
 	private Actor actor = null;
 	//Is the player logging in?
 	private boolean logingIn = false;
+	private boolean needsboot = false;
 	
 	//Is your input getting trapped and what to do if it is
 	private boolean textTrapping = false;
@@ -42,19 +43,20 @@ public class Player {
 	//send a message from the client over to logic
 	public boolean sendMessageToLogic(String str){
 		//System.out.println("Sending a message to logic");
-		if (account == null){
-			if (logingIn){
-				if (str.startsWith("create")){
+		if (account == null || needsboot){
+			if (logingIn && !needsboot){
+				if (str.toLowerCase().startsWith("create")){
 					String[] nameblock = StringUtility.getWordList(str);
 					account = new Account(nameblock[1], LogIn.generatePassword());
 					actor = new Actor(this.uID, nameblock[1]);
 					sendMessageToClient("Your account name will be: " + nameblock[1]);
 					sendMessageToClient("Your password is " + account.getAccountPassword() + " please write it down.");
 					sendMessageToClient("Please reconnect and log in with this information.");
+					SaveManager.savePlayer(this);
 					//actually it boots you now B)
-					PlayerController.RemovePlayerByID(this.uID);
+					needsboot = true;
 					//enterWorld();
-				} else if (str.startsWith(("connect"))){
+				} else if (str.toLowerCase().startsWith(("connect"))){
 					String[] args = StringUtility.getWordList(str);
 					if (SaveManager.checkPlayerExists(args[1])){
 						ArrayList<String> load = SaveManager.loadPlayer(args[1], args[2]);
@@ -73,6 +75,8 @@ public class Player {
 				} else {
 					sendMessageToClient("I didn't understand that");
 				}
+			} else {
+				PlayerController.RemovePlayerByID(this.uID);
 			}
 		} else {
 			if (textTrapping){
@@ -120,9 +124,11 @@ public class Player {
 			} else if (tag.equals("$actorname")){
 				actor.setName(rest);
 			} else if (tag.equals("$accflags")){
-				String[] flags = StringUtility.getWordList(rest);
-				for (int j = 0; j < flags.length; j++){
-					account.giveFlag(flags[j]);
+				if (rest != null){
+					String[] flags = StringUtility.getWordList(rest);
+					for (int j = 0; j < flags.length; j++){
+						account.giveFlag(flags[j]);
+					}
 				}
 			}
 		}
