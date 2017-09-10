@@ -113,8 +113,21 @@ public class TextParser {
 		return null;
 	}
 	
-	public static ArrayList<String> getAllAdminVerbs(){
-		return adminverbs.getVerbs();
+	public static ArrayList<String> getAllVerbs(){
+		ArrayList<String> allverbs = new ArrayList<String>();
+		ArrayList<String> holder = null;
+		
+		holder = adminverbs.getVerbs();
+		for (int i = 0; i < holder.size(); i++){
+			allverbs.add(holder.get(i));
+		}
+		holder = globalverbs.getVerbs();
+		for (int i = 0; i < holder.size(); i++){
+			allverbs.add(holder.get(i));
+		}
+			
+			
+		return allverbs;
 	}
 	
 }

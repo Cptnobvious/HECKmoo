@@ -23,6 +23,7 @@ public class ListGlobalVerbs extends VerbList{
 		addVerb(new VerbExAlias());
 		addVerb(new VerbExDescribe());
 		addVerb(new VerbExRoll());
+		addVerb(new VerbExChat());
 		return true;
 	}
 	
