@@ -1,11 +1,15 @@
 package saving;
 
+import gameutils.Announcement;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import playermanager.Account;
 import playermanager.Player;
+import playermanager.PlayerController;
+import utility.ColorStrings;
 
 public class SaveManager {
 
@@ -13,7 +17,11 @@ public class SaveManager {
 		try {
 			WorldSaver.SaveWorld();
 			LoginQuoteSaver.makeQuotesFile();
+			saveAllPlayers();
 			System.out.println("Successfully saved world");
+			
+			Announcement.announceGlobalRaw(ColorStrings.getColoredText(true, ColorStrings.BLUE, ColorStrings.BLACK, "World Saved"));
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -29,6 +37,14 @@ public class SaveManager {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+		return true;
+	}
+	
+	private static boolean saveAllPlayers(){
+		ArrayList<Player> players = PlayerController.getPlayersListCopy();
+		for (int i = 0; i < players.size(); i++){
+			savePlayer(players.get(i));
 		}
 		return true;
 	}

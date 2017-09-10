@@ -54,6 +54,7 @@ public class PlayerSaver {
 		
 		//Save the actor stuff
 		out.println("$actorname " + ply.getActor().getName());
+		out.println("$actordesc " + ply.getActor().getDescription());
 		
 		//Don't forget to clean up
 		out.close();

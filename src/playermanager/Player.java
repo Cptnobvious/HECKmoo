@@ -130,6 +130,8 @@ public class Player {
 						account.giveFlag(flags[j]);
 					}
 				}
+			} else if (tag.equals("$actordesc")){
+				actor.setDescription(rest);
 			}
 		}
 		

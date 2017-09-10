@@ -1,5 +1,6 @@
 package verb.globalverbs;
 
+import gameutils.Announcement;
 import playermanager.Player;
 import utility.ColorStrings;
 import utility.StringUtility;
@@ -32,6 +33,9 @@ public class VerbGo extends Verb{
 		ply.getActor().setCurrentRoom(ex.getZone(), ex.getRoom()); //Set the player's room.
 		//TODO: a better system than simulating a look command6
 		ply.sendMessageToLogic("look");
+		
+		//let everyone know you showed up
+		Announcement.announceToRoomRaw(ply.getActor().getCurrentZone(), ply.getActor().getCurrentRoom(), ply.getActor().getName() + " arrives.");
 		return true;
 	}
 

@@ -24,12 +24,15 @@ public class Actor implements InventoryInterface, ScriptInterface{
 	public static final String ROOM = "_ROOM";
 	//The player's name
 	public static final String NAME = "_NAME";
+	//The player's description
+	public static final String DESC = "_DESCRIPTION";
 
 	Actor(int id, String name){
 		this.parentID = id;
 		setAttribute(ZONE, "ORGNA");
 		setAttribute(ROOM, 0);
 		setAttribute(NAME, name);
+		setAttribute(DESC, "Undescribed");
 	}
 	
 	public boolean setCurrentZone(String str){
@@ -75,6 +78,15 @@ public class Actor implements InventoryInterface, ScriptInterface{
 	
 	public boolean setName(String name){
 		setAttribute(NAME, name);
+		return true;
+	}
+	
+	public String getDescription(){
+		return getAttribute(DESC).sGetValue();
+	}
+	
+	public boolean setDescription(String name){
+		setAttribute(DESC, name);
 		return true;
 	}
 	
