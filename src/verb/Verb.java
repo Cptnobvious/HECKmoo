@@ -1,5 +1,7 @@
 package verb;
 
+import java.util.ArrayList;
+
 import items.Item;
 import playermanager.Player;
 import utility.ColorStrings;
@@ -10,13 +12,17 @@ import utility.StringUtility;
 public abstract class Verb {
 	
 	protected String[] alias = {};
+	protected String[] flags = {};
 
 	protected Verb(){
 		setAlias();
+		setFlags();
 	}
 	
 	//This function should set your alias array
 	public abstract boolean setAlias();
+	//This function sets up the required flags
+	public abstract boolean setFlags();
 	//This function is what happens when your verb is called
 	public abstract boolean run(Player ply, String str);
 	//This functions returns the help text of a verb
@@ -29,6 +35,23 @@ public abstract class Verb {
 				return true;
 			}
 		}
+		return false;
+	}
+	
+	public boolean hasRequiredFlag(Player ply){
+		String[] plyflags = StringUtility.getWordList(ply.getAccount().getFlags());
+		if (flags.length == 0){
+			return true;
+		}
+		
+		for (int i = 0; i < flags.length; i++){
+			for (int j = 0; j < plyflags.length; j++){
+				if (flags[i].equals(plyflags[j])){
+					return true;
+				}
+			}
+		}
+		
 		return false;
 	}
 	

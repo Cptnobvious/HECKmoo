@@ -23,6 +23,11 @@ public class VerbLook extends Verb{
 	}
 
 	@Override
+	public boolean setFlags() {
+		return true;
+	}
+	
+	@Override
 	public boolean run(Player ply, String str) {
 		String[] args = StringUtility.getWordListWithoutQuotes(str);
 		VerbDoPrepIo vdpi = new VerbDoPrepIo(str);

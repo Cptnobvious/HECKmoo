@@ -14,6 +14,13 @@ public class VerbAtCreate extends Verb{
 		alias = temp;
 		return true;
 	}
+	
+	@Override
+	public boolean setFlags() {
+		String[] temp = {"builder", "admin"};
+		flags = temp;
+		return true;
+	}
 
 	@Override
 	public boolean run(Player ply, String str) {

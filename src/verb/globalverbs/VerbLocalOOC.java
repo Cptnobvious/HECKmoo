@@ -16,6 +16,11 @@ public class VerbLocalOOC extends Verb{
 	}
 
 	@Override
+	public boolean setFlags() {
+		return true;
+	}
+	
+	@Override
 	public boolean run(Player ply, String str) {
 		String ann = ply.getActor().getName() + ColorStrings.getColoredText(true, ColorStrings.MAGENTA, ColorStrings.BLACK, " [LOOC]") + ": ";
 		ann = ann + StringUtility.getStringAfterFirst(str);

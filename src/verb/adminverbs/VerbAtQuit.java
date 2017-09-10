@@ -14,6 +14,11 @@ public class VerbAtQuit extends Verb{
 	}
 
 	@Override
+	public boolean setFlags() {
+		return true;
+	}
+	
+	@Override
 	public boolean run(Player ply, String str) {
 		PlayerController.RemovePlayerByID(ply.getuID());
 		return true;

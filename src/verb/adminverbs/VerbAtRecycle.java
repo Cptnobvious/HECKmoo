@@ -16,6 +16,13 @@ public class VerbAtRecycle extends Verb{
 	}
 
 	@Override
+	public boolean setFlags() {
+		String[] temp = {"builder", "admin"};
+		flags = temp;
+		return true;
+	}
+	
+	@Override
 	public boolean run(Player ply, String str) {
 		String[] args = StringUtility.getWordListWithoutQuotes(str);
 		if (args.length < 3){

@@ -15,6 +15,11 @@ public class VerbWho extends Verb{
 		alias = temp;
 		return true;
 	}
+	
+	@Override
+	public boolean setFlags() {
+		return true;
+	}
 
 	@Override
 	public boolean run(Player ply, String str) {

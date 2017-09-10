@@ -18,6 +18,11 @@ public class VerbAtHelp extends Verb{
 	}
 
 	@Override
+	public boolean setFlags() {
+		return true;
+	}
+	
+	@Override
 	public boolean run(Player ply, String str) {
 		String qverb = StringUtility.getWordInString(str, 2);
 		if (qverb == null){ //Show generic help text if no target.

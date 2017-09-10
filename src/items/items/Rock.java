@@ -25,6 +25,10 @@ public class Rock extends Item{
 			alias = temp;
 			return true;
 		}
+		
+		public boolean setFlags(){
+			return true;
+		}
 
 		@Override
 		public boolean run(Player ply, String str) {

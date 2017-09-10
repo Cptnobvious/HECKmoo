@@ -15,6 +15,11 @@ public class VerbSay extends Verb{
 	}
 
 	@Override
+	public boolean setFlags() {
+		return true;
+	}
+	
+	@Override
 	public boolean run(Player ply, String str) {
 		String said = ply.getActor().getName() + " says \"" + StringUtility.getStringAfterFirst(str) + "\"";
 		Announcement.announceToRoomRaw(ply.getActor().getCurrentZone(), ply.getActor().getCurrentRoom(), said);

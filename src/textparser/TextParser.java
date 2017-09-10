@@ -31,15 +31,19 @@ public class TextParser {
 		//check the admin verbs
 		called = adminverbs.getVerb(verb);
 		if (called != null){
-			called.run(ply, str);
-			return true;
+			if (called.hasRequiredFlag(ply)){
+				called.run(ply, str);
+				return true;
+			}
 		}
 		
 		//check the global verbs
 		called = globalverbs.getVerb(verb);
 		if (called != null){
-			called.run(ply, str);
-			return true;
+			if (called.hasRequiredFlag(ply)){
+				called.run(ply, str);
+				return true;
+			}
 		}
 		
 		//Check things you're holding
