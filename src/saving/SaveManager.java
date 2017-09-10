@@ -63,7 +63,7 @@ public class SaveManager {
 	
 	public static ArrayList<String> loadPlayer(String name, String password){
 		try {
-			return PlayerSaver.loadPlayer(name, password);
+			return PlayerSaver.loadPlayer(name.toLowerCase(), password);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -71,7 +71,7 @@ public class SaveManager {
 	}
 	
 	public static boolean checkPlayerExists(String name){
-		return PlayerSaver.doesAccountExist(name);
+		return PlayerSaver.doesAccountExist(name.toLowerCase());
 	}
 	
 	

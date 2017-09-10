@@ -47,8 +47,17 @@ public class Player {
 			if (logingIn && !needsboot){
 				if (str.toLowerCase().startsWith("create")){
 					String[] nameblock = StringUtility.getWordList(str);
-					account = new Account(nameblock[1], LogIn.generatePassword());
+					if (nameblock.length != 2){
+						return false;
+					}
+					
+					if (SaveManager.checkPlayerExists(nameblock[1])){
+						sendMessageToClient("That name already exists.");
+						return false;
+					}
+					
 					actor = new Actor(this.uID, nameblock[1]);
+					account = new Account(nameblock[1].toLowerCase(), LogIn.generatePassword());
 					sendMessageToClient("Your account name will be: " + nameblock[1]);
 					sendMessageToClient("Your password is " + account.getAccountPassword() + " please write it down.");
 					sendMessageToClient("Please reconnect and log in with this information.");
@@ -58,8 +67,11 @@ public class Player {
 					//enterWorld();
 				} else if (str.toLowerCase().startsWith(("connect"))){
 					String[] args = StringUtility.getWordList(str);
+					if (args.length != 3){
+						return false;
+					}
 					if (SaveManager.checkPlayerExists(args[1])){
-						ArrayList<String> load = SaveManager.loadPlayer(args[1], args[2]);
+						ArrayList<String> load = SaveManager.loadPlayer(args[1].toLowerCase(), args[2]);
 						if (load == null) {
 							sendMessageToClient("Incorrect password");
 							return false;
