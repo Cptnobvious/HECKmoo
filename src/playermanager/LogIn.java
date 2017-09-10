@@ -12,7 +12,8 @@ public class LogIn {
 	public static String getLoginScreen(){
 		String loginMenu = "\n";
 		loginMenu = loginMenu + getQuote() + "\n";
-		loginMenu = loginMenu + ColorStrings.replaceTags("$[fGREEN]Enter create <username>.");
+		loginMenu = loginMenu + ColorStrings.replaceTags("$[fGREEN]CREATE <username>") + "\n";
+		loginMenu = loginMenu + ColorStrings.replaceTags("$[fGREEN]CONNECT <username> <password>") + "\n";
 		return loginMenu;
 	}
 	
@@ -26,6 +27,15 @@ public class LogIn {
 			return "";
 		}
 		return quotes.get(RandomUtility.getRandomNumberExclusive(0, quotes.size()));
+	}
+	
+	public static String generatePassword(){
+		String letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+		String password = "";
+		for (int i = 0; i < 5; i++){
+			password = password + letters.charAt(RandomUtility.getRandomNumber(0, letters.length()));
+		}
+		return password;
 	}
 	
 }

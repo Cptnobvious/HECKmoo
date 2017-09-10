@@ -17,6 +17,13 @@ public class ListGlobalVerbs extends VerbList{
 		addVerb(new VerbSay());
 		addVerb(new VerbDrop());
 		addVerb(new VerbGet());
+		addVerb(new VerbEmote());
+		addVerb(new VerbWho());
+		addVerb(new VerbLocalOOC());
+		addVerb(new VerbExAlias());
+		addVerb(new VerbExDescribe());
+		addVerb(new VerbExRoll());
+		addVerb(new VerbExChat());
 		return true;
 	}
 	

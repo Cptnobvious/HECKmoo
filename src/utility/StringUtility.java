@@ -121,4 +121,28 @@ public class StringUtility {
 	public static String getLinebreak(){
 		return "--------------------------------------------------------------------------------";
 	}
+	
+	public static boolean isValidName(String name, int length){
+		String validchars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-";
+		
+		if (name.length() > length){
+			return false;
+		}
+		
+		for (int i = 0; i < name.length(); i++){
+			boolean isValid = false;
+			for (int j = 0; j < validchars.length(); j++){
+				if (name.charAt(i) == validchars.charAt(j)){
+					isValid = true;
+					break;
+				}
+			}
+			
+			if (!isValid){
+				return false;
+			}
+		}
+		
+		return true;
+	}
 }

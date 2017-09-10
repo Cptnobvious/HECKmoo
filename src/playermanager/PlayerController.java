@@ -2,6 +2,7 @@ package playermanager;
 
 import java.util.ArrayList;
 
+import saving.SaveManager;
 import network.Relay;
 
 //This holds a list of active players and takes input from the relay/sends input to the relay.
@@ -23,6 +24,7 @@ public class PlayerController {
 		//TODO: cleanup player's commands
 		for (int i = 0; i < players.size(); i++){
 			if (players.get(i).getuID() == uID){
+				SaveManager.savePlayer(players.get(i));
 				players.remove(i);
 				Relay.RemoveClient(uID);
 				return true;
@@ -64,6 +66,16 @@ public class PlayerController {
 	public static Player getPlayerByUID(int uID){
 		for (int i = 0; i < players.size(); i++){
 			if (players.get(i).getuID() == uID){
+				return players.get(i);
+			}
+		}
+		
+		return null;
+	}
+	
+	public static Player getPlayerByActorName(String name){
+		for (int i = 0; i < players.size(); i++){
+			if (players.get(i).getActor().getName().equals(name)){
 				return players.get(i);
 			}
 		}

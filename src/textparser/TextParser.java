@@ -1,6 +1,7 @@
 package textparser;
 
 import items.Inventory;
+
 import java.util.ArrayList;
 
 import chat.ListDefaultChannels;
@@ -11,6 +12,7 @@ import verb.VerbDoPrepIo;
 import verb.VerbList;
 import verb.adminverbs.ListAdminVerbs;
 import verb.globalverbs.ListGlobalVerbs;
+import world.World;
 
 //Takes input, compares to verbs, sends them to the verbs
 
@@ -29,15 +31,19 @@ public class TextParser {
 		//check the admin verbs
 		called = adminverbs.getVerb(verb);
 		if (called != null){
-			called.run(ply, str);
-			return true;
+			if (called.hasRequiredFlag(ply)){
+				called.run(ply, str);
+				return true;
+			}
 		}
 		
 		//check the global verbs
 		called = globalverbs.getVerb(verb);
 		if (called != null){
-			called.run(ply, str);
-			return true;
+			if (called.hasRequiredFlag(ply)){
+				called.run(ply, str);
+				return true;
+			}
 		}
 		
 		//Check things you're holding
@@ -60,6 +66,16 @@ public class TextParser {
 		called = defaultChannels.getVerb(verb);
 		if (called != null){
 			called.run(ply, str);
+			return true;
+		}
+		
+		//Check and see if that was a go command since all else failed
+		if (World.getRoomByPlayer(ply).getExitByName(str) != null){
+			verb = "go";
+		}
+		called = globalverbs.getVerb(verb);
+		if (called != null){
+			called.run(ply, "go " + str);
 			return true;
 		}
 		
@@ -89,11 +105,29 @@ public class TextParser {
 			return called;
 		}
 		
+		called = globalverbs.getVerb(verb);
+		if (called != null){
+			return called;
+		}
+		
 		return null;
 	}
 	
-	public static ArrayList<String> getAllAdminVerbs(){
-		return adminverbs.getVerbs();
+	public static ArrayList<String> getAllVerbs(){
+		ArrayList<String> allverbs = new ArrayList<String>();
+		ArrayList<String> holder = null;
+		
+		holder = adminverbs.getVerbs();
+		for (int i = 0; i < holder.size(); i++){
+			allverbs.add(holder.get(i));
+		}
+		holder = globalverbs.getVerbs();
+		for (int i = 0; i < holder.size(); i++){
+			allverbs.add(holder.get(i));
+		}
+			
+			
+		return allverbs;
 	}
 	
 }

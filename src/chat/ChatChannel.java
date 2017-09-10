@@ -21,6 +21,10 @@ public abstract class ChatChannel extends Verb{
 		ChatMaster.addChannel(this);
 	}
 	
+	public boolean setFlags(){
+		return true;
+	}
+	
 	public boolean run(Player ply, String str){
 		if (channelName == null){
 			return false;
