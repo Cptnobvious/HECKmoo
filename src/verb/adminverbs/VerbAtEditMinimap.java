@@ -36,7 +36,7 @@ public class VerbAtEditMinimap extends Verb{
 				int fColor = ColorStrings.getColorIntByString(arg[4]);
 				int bColor = ColorStrings.getColorIntByString(arg[5]);
 				boolean bold = arg[6].equals("true");
-				String symbol = ColorStrings.replaceTags(arg[7]);
+				String symbol = arg[7];
 				
 				World.getZoneByPlayer(ply).getMap().setMapPoint(x, y, fColor, bColor, bold, symbol);
 				World.getRoomByPlayer(ply).setMapPos(x, y);
@@ -50,7 +50,7 @@ public class VerbAtEditMinimap extends Verb{
 				int fColor = ColorStrings.getColorIntByString(arg[4]);
 				int bColor = ColorStrings.getColorIntByString(arg[5]);
 				boolean bold = arg[6].equals("true");
-				String symbol = ColorStrings.replaceTags(arg[7]);
+				String symbol = arg[7];
 				
 				World.getZoneByPlayer(ply).getMap().setMapPoint(x, y, fColor, bColor, bold, symbol);
 				World.getZoneByPlayer(ply).getRoomByIndex(index).setMapPos(x, y);
