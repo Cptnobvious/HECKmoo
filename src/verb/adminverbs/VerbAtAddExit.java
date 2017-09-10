@@ -32,6 +32,7 @@ public class VerbAtAddExit extends Verb{
 			return false;
 		}
 		String exitname = arguments[1]; //Get the name of the exit.
+		exitname = exitname.toLowerCase();
 		String zone = arguments[2]; //Get the zone.
 		int room = Integer.parseInt(arguments[3]); //Get the room the exit is leading to.
 		if (World.getRoomByPlayer(ply).getExitByExactName(exitname) != null){
