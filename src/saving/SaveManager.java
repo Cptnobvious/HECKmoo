@@ -44,7 +44,9 @@ public class SaveManager {
 	private static boolean saveAllPlayers(){
 		ArrayList<Player> players = PlayerController.getPlayersListCopy();
 		for (int i = 0; i < players.size(); i++){
-			savePlayer(players.get(i));
+			if (players.get(i).getAccount() != null){
+				savePlayer(players.get(i));
+			}
 		}
 		return true;
 	}

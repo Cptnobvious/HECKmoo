@@ -42,7 +42,9 @@ public class Player {
 	
 	//send a message from the client over to logic
 	public boolean sendMessageToLogic(String str){
-		//System.out.println("Sending a message to logic");
+		if (str == null || str.isEmpty()){
+			return false;
+		}
 		if (account == null || needsboot){
 			if (logingIn && !needsboot){
 				if (str.toLowerCase().startsWith("create")){
