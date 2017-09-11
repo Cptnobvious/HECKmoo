@@ -37,10 +37,10 @@ public class LookView {
 		String descWithAdds = "";
 		for (int i = 0; i < desc.length; i++){
 			descWithAdds = descWithAdds + desc[i] + " ";
-			if (descWithAdds.length() > 60 && i < 5){
+			if (descWithAdds.length() > 60 && i < 6){
 				descLines.add(descWithAdds);
 				descWithAdds = "";
-			} else if (descWithAdds.length() > 75 && i >= 5){
+			} else if (descWithAdds.length() > 75 && i >= 6){
 				descLines.add(descWithAdds);
 				descWithAdds = "";
 			}
@@ -217,6 +217,7 @@ public class LookView {
 	
 	private String getRoomDescriptionWithAdds(){
 		String description = rm.getRoomDescription();
+		description = ColorStrings.replaceTags(description);
 		return description;
 	}
 }
