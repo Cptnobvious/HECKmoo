@@ -3,6 +3,8 @@ package network;
 import java.net.Socket;
 import java.util.ArrayList;
 
+import utility.NetworkUtility;
+
 //This holds a list of active clients
 
 class ClientsList extends Thread{
@@ -19,6 +21,9 @@ class ClientsList extends Thread{
 		
 		//If client fails to init for some reason don't add it to the clients list
 		if (cli.init()){
+			//Check if duplicate and boot the first.
+			checkDuplicateClient(cli);
+			
 			clients.add(cli);
 			//Don't forget to tell the relay that a new guy showed up
 			Relay.AddNewClient(newID);
@@ -43,6 +48,17 @@ class ClientsList extends Thread{
 		return false;
 	}
 	
+	public static boolean checkDuplicateClient(Client cli){
+		String clientIP = cli.getSocket().getRemoteSocketAddress().toString();
+		for (int i = 0; i < clients.size(); i++){
+			String testIP = clients.get(i).getSocket().getRemoteSocketAddress().toString();
+			if (NetworkUtility.compareIPs(clientIP, testIP)){
+				Relay.InformClientRemoval(clients.get(i).getUniqueID());
+				return true;
+			}
+		}
+		return false;
+	}
 	
 	private static int getUniqueID(){
 		int uID = 0;

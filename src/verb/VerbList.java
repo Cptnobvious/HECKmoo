@@ -46,4 +46,8 @@ public class VerbList {
 		return verbs;
 	}
 	
+	public int size(){
+		return verbList.size();
+	}
+	
 }

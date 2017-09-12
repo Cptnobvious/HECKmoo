@@ -16,6 +16,13 @@ public class VerbAtAddExitBi extends Verb{
 		alias = temp;
 		return false;
 	}
+	
+	@Override
+	public boolean setFlags() {
+		String[] temp = {"builder", "admin"};
+		flags = temp;
+		return true;
+	}
 
 	@Override
 	public boolean run(Player ply, String str) {

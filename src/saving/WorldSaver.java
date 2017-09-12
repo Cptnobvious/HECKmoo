@@ -20,7 +20,7 @@ public class WorldSaver {
 	private static String WORLDZONESPATH 	= "database/world/zones.lst";
 	private static String WORLDPATH			= "database/world/";
 	
-	public static boolean SaveWorld() throws IOException{
+	protected static boolean SaveWorld() throws IOException{
 		File file = new File(WORLDPATH);
 		
 		if (!file.exists()){
@@ -124,7 +124,7 @@ public class WorldSaver {
 		return true;
 	}
 	
-	public static boolean loadWorld() throws IOException{
+	protected static boolean loadWorld() throws IOException{
 		//Find all the zones that I need to load and stick them in zonesToLoad
 		FileReader fr = new FileReader(WORLDZONESPATH);
 		BufferedReader in = new BufferedReader(fr);

@@ -1,9 +1,13 @@
 package verb.globalverbs;
 
+import java.util.ArrayList;
+
 import items.Item;
 import looks.LookInventory;
+import looks.LookPlayer;
 import looks.LookView;
 import playermanager.Player;
+import playermanager.PlayerController;
 import utility.StringUtility;
 import verb.Verb;
 import verb.VerbDoPrepIo;
@@ -19,6 +23,11 @@ public class VerbLook extends Verb{
 	}
 
 	@Override
+	public boolean setFlags() {
+		return true;
+	}
+	
+	@Override
 	public boolean run(Player ply, String str) {
 		String[] args = StringUtility.getWordListWithoutQuotes(str);
 		VerbDoPrepIo vdpi = new VerbDoPrepIo(str);
@@ -29,6 +38,22 @@ public class VerbLook extends Verb{
 			ply.sendMessageToClient(look);
 			return true;
 		} else {
+			
+			//Check to see if they're looking at themselves
+			if (args[1].equals("me")){
+				ply.sendMessageToClient(LookPlayer.lookAtAPlayer(ply));
+				return true;
+			}
+			
+			//Check to see if they're looking at another player
+			ArrayList<Player> players = PlayerController.getPlayersListCopy();
+			for (int i = 0; i < players.size(); i++){
+				if (players.get(i).getActor().getName().equals(args[1])){
+					ply.sendMessageToClient(LookPlayer.lookAtAPlayer(players.get(i)));
+					return true;
+				}
+			}
+			
 			if (args.length > 1){
 				if (!vdpi.isMalformed() && vdpi.getPreposition() != null){
 					if (vdpi.getPreposition().equals("on")){

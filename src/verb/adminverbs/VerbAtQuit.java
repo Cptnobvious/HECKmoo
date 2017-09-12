@@ -1,35 +1,32 @@
 package verb.adminverbs;
 
 import playermanager.Player;
-import saving.SaveManager;
+import playermanager.PlayerController;
 import verb.Verb;
 
-public class VerbAtSave extends Verb{
+public class VerbAtQuit extends Verb{
 
 	@Override
 	public boolean setAlias() {
-		String[] temp = {"@save"};
+		String[] temp = {"@quit", "@disconnect"};
 		alias = temp;
-		return false;
-	}
-	
-	@Override
-	public boolean setFlags() {
-		String[] temp = {"builder", "admin"};
-		flags = temp;
 		return true;
 	}
 
 	@Override
+	public boolean setFlags() {
+		return true;
+	}
+	
+	@Override
 	public boolean run(Player ply, String str) {
-		SaveManager.saveAll();
+		PlayerController.RemovePlayerByID(ply.getuID());
 		return true;
 	}
 
 	@Override
 	public String getHelpText() {
-		// TODO Auto-generated method stub
-		return "@save";
+		return "When you enter this command it will save your account and disconnect you gracefully.";
 	}
 
 }

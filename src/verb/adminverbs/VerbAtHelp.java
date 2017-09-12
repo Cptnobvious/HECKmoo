@@ -18,21 +18,26 @@ public class VerbAtHelp extends Verb{
 	}
 
 	@Override
+	public boolean setFlags() {
+		return true;
+	}
+	
+	@Override
 	public boolean run(Player ply, String str) {
 		String qverb = StringUtility.getWordInString(str, 2);
 		if (qverb == null){ //Show generic help text if no target.
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, StringUtility.getLinebreak()));
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, getHelpText()));
 			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, StringUtility.getLinebreak()));
-			ArrayList<String> verbs = TextParser.getAllAdminVerbs(); //Show all the admin verbs.
+			ArrayList<String> verbs = TextParser.getAllVerbs();
 			String templines = "";
 			for (int i = 0; i < verbs.size(); i++){
-				templines = templines + verbs.get(i) + "     ";
-				if (((i % 5) == 0 && (i > 1)) || ((i + 1) == verbs.size())){
-					ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, templines));
-					templines = "";
+				templines = templines + verbs.get(i) + getSpaces(16 - verbs.get(i).length());
+				if (i != 0 && ((i + 1) % 5) == 0){
+					templines = templines + "\n";
 				}
 			}
+			ply.sendMessageToClient(ColorStrings.getColoredText(ColorStrings.CYAN, templines));
 			return true;
 		}
 		
@@ -53,4 +58,17 @@ public class VerbAtHelp extends Verb{
 		return "@help <command>\n@help <subject>";
 	}
 
+	private String getSpaces(int spaces){
+		if (spaces < 0){
+			return "";
+		}
+		
+		String s = "";
+		for (int i = 0; i < spaces; i++){
+			s = s + " ";
+		}
+		
+		return s;
+	}
+	
 }

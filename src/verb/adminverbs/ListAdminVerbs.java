@@ -24,7 +24,6 @@ public class ListAdminVerbs extends VerbList{
 		addVerb(new VerbAtAuditWorld());
 		addVerb(new VerbAtAuditZone());
 		addVerb(new VerbAtRecycle());
-		addVerb(new VerbAtItemTest());
 		addVerb(new VerbAtCreate());
 		addVerb(new VerbAtAuditItem());
 		addVerb(new VerbAtEdit());
@@ -32,6 +31,9 @@ public class ListAdminVerbs extends VerbList{
 		addVerb(new VerbAtVerb());
 		addVerb(new VerbAtDigDir());
 		addVerb(new VerbAtSave());
+		addVerb(new VerbAtQuit());
+		addVerb(new VerbAtGiveFlag());
+		addVerb(new VerbAtAShout());
 		return true;
 	}
 	

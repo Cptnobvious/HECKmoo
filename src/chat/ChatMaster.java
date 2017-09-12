@@ -40,4 +40,14 @@ public class ChatMaster {
 		ChatMessage chat = new ChatMessage("ERROR", "SYSTEM", str);
 		return sendChat(chat);
 	}
+	
+	public static boolean doesChannelExist(String str){
+		for (int i = 0; i < channels.size(); i++){
+			if (channels.get(i).getName().equalsIgnoreCase(str)){
+				return true;
+			}
+		}
+		
+		return false;
+	}
 }

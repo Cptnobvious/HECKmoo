@@ -61,6 +61,11 @@ public class DynamicVerb extends Verb{
 	}
 	
 	@Override
+	public boolean setFlags() {
+		return true;
+	}
+	
+	@Override
 	public boolean setAlias() {
 		return true;
 	}
